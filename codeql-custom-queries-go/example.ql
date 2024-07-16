@@ -3,6 +3,7 @@
  * @kind problem
  * @problem.severity warning
  * @id go/example/hello-world
+ * @author tylergu (https://github.com/tylergu)
  */
 
 import go

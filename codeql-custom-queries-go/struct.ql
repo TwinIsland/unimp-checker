@@ -3,6 +3,7 @@
  * @kind problem
  * @problem.severity warning
  * @id go/example/struct-checker
+ * @author smowton (https://github.com/smowton)
  */
 
 import go
