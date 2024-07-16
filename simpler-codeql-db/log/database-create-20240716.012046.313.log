@@ -1,0 +1,244 @@
+[2024-07-16 01:20:46] This is codeql database create .\simpler-codeql-db -s .\simpler-go
+[2024-07-16 01:20:46] Log file was started late.
+[2024-07-16 01:20:46] [PROGRESS] database create> Initializing database at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-codeql-db.
+[2024-07-16 01:20:46] Running plumbing command: codeql database init --extractor-options-verbosity=1 --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml --source-root=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go --allow-missing-source-root=false --allow-already-existing -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-codeql-db
+[2024-07-16 01:20:46] Calling plumbing command: codeql resolve languages --extractor-options-verbosity=1 --format=betterjson
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from C:\Program Files\codeql\.codeqlmanifest.json
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\cpp\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\csharp\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\csv\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\go\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\html\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\java\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\javascript\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\properties\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\python\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\ruby\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\swift\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\xml\codeql-extractor.yml.
+[2024-07-16 01:20:46] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\yaml\codeql-extractor.yml.
+[2024-07-16 01:20:46] Plumbing command codeql resolve languages completed:
+                      {
+                        "aliases" : {
+                          "c" : "cpp",
+                          "c++" : "cpp",
+                          "c-c++" : "cpp",
+                          "c-cpp" : "cpp",
+                          "c#" : "csharp",
+                          "java-kotlin" : "java",
+                          "kotlin" : "java",
+                          "javascript-typescript" : "javascript",
+                          "typescript" : "javascript"
+                        },
+                        "extractors" : {
+                          "cpp" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\cpp",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+                                  "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "binlog" : {
+                                  "title" : "Binlog",
+                                  "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\csv"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\go"
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\html"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                },
+                                "add_prefer_source" : {
+                                  "title" : "Whether to always prefer source files over class files.",
+                                  "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction (experimental).",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\javascript",
+                              "extractor_options" : {
+                                "skip_types" : {
+                                  "title" : "Skip type extraction for TypeScript",
+                                  "description" : "Whether to skip the extraction of types in a TypeScript application",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\properties"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\python",
+                              "extractor_options" : {
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Python extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "python_executable_name" : {
+                                  "title" : "Controls the name of the Python executable used by the Python extractor.",
+                                  "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(py|python|python3)$"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\ruby",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip)$"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "swift" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\swift"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\xml"
+                            }
+                          ],
+                          "yaml" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\yaml"
+                            }
+                          ]
+                        }
+                      }
+[2024-07-16 01:20:46] Exception caught at top level: Failed to auto-detect language(s) as an error occurred while accessing the Git metadata for the source root, please specify them manually using --language.
+                      (eventual cause: RepositoryNotFoundException "repository not found: C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go")
+                      com.semmle.cli2.database.InitCommand.getOrAutodetectLanguages(InitCommand.java:306)
+                      com.semmle.cli2.database.InitCommand.executeSubcommand(InitCommand.java:192)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$5(SubcommandCommon.java:863)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:442)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:861)
+                      com.semmle.cli2.picocli.PlumbingRunner.run(PlumbingRunner.java:119)
+                      com.semmle.cli2.picocli.SubcommandCommon.runPlumbingInProcess(SubcommandCommon.java:199)
+                      com.semmle.cli2.database.CreateCommand.executeSubcommand(CreateCommand.java:113)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$5(SubcommandCommon.java:863)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:442)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:861)
+                      com.semmle.cli2.picocli.SubcommandCommon.toplevelMain(SubcommandCommon.java:745)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:726)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:237)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:257)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:115)
+                      
+                       ... caused by:
+                      
+                      org.eclipse.jgit.errors.RepositoryNotFoundException: repository not found: C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go
+                      org.eclipse.jgit.lib.BaseRepositoryBuilder.build(BaseRepositoryBuilder.java:582)
+                      org.eclipse.jgit.api.Git.open(Git.java:117)
+                      org.eclipse.jgit.api.Git.open(Git.java:99)
+                      com.semmle.cli2.database.InitCommand.getOrAutodetectLanguages(InitCommand.java:304)
+                      com.semmle.cli2.database.InitCommand.executeSubcommand(InitCommand.java:192)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$5(SubcommandCommon.java:863)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:442)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:861)
+                      com.semmle.cli2.picocli.PlumbingRunner.run(PlumbingRunner.java:119)
+                      com.semmle.cli2.picocli.SubcommandCommon.runPlumbingInProcess(SubcommandCommon.java:199)
+                      com.semmle.cli2.database.CreateCommand.executeSubcommand(CreateCommand.java:113)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$5(SubcommandCommon.java:863)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:442)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:861)
+                      com.semmle.cli2.picocli.SubcommandCommon.toplevelMain(SubcommandCommon.java:745)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:726)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:237)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:257)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:115)

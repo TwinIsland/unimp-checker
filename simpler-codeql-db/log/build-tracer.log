@@ -1,0 +1,39 @@
+[T 17:21:45 21148] Initializing tracer.
+[T 17:21:45 21148] Initializing tags.
+[T 17:21:45 21148] CodeQL CLI version 2.18.0
+[T 17:21:45 21148] Initializing tracer.
+[T 17:21:45 21148] Initializing tags.
+[T 17:21:45 21148] Allocated ID 7A030E800000529C_0000000000000001 (parent )
+[T 17:21:45 21148] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (12216) ====
+[T 17:21:45 21148] Executing the following tracer actions:
+[T 17:21:45 21148] Tracer actions:
+[T 17:21:45 21148] pre_invocations(0)
+[T 17:21:45 21148] post_invocations(0)
+[T 17:21:45 21148] trace_languages(1): [go]
+[T 17:21:45 12216] Initializing tracer.
+[T 17:21:45 12216] Initializing tags.
+[T 17:21:45 12216] ID set to 7A030E800000529C_0000000000000001 (parent root)
+[T 17:21:45 12216] Allocated ID 7A02F6F200002FB8_0000000000000001 (parent 7A030E800000529C_0000000000000001)
+[T 17:21:45 12216] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (24912) ====
+[T 17:21:45 12216] Executing the following tracer actions:
+[T 17:21:45 12216] Tracer actions:
+[T 17:21:45 12216] pre_invocations(0)
+[T 17:21:45 12216] post_invocations(0)
+[T 17:21:45 12216] trace_languages(1): [go]
+[T 17:21:45 24912] Initializing tracer.
+[T 17:21:45 24912] Initializing tags.
+[T 17:21:45 24912] ID set to 7A02F6F200002FB8_0000000000000001 (parent 7A030E800000529C_0000000000000001)
+[T 17:21:45 24912] Allocated ID DA2DE4A500006150_0000000000000001 (parent 7A02F6F200002FB8_0000000000000001)
+[T 17:21:45 24912] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (10560) ====
+[T 17:21:45 24912] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 17:21:45 24912] Lua: Disabling tracing for language go.
+[T 17:21:45 24912] Executing the following tracer actions:
+[T 17:21:45 24912] Tracer actions:
+[T 17:21:45 24912] pre_invocations(0)
+[T 17:21:45 24912] post_invocations(0)
+[T 17:21:45 24912] trace_languages(0): []
+[T 17:21:45 10560] Initializing tracer.
+[T 17:21:45 10560] Initializing tags.
+[T 17:21:45 10560] ID set to DA2DE4A500006150_0000000000000001 (parent 7A02F6F200002FB8_0000000000000001)
+[T 17:21:45 10560] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+

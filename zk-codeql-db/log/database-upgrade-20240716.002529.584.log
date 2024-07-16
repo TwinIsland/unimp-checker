@@ -1,0 +1,18 @@
+[2024-07-16 00:25:29] This is codeql database upgrade .\zk-codeql-db\
+[2024-07-16 00:25:29] Log file was started late.
+[2024-07-16 00:25:29] Running plumbing command: codeql dataset upgrade --evaluator-log-level=5 -- C:\Users\TwinIsland\Desktop\unimp-checker\zk-codeql-db\db-go
+[2024-07-16 00:25:29] Calling plumbing command: codeql resolve upgrades --dbscheme=C:\Users\TwinIsland\Desktop\unimp-checker\zk-codeql-db\db-go\go.dbscheme --format=json
+[2024-07-16 00:25:29] [DETAILS] resolve upgrades> Searching for upgrades that apply to a58b81b1b4c4cccc8ca11731c1db86622f33af57.
+[2024-07-16 00:25:29] [DETAILS] resolve upgrades> Scanning for [codeql-pack.yml, qlpack.yml] from C:\Program Files\codeql\.codeqlmanifest.json
+[2024-07-16 00:25:29] [DETAILS] resolve upgrades> Scanning for [codeql-pack.yml, qlpack.yml] from C:\Program Files\
+[2024-07-16 00:25:29] [DETAILS] resolve upgrades> Not scanning from C:\Program Files\codeql which is already done.
+[2024-07-16 00:25:29] [DETAILS] resolve upgrades> Will look for upgrades in C:\Program Files\codeql\legacy-upgrades\upgrades
+[2024-07-16 00:25:29] [DETAILS] resolve upgrades> Found upgrade run ending at a58b81b1b4c4cccc8ca11731c1db86622f33af57.
+[2024-07-16 00:25:29] Plumbing command codeql resolve upgrades completed:
+                      {
+                        "scripts" : [ ],
+                        "finalDbscheme" : "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\zk-codeql-db\\db-go\\go.dbscheme"
+                      }
+[2024-07-16 00:25:29] [PROGRESS] dataset upgrade> C:\Users\TwinIsland\Desktop\unimp-checker\zk-codeql-db\db-go is up to date.
+[2024-07-16 00:25:29] Plumbing command codeql dataset upgrade completed.
+[2024-07-16 00:25:29] Exiting with code 0
