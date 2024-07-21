@@ -1,0 +1,2478 @@
+[2024-07-20 16:04:45] This is codeql database analyze .\simpler-go-db\ .\codeql-custom-queries-go\script.ql --format=csv --output=results.csv
+[2024-07-20 16:04:45] Log file was started late.
+[2024-07-20 16:04:45] [PROGRESS] database analyze> Running queries.
+[2024-07-20 16:04:45] Running plumbing command: codeql database run-queries --evaluator-log-level=5 --warnings=show --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml --no-rerun -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db .\codeql-custom-queries-go\script.ql
+[2024-07-20 16:04:45] Calling plumbing command: codeql resolve ram --dataset=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go --format=json
+[2024-07-20 16:04:45] [PROGRESS] resolve ram> Stringpool size measured as 2326938
+[2024-07-20 16:04:45] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx3271M",
+                        "--off-heap-ram=4071"
+                      ]
+[2024-07-20 16:04:45] Spawning plumbing command: execute queries -J-Xmx3271M --off-heap-ram=4071 --verbosity=progress --logdir=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\log --evaluator-log-level=5 --warnings=show --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml --no-rerun --output=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\results -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go .\codeql-custom-queries-go\script.ql
+[2024-07-20 16:04:49] Plumbing command codeql execute queries terminated with status 0.
+[2024-07-20 16:04:49] Plumbing command codeql database run-queries completed with status 0.
+[2024-07-20 16:04:49] [PROGRESS] database analyze> Interpreting results.
+[2024-07-20 16:04:49] Running plumbing command: codeql database interpret-results --format=csv -o=C:\Users\TwinIsland\Desktop\unimp-checker\results.csv --max-paths=4 --csv-location-format=line-column --print-diagnostics-summary --print-metrics-summary --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db .\codeql-custom-queries-go\script.ql
+[2024-07-20 16:04:49] Calling plumbing command: codeql resolve queries --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml --format=json -- .\codeql-custom-queries-go\script.ql
+[2024-07-20 16:04:49] [PROGRESS] resolve queries> Recording pack reference getting-started/codeql-extra-queries-go at C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go.
+[2024-07-20 16:04:49] Plumbing command codeql resolve queries completed:
+                      [
+                        "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\codeql-custom-queries-go\\script.ql"
+                      ]
+[2024-07-20 16:04:49] Calling plumbing command: codeql resolve extensions --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml .\codeql-custom-queries-go\script.ql
+[2024-07-20 16:04:49] Calling plumbing command: codeql resolve queries --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml --allow-library-packs --format startingpacks -- .\codeql-custom-queries-go\script.ql
+[2024-07-20 16:04:49] [PROGRESS] resolve queries> Recording pack reference getting-started/codeql-extra-queries-go at C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go.
+[2024-07-20 16:04:49] Plumbing command codeql resolve queries completed:
+                      [
+                        "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\codeql-custom-queries-go"
+                      ]
+[2024-07-20 16:04:49] Calling plumbing command: codeql resolve extensions-by-pack --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml -- C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] getting-started/codeql-extra-queries-go: not 1.0.0 {root: getting-started/codeql-extra-queries-go@1.0.0}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] getting-started/codeql-extra-queries-go: 1.0.0 {getting-started/codeql-extra-queries-go: not 1.0.0 {root: getting-started/codeql-extra-queries-go@1.0.0}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] getting-started/codeql-extra-queries-go: * [*], codeql/go-all: not * [*] {dependency: getting-started/codeql-extra-queries-go@* [*] requires codeql/go-all@^1.1.2}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 1] getting-started/codeql-extra-queries-go: 1.0.0
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/go-all: * [*] {getting-started/codeql-extra-queries-go: * [*], codeql/go-all: not * [*] {dependency: getting-started/codeql-extra-queries-go@* [*] requires codeql/go-all@^1.1.2}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/go-all: * [*], codeql/dataflow: not * [*] {dependency: codeql/go-all@* [*] requires codeql/dataflow@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/go-all: * [*], codeql/mad: not * [*] {dependency: codeql/go-all@* [*] requires codeql/mad@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/go-all: * [*], codeql/threat-models: not * [*] {dependency: codeql/go-all@* [*] requires codeql/threat-models@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/go-all: * [*], codeql/tutorial: not * [*] {dependency: codeql/go-all@* [*] requires codeql/tutorial@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/go-all: * [*], codeql/util: not * [*] {dependency: codeql/go-all@* [*] requires codeql/util@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 2] codeql/go-all: 1.1.2
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/util: * [*] {codeql/go-all: * [*], codeql/util: not * [*] {dependency: codeql/go-all@* [*] requires codeql/util@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/tutorial: * [*] {codeql/go-all: * [*], codeql/tutorial: not * [*] {dependency: codeql/go-all@* [*] requires codeql/tutorial@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/threat-models: * [*] {codeql/go-all: * [*], codeql/threat-models: not * [*] {dependency: codeql/go-all@* [*] requires codeql/threat-models@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/mad: * [*] {codeql/go-all: * [*], codeql/mad: not * [*] {dependency: codeql/go-all@* [*] requires codeql/mad@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/dataflow: * [*] {codeql/go-all: * [*], codeql/dataflow: not * [*] {dependency: codeql/go-all@* [*] requires codeql/dataflow@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/dataflow: * [*], codeql/ssa: not * [*] {dependency: codeql/dataflow@* [*] requires codeql/ssa@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/dataflow: * [*], codeql/typetracking: not * [*] {dependency: codeql/dataflow@* [*] requires codeql/typetracking@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/dataflow: * [*], codeql/util: not * [*] {dependency: codeql/dataflow@* [*] requires codeql/util@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 3] codeql/dataflow: 1.0.3
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/typetracking: * [*] {codeql/dataflow: * [*], codeql/typetracking: not * [*] {dependency: codeql/dataflow@* [*] requires codeql/typetracking@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DERIVATION] codeql/ssa: * [*] {codeql/dataflow: * [*], codeql/ssa: not * [*] {dependency: codeql/dataflow@* [*] requires codeql/ssa@1.0.3}}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/mad: * [*], codeql/util: not * [*] {dependency: codeql/mad@* [*] requires codeql/util@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 4] codeql/mad: 1.0.3
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/ssa: * [*], codeql/util: not * [*] {dependency: codeql/ssa@* [*] requires codeql/util@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 5] codeql/ssa: 1.0.3
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 6] codeql/threat-models: 1.0.3
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 7] codeql/tutorial: 1.0.3
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [INCOMPATIBILITY] codeql/typetracking: * [*], codeql/util: not * [*] {dependency: codeql/typetracking@* [*] requires codeql/util@1.0.3}
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 8] codeql/typetracking: 1.0.3
+[2024-07-20 16:04:49] [SPAMMY] resolve extensions-by-pack> [DECISION 9] codeql/util: 1.0.3
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\archive.tar.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\archive.zip.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 6 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\bufio.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 17 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\builtin.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 8 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\bytes.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 43 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\compress.bzip2.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\compress.flate.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\compress.gzip.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\compress.lzw.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\compress.zlib.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\container.heap.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\container.list.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 20 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\container.ring.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\context.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\crypto.cipher.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\crypto.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\crypto.rsa.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\crypto.tls.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\crypto.x509.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\database.sql.driver.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\database.sql.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 7 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\empty.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sourceModel: 0 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 0 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 0 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:neutralModel: 0 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.ascii85.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.asn1.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 8 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.base32.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.base64.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.binary.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.csv.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.gob.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 7 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.hex.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.json.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 14 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.pem.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\encoding.xml.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 23 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\errors.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\expvar.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 6 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\fmt.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 16 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.astaxie.beego.context.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sourceModel: 45 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.astaxie.beego.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 21 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sourceModel: 18 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.astaxie.beego.utils.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 26 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.cristalhq.jwt.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.dgrijalva.jwt-go.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 3 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 9 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.elazarl.goproxy.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.evanphx.json-patch.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 12 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.form3tech-oss.jwt-go.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 2 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.gin-gonic.gin.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.go-chi.jwtauth.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.go-jose.go-jose.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.go-kit.kit.auth.jwt.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.go-pg.pg.orm.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 6 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.golang-jwt.jwt.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 3 tuples.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 11 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.json-iterator.go.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.kataras.iris.middleware.jwt.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:49] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.kataras.jwt.model.yml.
+[2024-07-20 16:04:49] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 5 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.labstack.echo.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.lestrrat-go.jwx.jwk.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.lestrrat-go.jwx.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.lestrrat.go-jwx.jwk.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.ory.fosite.token.jwt.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 2 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.revel.revel.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 20 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.sendgrid.sendgrid-go.helpers.mail.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\github.com.valyala.fasthttp.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\go.uber.org.zap.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 11 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\golang.org.x.net.context.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\golang.org.x.net.html.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 16 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\google.golang.org.protobuf.internal.encoding.text.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\google.golang.org.protobuf.internal.impl.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\google.golang.org.protobuf.proto.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 12 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\google.golang.org.protobuf.reflect.protoreflect.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\gopkg.in.couchbase.gocb.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 54 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\gopkg.in.macaron.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sourceModel: 12 tuples.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\gopkg.in.square.go-jose.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sinkModel: 1 tuples.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\gopkg.in.yaml.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 9 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\html.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\html.template.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 6 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\io.fs.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 12 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\io.ioutil.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 2 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\io.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 19 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\k8s.io.api.core.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 10 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\k8s.io.apimachinery.pkg.runtime.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 47 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\log.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\math.big.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\mime.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\mime.multipart.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 8 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\mime.quotedprintable.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\net.http.httputil.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 10 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\net.http.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 22 tuples.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:sourceModel: 8 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\net.mail.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 6 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\net.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 20 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\net.textproto.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 19 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\net.url.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 23 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\os.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 4 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\path.filepath.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 13 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\path.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 5 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\reflect.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 37 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\regexp.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 20 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\sort.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\strconv.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 9 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\strings.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 34 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\sync.atomic.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 24 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\sync.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 10 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\syscall.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 8 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\text.scanner.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 3 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\text.tabwriter.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\go-all\1.1.2\ext\text.template.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/go-all:summaryModel: 6 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\threat-models\1.0.3\ext\supported-threat-models.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/threat-models:threatModelConfiguration: 1 tuples.
+[2024-07-20 16:04:50] [PROGRESS] resolve extensions-by-pack> Loading data extensions in C:\Users\TwinIsland\.codeql\packages\codeql\threat-models\1.0.3\ext\threat-model-grouping.model.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve extensions-by-pack>   Found extension targeting codeql/threat-models:threatModelGrouping: 10 tuples.
+[2024-07-20 16:04:50] Plumbing command codeql resolve extensions-by-pack completed:
+                      {
+                        "models" : [ ],
+                        "data" : {
+                          "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\codeql-custom-queries-go" : [
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\archive.tar.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 0,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\archive.zip.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 5,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\bufio.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 11,
+                              "rowCount" : 17,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\builtin.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 28,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\bytes.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 36,
+                              "rowCount" : 43,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.bzip2.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 79,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.flate.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 80,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.gzip.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 84,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.lzw.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 87,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.zlib.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 88,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\container.heap.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 92,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\container.list.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 97,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\container.ring.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 117,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\context.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 122,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.cipher.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 127,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 130,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.rsa.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 131,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.tls.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 133,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.x509.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 136,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\database.sql.driver.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 137,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\database.sql.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 141,
+                              "rowCount" : 7,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 2,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "neutralModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 3,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : false
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.ascii85.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 148,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.asn1.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 150,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.base32.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 158,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.base64.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 161,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.binary.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 164,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.csv.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 166,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.gob.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 171,
+                              "rowCount" : 7,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.hex.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 178,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.json.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 181,
+                              "rowCount" : 14,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 195,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.pem.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 199,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.xml.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 202,
+                              "rowCount" : 23,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\errors.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 225,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\expvar.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 228,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\fmt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 234,
+                              "rowCount" : 16,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.context.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 250,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.context.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 252,
+                              "rowCount" : 45,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 297,
+                              "rowCount" : 21,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 318,
+                              "rowCount" : 18,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.utils.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 336,
+                              "rowCount" : 26,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.cristalhq.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 362,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.dgrijalva.jwt-go.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 363,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.dgrijalva.jwt-go.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 366,
+                              "rowCount" : 9,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.elazarl.goproxy.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 375,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.evanphx.json-patch.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 377,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.form3tech-oss.jwt-go.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 389,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.gin-gonic.gin.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 391,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-chi.jwtauth.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 393,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-jose.go-jose.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 394,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-jose.go-jose.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 395,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-kit.kit.auth.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 399,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-pg.pg.orm.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 400,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.golang-jwt.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 406,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.golang-jwt.jwt.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 409,
+                              "rowCount" : 11,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.json-iterator.go.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 420,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.kataras.iris.middleware.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 424,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.kataras.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 425,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.labstack.echo.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 430,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.lestrrat-go.jwx.jwk.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 432,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.lestrrat-go.jwx.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 433,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.lestrrat.go-jwx.jwk.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 434,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.ory.fosite.token.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 435,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.revel.revel.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 437,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.sendgrid.sendgrid-go.helpers.mail.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 457,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.valyala.fasthttp.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 458,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\go.uber.org.zap.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 463,
+                              "rowCount" : 11,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\golang.org.x.net.context.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 474,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\golang.org.x.net.html.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 479,
+                              "rowCount" : 16,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.internal.encoding.text.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 495,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.internal.impl.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 496,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.proto.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 498,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.reflect.protoreflect.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 510,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.couchbase.gocb.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 511,
+                              "rowCount" : 54,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.macaron.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 565,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.macaron.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 577,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.square.go-jose.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 578,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.square.go-jose.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 579,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.yaml.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 583,
+                              "rowCount" : 9,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\html.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 592,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\html.template.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 594,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\io.fs.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 600,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\io.ioutil.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 612,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\io.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 614,
+                              "rowCount" : 19,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\k8s.io.api.core.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 633,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\k8s.io.apimachinery.pkg.runtime.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 643,
+                              "rowCount" : 47,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\log.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 690,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\math.big.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 693,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\mime.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 694,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\mime.multipart.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 699,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\mime.quotedprintable.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 707,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.http.httputil.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 708,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.http.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 718,
+                              "rowCount" : 22,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.http.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 740,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.mail.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 748,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 754,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.textproto.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 774,
+                              "rowCount" : 19,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.url.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 793,
+                              "rowCount" : 23,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\os.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 816,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\path.filepath.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 820,
+                              "rowCount" : 13,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\path.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 833,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\reflect.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 838,
+                              "rowCount" : 37,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\regexp.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 875,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\sort.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 895,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\strconv.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 896,
+                              "rowCount" : 9,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\strings.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 905,
+                              "rowCount" : 34,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\sync.atomic.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 939,
+                              "rowCount" : 24,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\sync.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 963,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\syscall.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 973,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\text.scanner.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 981,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\text.tabwriter.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 984,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\text.template.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 985,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "threatModelConfiguration",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\threat-models\\1.0.3\\ext\\supported-threat-models.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 991,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : false
+                            },
+                            {
+                              "predicate" : "threatModelGrouping",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\threat-models\\1.0.3\\ext\\threat-model-grouping.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 992,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : false
+                            }
+                          ]
+                        },
+                        "threatModels" : {
+                          "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\codeql-custom-queries-go" : {
+                            "extensions" : [
+                              {
+                                "data" : [ ],
+                                "addsTo" : {
+                                  "extensible" : "threatModelConfiguration",
+                                  "packName" : "codeql/threat-models"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "extensionPacks" : [ ]
+                      }
+[2024-07-20 16:04:50] Plumbing command codeql resolve extensions completed:
+                      {
+                        "models" : [ ],
+                        "data" : {
+                          "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\codeql-custom-queries-go" : [
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\archive.tar.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 0,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\archive.zip.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 5,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\bufio.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 11,
+                              "rowCount" : 17,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\builtin.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 28,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\bytes.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 36,
+                              "rowCount" : 43,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.bzip2.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 79,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.flate.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 80,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.gzip.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 84,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.lzw.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 87,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\compress.zlib.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 88,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\container.heap.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 92,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\container.list.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 97,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\container.ring.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 117,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\context.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 122,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.cipher.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 127,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 130,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.rsa.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 131,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.tls.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 133,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\crypto.x509.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 136,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\database.sql.driver.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 137,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\database.sql.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 141,
+                              "rowCount" : 7,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 2,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "neutralModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\empty.model.yml",
+                              "index" : 3,
+                              "firstRowId" : 148,
+                              "rowCount" : 0,
+                              "predicateHasOrigin" : false
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.ascii85.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 148,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.asn1.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 150,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.base32.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 158,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.base64.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 161,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.binary.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 164,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.csv.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 166,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.gob.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 171,
+                              "rowCount" : 7,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.hex.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 178,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.json.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 181,
+                              "rowCount" : 14,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 195,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.pem.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 199,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\encoding.xml.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 202,
+                              "rowCount" : 23,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\errors.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 225,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\expvar.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 228,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\fmt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 234,
+                              "rowCount" : 16,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.context.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 250,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.context.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 252,
+                              "rowCount" : 45,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 297,
+                              "rowCount" : 21,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 318,
+                              "rowCount" : 18,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.astaxie.beego.utils.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 336,
+                              "rowCount" : 26,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.cristalhq.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 362,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.dgrijalva.jwt-go.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 363,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.dgrijalva.jwt-go.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 366,
+                              "rowCount" : 9,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.elazarl.goproxy.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 375,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.evanphx.json-patch.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 377,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.form3tech-oss.jwt-go.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 389,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.gin-gonic.gin.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 391,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-chi.jwtauth.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 393,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-jose.go-jose.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 394,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-jose.go-jose.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 395,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-kit.kit.auth.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 399,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.go-pg.pg.orm.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 400,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.golang-jwt.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 406,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.golang-jwt.jwt.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 409,
+                              "rowCount" : 11,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.json-iterator.go.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 420,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.kataras.iris.middleware.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 424,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.kataras.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 425,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.labstack.echo.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 430,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.lestrrat-go.jwx.jwk.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 432,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.lestrrat-go.jwx.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 433,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.lestrrat.go-jwx.jwk.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 434,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.ory.fosite.token.jwt.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 435,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.revel.revel.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 437,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.sendgrid.sendgrid-go.helpers.mail.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 457,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\github.com.valyala.fasthttp.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 458,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\go.uber.org.zap.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 463,
+                              "rowCount" : 11,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\golang.org.x.net.context.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 474,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\golang.org.x.net.html.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 479,
+                              "rowCount" : 16,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.internal.encoding.text.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 495,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.internal.impl.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 496,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.proto.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 498,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\google.golang.org.protobuf.reflect.protoreflect.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 510,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.couchbase.gocb.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 511,
+                              "rowCount" : 54,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.macaron.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 565,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.macaron.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 577,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sinkModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.square.go-jose.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 578,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.square.go-jose.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 579,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\gopkg.in.yaml.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 583,
+                              "rowCount" : 9,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\html.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 592,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\html.template.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 594,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\io.fs.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 600,
+                              "rowCount" : 12,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\io.ioutil.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 612,
+                              "rowCount" : 2,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\io.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 614,
+                              "rowCount" : 19,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\k8s.io.api.core.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 633,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\k8s.io.apimachinery.pkg.runtime.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 643,
+                              "rowCount" : 47,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\log.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 690,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\math.big.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 693,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\mime.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 694,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\mime.multipart.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 699,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\mime.quotedprintable.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 707,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.http.httputil.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 708,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.http.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 718,
+                              "rowCount" : 22,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "sourceModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.http.model.yml",
+                              "index" : 1,
+                              "firstRowId" : 740,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.mail.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 748,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 754,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.textproto.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 774,
+                              "rowCount" : 19,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\net.url.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 793,
+                              "rowCount" : 23,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\os.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 816,
+                              "rowCount" : 4,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\path.filepath.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 820,
+                              "rowCount" : 13,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\path.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 833,
+                              "rowCount" : 5,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\reflect.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 838,
+                              "rowCount" : 37,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\regexp.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 875,
+                              "rowCount" : 20,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\sort.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 895,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\strconv.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 896,
+                              "rowCount" : 9,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\strings.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 905,
+                              "rowCount" : 34,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\sync.atomic.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 939,
+                              "rowCount" : 24,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\sync.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 963,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\syscall.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 973,
+                              "rowCount" : 8,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\text.scanner.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 981,
+                              "rowCount" : 3,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\text.tabwriter.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 984,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "summaryModel",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\go-all\\1.1.2\\ext\\text.template.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 985,
+                              "rowCount" : 6,
+                              "predicateHasOrigin" : true
+                            },
+                            {
+                              "predicate" : "threatModelConfiguration",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\threat-models\\1.0.3\\ext\\supported-threat-models.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 991,
+                              "rowCount" : 1,
+                              "predicateHasOrigin" : false
+                            },
+                            {
+                              "predicate" : "threatModelGrouping",
+                              "file" : "C:\\Users\\TwinIsland\\.codeql\\packages\\codeql\\threat-models\\1.0.3\\ext\\threat-model-grouping.model.yml",
+                              "index" : 0,
+                              "firstRowId" : 992,
+                              "rowCount" : 10,
+                              "predicateHasOrigin" : false
+                            }
+                          ]
+                        },
+                        "threatModels" : {
+                          "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\codeql-custom-queries-go" : {
+                            "extensions" : [
+                              {
+                                "data" : [ ],
+                                "addsTo" : {
+                                  "extensible" : "threatModelConfiguration",
+                                  "packName" : "codeql/threat-models"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "extensionPacks" : [ ]
+                      }
+[2024-07-20 16:04:50] [PROGRESS] database interpret-results> Interpreting C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go\script.ql...
+[2024-07-20 16:04:50] Calling plumbing command: codeql resolve library-path --query=C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go\script.ql --full-library-path=none --dbscheme=none --format=json
+[2024-07-20 16:04:50] [DETAILS] resolve library-path> Resolving query at normalized path C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go\script.ql.
+[2024-07-20 16:04:50] [DETAILS] resolve library-path> Found enclosing pack 'getting-started/codeql-extra-queries-go' at C:\Users\TwinIsland\Desktop\unimp-checker\codeql-custom-queries-go.
+[2024-07-20 16:04:50] [DETAILS] resolve library-path> Adding compilation cache at C:\Users\TwinIsland\.codeql\compile-cache.
+[2024-07-20 16:04:50] [DETAILS] resolve library-path> Dbscheme was explicitly overridden as C:\Users\TwinIsland\Desktop\unimp-checker\none
+[2024-07-20 16:04:50] [DETAILS] resolve library-path> Library path was overridden on command line.
+[2024-07-20 16:04:50] Plumbing command codeql resolve library-path completed:
+                      {
+                        "libraryPath" : [
+                          "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\none"
+                        ],
+                        "dbscheme" : "C:\\Users\\TwinIsland\\Desktop\\unimp-checker\\none",
+                        "compilationCache" : [
+                          "C:\\Users\\TwinIsland\\.codeql\\compile-cache"
+                        ],
+                        "relativeName" : "getting-started\\codeql-extra-queries-go\\script.ql",
+                        "qlPackName" : "getting-started/codeql-extra-queries-go"
+                      }
+[2024-07-20 16:04:50] [DETAILS] database interpret-results>  ... found results file at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\results\getting-started\codeql-extra-queries-go\script.bqrs.
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Interpreted pathproblem query "Unimp Struct Checker" (go/unimp-struct) at path C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\results\getting-started\codeql-extra-queries-go\script.bqrs.
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Interpreting file coverage baseline information
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Finished interpreting file coverage baseline information.
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Interpreting diagnostic messages...
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Looking for diagnostics in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic...
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Found diagnostics file C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\cli-diagnostics-add-20240720T041459.698Z.json.
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Found diagnostics file C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\cli-diagnostics-add-20240720T041500.754Z.json.
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Found diagnostics file C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\cli-diagnostics-add-20240720T080404.221Z.json.
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Found diagnostics file C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\cli-diagnostics-add-20240720T080418.536Z.json.
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Looking for diagnostics in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\extractors...
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Looking for diagnostics in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\extractors\go...
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Looking for diagnostics in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\extractors\html...
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Looking for diagnostics in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\diagnostic\tracer...
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Found 0 raw diagnostic messages.
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Processed diagnostic messages (removed 0 due to limits, created 0 summary diagnostics for status page).
+[2024-07-20 16:04:50] [DETAILS] database interpret-results> Interpreted diagnostic messages (20ms).
+[2024-07-20 16:04:50] Calling plumbing command: codeql resolve languages --format=json
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from C:\Program Files\codeql\.codeqlmanifest.json
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\cpp\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\csharp\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\csv\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\go\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\html\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\java\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\javascript\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\properties\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\python\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\ruby\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\swift\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\xml\codeql-extractor.yml.
+[2024-07-20 16:04:50] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\yaml\codeql-extractor.yml.
+[2024-07-20 16:04:50] Plumbing command codeql resolve languages completed:
+                      {
+                        "aliases" : {
+                          "c" : "cpp",
+                          "c++" : "cpp",
+                          "c-c++" : "cpp",
+                          "c-cpp" : "cpp",
+                          "c#" : "csharp",
+                          "java-kotlin" : "java",
+                          "kotlin" : "java",
+                          "javascript-typescript" : "javascript",
+                          "typescript" : "javascript"
+                        },
+                        "extractors" : {
+                          "cpp" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\cpp",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+                                  "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "binlog" : {
+                                  "title" : "Binlog",
+                                  "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\csv"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\go"
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\html"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                },
+                                "add_prefer_source" : {
+                                  "title" : "Whether to always prefer source files over class files.",
+                                  "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction (experimental).",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\javascript",
+                              "extractor_options" : {
+                                "skip_types" : {
+                                  "title" : "Skip type extraction for TypeScript",
+                                  "description" : "Whether to skip the extraction of types in a TypeScript application",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\properties"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\python",
+                              "extractor_options" : {
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Python extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "python_executable_name" : {
+                                  "title" : "Controls the name of the Python executable used by the Python extractor.",
+                                  "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(py|python|python3)$"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\ruby",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip)$"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "swift" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\swift"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\xml"
+                            }
+                          ],
+                          "yaml" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\yaml"
+                            }
+                          ]
+                        }
+                      }
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Loaded the following extractors: C/C++, C#, CSV, Go, HTML, Java/Kotlin, JavaScript/TypeScript, Java Properties Files, Python, Ruby, Swift, XML, YAML
+[2024-07-20 16:04:50] [PROGRESS] database interpret-results> Exporting results to CSV...
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Interpreting results for path query go/unimp-struct...
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Processed graph parents (0ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Processed graph nodes (1ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Processed graph edges (2ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Created graph (6ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Initialized subpaths (0ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Calculated subpath scopes (1ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Executing 4 path computations, each computing up to 4 different paths.
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Starting path computations: 25%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Starting path computations: 50%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Starting path computations: 75%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Starting path computations: 100%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Waiting for remaining path computations: 25%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Waiting for remaining path computations: 50%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Waiting for remaining path computations: 75%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Waiting for remaining path computations: 100%
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Processed path results (9ms).
+[2024-07-20 16:04:50] [SPAMMIER] database interpret-results> Linked relevant graph parents (0ms).
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Interpreted results for path query go/unimp-struct (19ms).
+[2024-07-20 16:04:50] [SPAMMY] database interpret-results> Skipping non-rule analysis go/baseline/expected-extracted-files
+[2024-07-20 16:04:50] [PROGRESS] database interpret-results> Exported results to CSV (21ms).
+[2024-07-20 16:04:50] Plumbing command codeql database interpret-results completed.
+[2024-07-20 16:04:50] Exiting with code 0

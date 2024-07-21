@@ -1,0 +1,397 @@
+[2024-07-20 00:07:17] This is codeql database create simpler-go-db -s ./simpler-go --language=go --overwrite
+[2024-07-20 00:07:17] Log file was started late.
+[2024-07-20 00:07:17] [PROGRESS] database create> Initializing database at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db.
+[2024-07-20 00:07:17] Running plumbing command: codeql database init --overwrite --language=go --extractor-options-verbosity=1 --qlconfig-file=C:\Users\TwinIsland\Desktop\unimp-checker\qlconfig.yml --source-root=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go --allow-missing-source-root=false --allow-already-existing -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db
+[2024-07-20 00:07:17] Calling plumbing command: codeql resolve languages --extractor-options-verbosity=1 --format=betterjson
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from C:\Program Files\codeql\.codeqlmanifest.json
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\cpp\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\csharp\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\csv\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\go\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\html\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\java\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\javascript\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\properties\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\python\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\ruby\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\swift\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\xml\codeql-extractor.yml.
+[2024-07-20 00:07:17] [DETAILS] resolve languages> Parsing C:\Program Files\codeql\yaml\codeql-extractor.yml.
+[2024-07-20 00:07:17] Plumbing command codeql resolve languages completed:
+                      {
+                        "aliases" : {
+                          "c" : "cpp",
+                          "c++" : "cpp",
+                          "c-c++" : "cpp",
+                          "c-cpp" : "cpp",
+                          "c#" : "csharp",
+                          "java-kotlin" : "java",
+                          "kotlin" : "java",
+                          "javascript-typescript" : "javascript",
+                          "typescript" : "javascript"
+                        },
+                        "extractors" : {
+                          "cpp" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\cpp",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+                                  "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "binlog" : {
+                                  "title" : "Binlog",
+                                  "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\csv"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\go"
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\html"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                },
+                                "add_prefer_source" : {
+                                  "title" : "Whether to always prefer source files over class files.",
+                                  "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction (experimental).",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\javascript",
+                              "extractor_options" : {
+                                "skip_types" : {
+                                  "title" : "Skip type extraction for TypeScript",
+                                  "description" : "Whether to skip the extraction of types in a TypeScript application",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\properties"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\python",
+                              "extractor_options" : {
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Python extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "python_executable_name" : {
+                                  "title" : "Controls the name of the Python executable used by the Python extractor.",
+                                  "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(py|python|python3)$"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\ruby",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip)$"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "swift" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\swift"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\xml"
+                            }
+                          ],
+                          "yaml" : [
+                            {
+                              "extractor_root" : "C:\\Program Files\\codeql\\yaml"
+                            }
+                          ]
+                        }
+                      }
+[2024-07-20 00:07:18] [PROGRESS] database init> Calculating baseline information in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go
+[2024-07-20 00:07:18] [SPAMMY] database init> Ignoring the following directories when processing baseline information: .git, .hg, .svn.
+[2024-07-20 00:07:18] [DETAILS] database init> Running command in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go: C:\Program Files\codeql\tools\win64\scc.exe --by-file --exclude-dir .git,.hg,.svn --format json --no-large --no-min .
+[2024-07-20 00:07:18] Using configure-baseline script C:\Program Files\codeql\go\tools\configure-baseline.cmd.
+[2024-07-20 00:07:18] [PROGRESS] database init> Running command in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go: [C:\Program Files\codeql\go\tools\configure-baseline.cmd]
+[2024-07-20 00:07:18] [SPAMMY] database init> Found 1 baseline files for go.
+[2024-07-20 00:07:18] [PROGRESS] database init> Calculated baseline information for languages: go (670ms).
+[2024-07-20 00:07:18] [PROGRESS] database init> Resolving extractor go.
+[2024-07-20 00:07:18] [DETAILS] database init> Found candidate extractor root for go: C:\Program Files\codeql\go.
+[2024-07-20 00:07:18] [PROGRESS] database init> Successfully loaded extractor Go (go) from C:\Program Files\codeql\go.
+[2024-07-20 00:07:18] [PROGRESS] database init> Created skeleton CodeQL database at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db. This in-progress database is ready to be populated by an extractor.
+[2024-07-20 00:07:18] Plumbing command codeql database init completed.
+[2024-07-20 00:07:18] Using autobuild script C:\Program Files\codeql\go\tools\autobuild.cmd.
+[2024-07-20 00:07:18] [DETAILS] database create> Detected autobuild command for Go: C:\Program Files\codeql\go\tools\autobuild.cmd.
+[2024-07-20 00:07:18] [PROGRESS] database create> Running build command: [C:\Program Files\codeql\go\tools\autobuild.cmd]
+[2024-07-20 00:07:18] Running plumbing command: codeql database trace-command --working-dir=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go --index-traceless-dbs --no-db-cluster -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db C:\Program Files\codeql\go\tools\autobuild.cmd
+[2024-07-20 00:07:18] [PROGRESS] database trace-command> Running command in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go: [C:\Program Files\codeql\go\tools\autobuild.cmd]
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Autobuilder was built with go1.22.2, environment has go1.21.6
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 LGTM_SRC is C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Found no go.work files in the workspace; looking for go.mod files...
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Found 0 go.mod file(s).
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Unable to determine import path, as neither LGTM_INDEX_IMPORT_PATH nor GITHUB_REPOSITORY is set
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Failed to determine import path, not setting up GOPATH
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Unable to find any build scripts, continuing to install dependencies in the normal way.
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 The code in . seems to be missing a go.mod file. Attempting to initialize one...
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Unable to determine import path, as neither LGTM_INDEX_IMPORT_PATH nor GITHUB_REPOSITORY is set
+[2024-07-20 00:07:19] [build-stderr] go: creating new go.mod: module codeql/auto-project
+[2024-07-20 00:07:19] [build-stderr] go: to add module requirements and sums:
+[2024-07-20 00:07:19] [build-stderr] 	go mod tidy
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 
+[2024-07-20 00:07:19] [build-stderr] 2024/07/20 00:07:19 Installing dependencies using `go get -v ./...` in `.`.
+[2024-07-20 00:07:20] [build-stderr] 2024/07/20 00:07:20 Running extractor command 'C:\Program Files\codeql\go\tools\win64\go-extractor.exe [./...]' from directory '.'.
+[2024-07-20 00:07:20] [build-stderr] 2024/07/20 00:07:20 Build flags: ''; patterns: './...'
+[2024-07-20 00:07:20] [build-stderr] 2024/07/20 00:07:20 Running packages.Load.
+[2024-07-20 00:07:23] [build-stderr] 2024/07/20 00:07:23 Done running packages.Load.
+[2024-07-20 00:07:23] [build-stderr] 2024/07/20 00:07:23 Extracting universe scope.
+[2024-07-20 00:07:23] [build-stderr] 2024/07/20 00:07:23 Done extracting universe scope.
+[2024-07-20 00:07:23] [build-stderr] 2024/07/20 00:07:23 Running go list to resolve package and module directories.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Done running go list deps: resolved 14 packages.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Processing package codeql/auto-project.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Extracting types for package codeql/auto-project.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Done extracting types for package codeql/auto-project.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Done processing dependencies.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Starting to extract packages.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Extracting C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go\go.mod
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Extracting C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go\main.go
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Done extracting C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go\go.mod (4ms)
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Done extracting C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go\main.go (4ms)
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Done extracting packages.
+[2024-07-20 00:07:24] [build-stderr] 2024/07/20 00:07:24 Success: extraction succeeded for all 1 discovered project(s).
+[2024-07-20 00:07:24] Plumbing command codeql database trace-command completed.
+[2024-07-20 00:07:24] [PROGRESS] database create> Finalizing database at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db.
+[2024-07-20 00:07:24] Running plumbing command: codeql database finalize --no-db-cluster -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db
+[2024-07-20 00:07:24] Using pre-finalize script C:\Program Files\codeql\go\tools\pre-finalize.cmd.
+[2024-07-20 00:07:24] [PROGRESS] database finalize> Running pre-finalize script C:\Program Files\codeql\go\tools\pre-finalize.cmd in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go.
+[2024-07-20 00:07:24] Running plumbing command: codeql database trace-command --working-dir=C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go --no-tracing -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db C:\Program Files\codeql\go\tools\pre-finalize.cmd
+[2024-07-20 00:07:24] [PROGRESS] database trace-command> Running command in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go: [C:\Program Files\codeql\go\tools\pre-finalize.cmd]
+[2024-07-20 00:07:28] [build-stderr] Scanning for files in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go...
+[2024-07-20 00:07:28] Plumbing command codeql database trace-command completed.
+[2024-07-20 00:07:28] [PROGRESS] database finalize> Running TRAP import for CodeQL database at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db...
+[2024-07-20 00:07:28] Running plumbing command: codeql dataset import --dbscheme=C:\Program Files\codeql\go\go.dbscheme -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\trap\go
+[2024-07-20 00:07:31] Clearing disk cache since the version file C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go\default\cache\version does not exist
+[2024-07-20 00:07:31] Tuple pool not found. Clearing relations with cached strings
+[2024-07-20 00:07:31] Trimming disk cache at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go\default\cache in mode clear.
+[2024-07-20 00:07:31] Sequence stamp origin is -6160506735494312692
+[2024-07-20 00:07:31] Pausing evaluation to hard-clear memory at sequence stamp o+0
+[2024-07-20 00:07:31] Unpausing evaluation
+[2024-07-20 00:07:31] Pausing evaluation to quickly trim disk at sequence stamp o+1
+[2024-07-20 00:07:31] Unpausing evaluation
+[2024-07-20 00:07:31] Pausing evaluation to zealously trim disk at sequence stamp o+2
+[2024-07-20 00:07:31] Unpausing evaluation
+[2024-07-20 00:07:31] Trimming completed (6ms): Purged everything.
+[2024-07-20 00:07:31] Scanning for files in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\trap\go
+[2024-07-20 00:07:31] Found 6 TRAP files (9.00 KiB)
+[2024-07-20 00:07:31] [PROGRESS] dataset import> Importing TRAP files
+[2024-07-20 00:07:31] Importing go.mod.trap.gz (1 of 6)
+[2024-07-20 00:07:31] Importing main.go.trap.gz (2 of 6)
+[2024-07-20 00:07:31] Importing auto-project.trap.gz (3 of 6)
+[2024-07-20 00:07:31] Importing 28f530e9e525976ed00ea880e495de_0.trap.gz (4 of 6)
+[2024-07-20 00:07:31] Importing sourceLocationPrefix.trap.gz (5 of 6)
+[2024-07-20 00:07:31] Importing universe.trap.gz (6 of 6)
+[2024-07-20 00:07:31] [PROGRESS] dataset import> Merging relations
+[2024-07-20 00:07:31] Merging 1 fragment for 'folders'.
+[2024-07-20 00:07:31] Merged 48 bytes for 'folders'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'containerparent'.
+[2024-07-20 00:07:31] Merged 56 bytes for 'containerparent'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'files'.
+[2024-07-20 00:07:31] Merged 16 bytes for 'files'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'locations_default'.
+[2024-07-20 00:07:31] Merged 3216 bytes (3.14 KiB) for 'locations_default'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'has_location'.
+[2024-07-20 00:07:31] Merged 1096 bytes (1.07 KiB) for 'has_location'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'modtokens'.
+[2024-07-20 00:07:31] Merged 48 bytes for 'modtokens'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'modexprs'.
+[2024-07-20 00:07:31] Merged 32 bytes for 'modexprs'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'scopes'.
+[2024-07-20 00:07:31] Merged 40 bytes for 'scopes'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'scopenesting'.
+[2024-07-20 00:07:31] Merged 32 bytes for 'scopenesting'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'objects'.
+[2024-07-20 00:07:31] Merged 780 bytes for 'objects'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'objectscopes'.
+[2024-07-20 00:07:31] Merged 456 bytes for 'objectscopes'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'literals'.
+[2024-07-20 00:07:31] Merged 828 bytes for 'literals'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'exprs'.
+[2024-07-20 00:07:31] Merged 1520 bytes (1.48 KiB) for 'exprs'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'typename'.
+[2024-07-20 00:07:31] Merged 32 bytes for 'typename'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'types'.
+[2024-07-20 00:07:31] Merged 136 bytes for 'types'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'fieldstructs'.
+[2024-07-20 00:07:31] Merged 64 bytes for 'fieldstructs'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'component_types'.
+[2024-07-20 00:07:31] Merged 144 bytes for 'component_types'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'underlying_type'.
+[2024-07-20 00:07:31] Merged 32 bytes for 'underlying_type'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'type_objects'.
+[2024-07-20 00:07:31] Merged 32 bytes for 'type_objects'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'type_of'.
+[2024-07-20 00:07:31] Merged 648 bytes for 'type_of'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'defs'.
+[2024-07-20 00:07:31] Merged 168 bytes for 'defs'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'fields'.
+[2024-07-20 00:07:31] Merged 108 bytes for 'fields'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'uses'.
+[2024-07-20 00:07:31] Merged 272 bytes for 'uses'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'specs'.
+[2024-07-20 00:07:31] Merged 64 bytes for 'specs'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'decls'.
+[2024-07-20 00:07:31] Merged 96 bytes for 'decls'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'base_type'.
+[2024-07-20 00:07:31] Merged 16 bytes for 'base_type'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'scopenodes'.
+[2024-07-20 00:07:31] Merged 24 bytes for 'scopenodes'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'constvalues'.
+[2024-07-20 00:07:31] Merged 96 bytes for 'constvalues'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'stmts'.
+[2024-07-20 00:07:31] Merged 256 bytes for 'stmts'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'objecttypes'.
+[2024-07-20 00:07:31] Merged 192 bytes for 'objecttypes'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'numlines'.
+[2024-07-20 00:07:31] Merged 16 bytes for 'numlines'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'packages'.
+[2024-07-20 00:07:31] Merged 16 bytes for 'packages'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'compilations'.
+[2024-07-20 00:07:31] Merged 8 bytes for 'compilations'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'compilation_args'.
+[2024-07-20 00:07:31] Merged 36 bytes for 'compilation_args'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'compilation_compiling_files'.
+[2024-07-20 00:07:31] Merged 24 bytes for 'compilation_compiling_files'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'compilation_finished'.
+[2024-07-20 00:07:31] Merged 20 bytes for 'compilation_finished'.
+[2024-07-20 00:07:31] Merging 1 fragment for 'sourceLocationPrefix'.
+[2024-07-20 00:07:31] Merged 4 bytes for 'sourceLocationPrefix'.
+[2024-07-20 00:07:31] Saving string and id pools to disk.
+[2024-07-20 00:07:32] Finished importing TRAP files.
+[2024-07-20 00:07:32] Read 40.20 KiB of uncompressed TRAP data.
+[2024-07-20 00:07:32] Relation data size: 10.42 KiB (merge rate: 187.47 KiB/s)
+[2024-07-20 00:07:32] String pool size: 2.05 MiB
+[2024-07-20 00:07:32] ID pool size: 1.02 MiB
+[2024-07-20 00:07:32] [PROGRESS] dataset import> Finished writing database (relations: 10.42 KiB; string pool: 2.05 MiB).
+[2024-07-20 00:07:32] Pausing evaluation to close the cache at sequence stamp o+3
+[2024-07-20 00:07:32] The disk cache is freshly trimmed; leave it be.
+[2024-07-20 00:07:32] Unpausing evaluation
+[2024-07-20 00:07:32] Plumbing command codeql dataset import completed.
+[2024-07-20 00:07:32] [PROGRESS] database finalize> TRAP import complete (3.1s).
+[2024-07-20 00:07:32] Running plumbing command: codeql database cleanup -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db
+[2024-07-20 00:07:32] [PROGRESS] database cleanup> Cleaning up existing TRAP files after import...
+[2024-07-20 00:07:32] [PROGRESS] database cleanup> TRAP files cleaned up (3ms).
+[2024-07-20 00:07:32] [PROGRESS] database cleanup> Cleaning up scratch directory...
+[2024-07-20 00:07:32] [PROGRESS] database cleanup> Scratch directory cleaned up (0ms).
+[2024-07-20 00:07:32] Running plumbing command: codeql dataset cleanup -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go
+[2024-07-20 00:07:32] [PROGRESS] dataset cleanup> Cleaning up dataset in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go.
+[2024-07-20 00:07:32] Trimming disk cache at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go\default\cache in mode trim.
+[2024-07-20 00:07:32] Sequence stamp origin is -6160506733216875789
+[2024-07-20 00:07:32] Pausing evaluation to quickly trim memory at sequence stamp o+0
+[2024-07-20 00:07:32] Unpausing evaluation
+[2024-07-20 00:07:32] Pausing evaluation to zealously trim disk at sequence stamp o+1
+[2024-07-20 00:07:32] Unpausing evaluation
+[2024-07-20 00:07:32] Trimming completed (1ms): Trimmed disposable data from cache.
+[2024-07-20 00:07:32] Pausing evaluation to close the cache at sequence stamp o+2
+[2024-07-20 00:07:32] The disk cache is freshly trimmed; leave it be.
+[2024-07-20 00:07:32] Unpausing evaluation
+[2024-07-20 00:07:32] [PROGRESS] dataset cleanup> Trimmed disposable data from cache.
+[2024-07-20 00:07:32] [PROGRESS] dataset cleanup> Finalizing dataset in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go
+[2024-07-20 00:07:32] [DETAILS] dataset cleanup> Finished deleting ID pool from C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db\db-go (3ms).
+[2024-07-20 00:07:32] Plumbing command codeql dataset cleanup completed.
+[2024-07-20 00:07:32] Plumbing command codeql database cleanup completed with status 0.
+[2024-07-20 00:07:32] [PROGRESS] database finalize> Finished zipping source archive (768.00 B).
+[2024-07-20 00:07:32] Plumbing command codeql database finalize completed.
+[2024-07-20 00:07:32] [PROGRESS] database create> Successfully created database at C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db.
+[2024-07-20 00:07:32] Terminating normally.

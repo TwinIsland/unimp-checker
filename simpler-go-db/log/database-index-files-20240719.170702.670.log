@@ -1,0 +1,10 @@
+[2024-07-19 17:07:02] This is codeql database index-files --working-dir=. --include-extension=.htm --include-extension=.html --include-extension=.xhtm --include-extension=.xhtml --include-extension=.vue --size-limit 10m --language html -- C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go-db
+[2024-07-19 17:07:02] Log file was started late.
+[2024-07-19 17:07:02] Using index-files script C:\Program Files\codeql\html\tools\index-files.cmd.
+[2024-07-19 17:07:02] [PROGRESS] database index-files> Scanning for files in C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go...
+[2024-07-19 17:07:02] Calling plumbing command: codeql resolve files --include-extension=.htm --include-extension=.html --include-extension=.xhtm --include-extension=.xhtml --include-extension=.vue --size-limit=10m C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go --format=json
+[2024-07-19 17:07:02] [PROGRESS] resolve files> Scanning C:\Users\TwinIsland\Desktop\unimp-checker\simpler-go...
+[2024-07-19 17:07:02] Plumbing command codeql resolve files completed:
+                      [ ]
+[2024-07-19 17:07:02] [DETAILS] database index-files> Found 0 files.
+[2024-07-19 17:07:02] Terminating normally.
