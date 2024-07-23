@@ -63,8 +63,8 @@ module Config implements DataFlow::ConfigSig {
   predicate isSink(DataFlow::Node n) {
     // We only discuss two cases here
     // 1. flow to specified build-in
-    any()
-    or
+    // any()
+    // or
     flowsToSpecBuildin(n)
     or
     // 2. flow to k8s library, i.e. not buildin nor declared function
