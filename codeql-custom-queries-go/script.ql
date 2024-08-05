@@ -1,7 +1,7 @@
 /**
- * @name Unimp Struct Checker
+ * @name Unimp Struct Checker V2
  * @description check if program exhaust every struct field
- * @id go/unimp-struct
+ * @id go/unimp-struct-v2
  * @kind path-problem
  * @tags correctness
  * @precision high
@@ -9,122 +9,89 @@
  * @security-severity 6.0
  */
 
-/*
- *    expect report:
- *        MySubType.id; MyType2.flag; PtrStruct.id;
- *    on simple-db
- */
-
 import go
+import semmle.go.dataflow.TaintTracking
+import DataFlow::PathGraph
 
-// decompress nested struct, get unit value
-Expr getUnitValue(Expr e) {
-  if e instanceof KeyValueExpr
-  then result = getUnitValue(e.(KeyValueExpr).getValue())
-  else result = e
-}
-
-Expr getAStructLiteralValue(StructLit e) {
-  exists(Expr element | element = e.getAnElement() | result = getUnitValue(element))
-}
-
-predicate flowsToSpecBuildin(DataFlow::Node n) {
-  exists(CallExpr call |
-    n.asExpr() = call.getAnArgument() and
-    (
-      call.getCalleeName() = "DeepCopy" or
-      call.getCalleeName() = "Println"
-    )
-  )
-}
-
-predicate flowsToK8sLib(DataFlow::Node n) {
-  exists(ImportSpec i | i.getPath().matches("%k8s.io%") |
-    n.asExpr().(CallExpr).getTarget().getPackage().getPath() = i.getName()
-  )
-}
-
-// class FieldBaseExtra extends FieldBase {
-//   FieldBaseExtra() { this = this }
-//   // hold if a data flow node belongs to such fieldbase.
-//   FieldBaseExtra source_belong_to(DataFlow::Node n) {
-//     exists(DataFlow::Path ap |
-//       ap.getNode() = n and
-//       ap.getFieldBase() = this
-//     )
-//   }
-// }
-module Config implements DataFlow::ConfigSig {
-  predicate isSource(DataFlow::Node source) {
-    source.asExpr() = getAStructLiteralValue(_) and
-    not source.asExpr() instanceof StructLit
-  }
-
-  predicate isSink(DataFlow::Node n) {
-    // We only discuss two cases here
-    // 1. flow to specified build-in
-    // any()
-    // or
-    flowsToSpecBuildin(n)
+private string describeStructLiteralValue(DataFlow::Node fieldNode) {
+  exists(Write w, Field f, DataFlow::Node base, DataFlow::Node value |
+    w.writesField(base, f, value) and value = fieldNode
+  |
+    result = describeStructLiteralValue(base) + "." + f.getName()
     or
-    // 2. flow to k8s library, i.e. not buildin nor declared function
-    flowsToK8sLib(n)
+    result = f.getName()
+  )
+}
+
+class StructFieldNode extends DataFlow::Node {
+  Expr parent;
+
+  StructFieldNode() {
+    exists(KeyValueExpr pair | this.asExpr() = pair.getValue() |
+      exists(StructLit all | pair = all.getAnElement())
+    )
+  }
+
+  private string describe_helper(Expr fieldNode) {
+    exists(Write w, Field f, DataFlow::Node base, StructFieldNode value |
+      w.writesField(base, f, value) and
+      value.asExpr() = fieldNode
+    |
+      result = f.getName()
+      or
+      result = describe_helper(base.asExpr()) + "." + f.getName()
+    )
+  }
+
+  string describe() { result = describe_helper(this.asExpr()) }
+}
+
+class K8sCallMethod extends Method {
+  K8sCallMethod() { this.getQualifiedName().indexOf("k8s.io") >= 0 }
+
+  string describe() { this.getName() = result }
+}
+
+class K8sArgumentNode extends DataFlow::Node {
+  K8sArgumentNode() {
+    this instanceof DataFlow::ArgumentNode and
+    exists(DataFlow::CallExpr all | all.getTarget().toString() = any(K8sCallMethod a).describe() |
+      this.(DataFlow::ArgumentNode).argumentOf(all, _)
+    )
+  }
+
+  string describe() { result = "flow to " + this.(DataFlow::ArgumentNode).getCall().toString() }
+}
+
+class Config extends TaintTracking::Configuration {
+  Config() { this = "'struct field detector" }
+
+  override predicate isSource(DataFlow::Node source) {
+    // we track each struct field
+    source instanceof StructFieldNode
+  }
+
+  override predicate isSink(DataFlow::Node sink) {
+    // not flow to a k8s library
+    not sink instanceof K8sArgumentNode
+  }
+
+  override predicate isSanitizer(DataFlow::Node node, DataFlow::FlowState state) {
+    // some special build in function which is too hard to track with, like DeepCopy
+    node instanceof DataFlow::ArgumentNode and
+    exists(CallExpr call |
+      node.asExpr() = call.getAnArgument() and
+      (
+        call.getCalleeName() = "DeepCopy" or
+        call.getCalleeName() = "append"
+      )
+    ) and
+    state = "stop tracking"
   }
 }
 
-module Flow = DataFlow::Global<Config>;
-
-import Flow::PathGraph
-
-from Flow::PathNode source, Flow::PathNode sink
-where Flow::flowPath(source, sink) and source != sink
-select sink.getNode(), source, sink, ""
-// from ImportSpec i
-// where i.getPath().matches("%k8s.io%")
-// select i.getPath(), "k8s library function"
-// from ImportSpec i
-// where
-//   i.getPath().matches("%k8s.io%")
-// select i, "k8s library function"
-// from Function c, DeclaredFunction d
-// where c != d
-// select d, d.getPackage().getPath()
-// from CallExpr call
-// select call, call.getType().getPackage()
-// from ImportSpec i
-// where
-//   i.getPath().matches("%k8s.io%")
-// from Flow::PathNode source, Flow::PathNode sink
-// where Flow::flowPath(source, sink) and source != sink
-// select sink.getNode(), source, sink, ""
-// from CallExpr c
-// where exists(ImportSpec i | i.getPathExpr() = c.getCalleeExpr())
-// select c
-// from ImportSpec i
-// select i.getPathExpr()
-// from CallExpr c
-// select c.getCalleeName()
-// from ImportSpec i
-// where i.getPath().matches("%k8s.io%")
-// select i.getNameExpr()
-// from DataFlow::Node n
-// where flowsToK8sLib(n)
-// select n
-// Predicate to identify if a function is declared in the current package
-// from CallExpr call, Function fn, BuiltinFunction bfn
-// where
-//   bfn != fn and
-//   call.getTarget() = fn and
-//   not isDeclaredInCurrentPackage(fn)
-// select call, fn, "This call expression originates from an external library."
-
-// from DataFlow::Node n
-// where exists(ImportSpec i | i.getName() =  n.asExpr().(CallExpr).getTarget().getPackage().getPath())
-// select n
-
-// from ImportSpec i
-// select i.getName()
-
-// from DataFlow::Node n
-// where n.asExpr().(CallExpr).getTarget().getPackage().getPath() = "api"
-// select n
+from DataFlow::PathNode source, DataFlow::PathNode sink, Config configuration
+where configuration.hasFlowPath(source, sink)
+select unique(DataFlow::Node all | all = sink.getNode() | sink), source, sink,
+  "'" + sink.getNode().(StructFieldNode).describe() +
+    "': struct defined but not flow to k8s library"
