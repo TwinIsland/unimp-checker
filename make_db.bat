@@ -1,0 +1,1 @@
+codeql database create database -s ./simple_case --language=go --overwrite

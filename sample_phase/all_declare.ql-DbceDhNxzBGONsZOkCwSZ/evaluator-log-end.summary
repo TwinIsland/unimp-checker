@@ -1,0 +1,379 @@
+Completed evaluation of query all_declare.ql.
+Most expensive predicates for stage 0 of completed query all_declare.ql:
+        time | predicate
+        -----|----------
+         0ms | Files::Container.splitAbsolutePath/2#dispred#ce206381@5eb0cd2k
+         0ms | Files::Input::ContainerBase.getAbsolutePath/0#dispred#0101be76@db2709ka
+
+Most expensive predicates for stage 1 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         0ms |     3 | 0ms @ 1    | AST::AstNode.getChild/1#dispred#d41ad3bf#bff@efa1aw6g
+         0ms |       |            | AST::DeclParent#a6143158#b@8e56feut
+         0ms |       |            | Locations::dbLocationInfo/6#ae9d6149@9316c6ru
+         0ms |       |            | Files::Container.splitAbsolutePath/2#dispred#ce206381_120#join_rhs@5d43a8js
+         0ms |       |            | Files::Container#49094146@aef9f17d
+         0ms |       |            | Locations::getLocatableLocation/1#9ecd27bf@59fa91v1
+         0ms |       |            | _Files::Container.splitAbsolutePath/2#dispred#ce206381_120#join_rhs#antijoin_rhs@8a3d57ul
+         0ms |       |            | _Files::Container.splitAbsolutePath/2#dispred#ce206381_120#join_rhs#antijoin_rhs#1@9eff1evd
+         0ms |       |            | comment_groups_102#join_rhs@d8d595js
+         0ms |       |            | Locations::TDbLocation#dom#0575099c@32862fpm
+         0ms |     2 | 0ms @ 1    | Files::File#0e2ffa35@efa1ax6g
+         0ms |       |            | num#Locations::TDbLocation#37238dee@a65bcb1t
+
+Most expensive predicates for stage 2 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         2ms |       |            | objecttypes_10#join_rhs@d38363ek
+         1ms |       |            | objects_10#join_rhs@1e55d3qo
+         1ms |       |            | component_types_023#join_rhs@8842c5iv
+         1ms |       |            | objects_102#join_rhs@cc2a78hn
+         1ms |       |            | Scopes::Entity.hasQualifiedName/2#dispred#a27f41ce_120#join_rhs@f49a15h0
+         1ms |     2 | 1ms @ 2    | Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@771e1xvo
+         0ms |       |            | objectscopes_10#join_rhs@ec9a7agk
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::AssignmentTree.epilogueNode/1#dispred#80d6fef2#2@a1934cci
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::AssignmentTree.epilogueNode/1#dispred#80d6fef2@225bf5o8
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::ControlFlowTree.getChildTree/1#dispred#df2aac2f#2@64110160
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::AssignmentTree.epilogueNode/1#dispred#80d6fef2_011#rank_term@c91fd7h5
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::AtomicTree#276a3099@3cf2b9l6
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::ControlFlowTree.getChildTree/1#dispred#df2aac2f@6bf8a29i
+         0ms |       |            | project#Expr::CallExpr.getTarget/0#dispred#172d5bad@9a3f17sn
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::SelectorExprTree.getStepOrdered/1#dispred#b068f2f3_011#rank_term@abaf87l3
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::SelectorExprTree.getStepOrdered/1#dispred#b068f2f3@35a19fir
+         0ms |       |            | project#Scopes::Parameter#cfe2d3f8#2@19ca7fdj
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::AtomicTree#276a3099#2@de4d43gl
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::ControlFlowTree.lastNode/2#dispred#bda13f62@dc6693us
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::ControlFlowTree.getChildTree/1#dispred#df2aac2f_011#rank_term@bb822bo3
+         0ms |       |            | project#Expr::CallExpr.getArgument/1#dispred#4340cf50@3798043o
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373@442dd48c
+         0ms |       |            | project#Types::SignatureType.getResultType/1#dispred#f45c767c@be89b8o6
+         0ms |       |            | project#Scopes::Parameter#cfe2d3f8@149d4c4h
+         0ms |       |            | project#Scopes::Parameter#cfe2d3f8_10#join_rhs@8056c2s7
+         0ms |       |            | project#Expr::CompositeLit.getElement/1#dispred#5b210bb1@64f898f4
+         0ms |       |            | typeparam_20#join_rhs@1b85afd7
+         0ms |       |            | project#Types::StructType.getFieldOfEmbedded/4#83ffdce8@42688bi3
+         0ms |       |            | project#decls@7d63e1u1
+         0ms |       |            | project#Types::StructType.hasFieldCand/4#dispred#f45100c1#ffffb_102#join_rhs@9cc8c5dl
+         0ms |       |            | scopenodes_10#join_rhs@bf9e75sm
+         0ms |       |            | project#Types::StructType.getMethodOfEmbedded/3#dispred#472ffd0c@db8cd8k4
+         0ms |       |            | project#Stmt::Assignment.getLhs/1#dispred#ebfba583@458b30nd
+         0ms |       |            | stmts_230#join_rhs@251d96t5
+         0ms |       |            | project#Scopes::Method.isIn/2#dispred#cf7f1cce@48523dpf
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373#3@178972nj
+         0ms |       |            | project#Types::StructType.hasFieldCand/4#dispred#f45100c1#ffffb@fe9af6jf
+         0ms |       |            | types_10#join_rhs@32231dmf
+         0ms |       |            | project#component_types@bd888ee1
+         0ms |       |            | project#Types::SignatureType.getResultType/1#dispred#f45c767c#2@6859d2t4
+         0ms |       |            | stmts_10#join_rhs@56da80bd
+         0ms |       |            | project#Stmt::Assignment.getRhs/1#dispred#b72bcda6@dfe5b0uk
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373#4@e4c4035e
+         0ms |       |            | specs_10#join_rhs@6d32ef8g
+         0ms |       |            | stmts_1230#join_rhs@320837ru
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373#2@6a1e94cn
+         0ms |       |            | stmts_20#count_range@5d108609
+         0ms |       |            | underlying_type_10#join_rhs@34355ece
+         0ms |       |            | stmts_203#join_rhs@24bd91g2
+         0ms |       |            | stmts_2#antijoin_rhs@aa26186t
+
+Most expensive predicates for stage 3 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         0ms |       |            | BasicBlocks::BasicBlock.getLastNode/0#dispred#64989033@e52649cn
+         0ms |       |            | BasicBlocks::Internal::bbIndex/3#d84adb9f@1099d3nc
+         0ms |       |            | BasicBlocks::Internal::intraBBSucc/2#bfdf2921@13639837
+         0ms |       |            | BasicBlocks::startsBB/1#9a18cf87@1adf38al
+         0ms |       |            | BasicBlocks::Internal::bbIndex/3#d84adb9f_021#join_rhs@4e7200rt
+         0ms |     3 | 0ms @ 1    | BasicBlocks::Internal::reachableBB/1#356a7716@81fad5pp
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::succ/1#7c7a796c@a34c69h2
+         0ms |       |            | project#BasicBlocks::Internal::bbIndex/3#d84adb9f@e51d0a0o
+         0ms |       |            | ControlFlowGraphImpl::CFG::succ/1#7c7a796c_10#count_range@af26d0u5
+         0ms |       |            | ControlFlowGraph::ControlFlow::Node.isBranch/0#dispred#c035ba88@57c767fb
+         0ms |       |            | BasicBlocks::Internal::bbLength/1#9398c0a1@e8ff0424
+         0ms |       |            | shortestDistances@BasicBlocks::startsBB/1#9a18cf87#1@BasicBlocks::Internal::intraBBSucc/2#bfdf2921#2@30f60298
+
+Most expensive predicates for stage 4 of completed query all_declare.ql:
+        time | predicate
+        -----|----------
+         0ms | BasicBlocks::BasicBlock.getLastNode/0#dispred#64989033_10#join_rhs@2d439egd
+         0ms | BasicBlocks::bbIDominates/2#8b2e5152@89c582le
+         0ms | BasicBlocks::entryBB/1#bb308dae@6b5def5a
+         0ms | BasicBlocks::BasicBlock#fe5959f3@1adf38al
+         0ms | ControlFlowGraph::ControlFlow::Node.isBranch/0#dispred#c035ba88@57c767fb
+         0ms | project#ControlFlowGraphImpl::CFG::succ/1#7c7a796c@a34c69h2
+         0ms | BasicBlocks::succBB/2#f5ceac93@57dcc6mo
+         0ms | idominance@BasicBlocks::entryBB/1#bb308dae#1@BasicBlocks::succBB/2#f5ceac93#2@3fff6eb0
+         0ms | ControlFlowGraphImpl::CFG::succ/1#7c7a796c_10#count_range@af26d0u5
+
+Most expensive predicates for stage 5 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         1ms |       |            | objects_10#join_rhs@1e55d3qo
+         1ms |       |            | Scopes::ValueEntity#a8653a73@b33000vo
+         0ms |       |            | exprs_10#join_rhs@9091b3aa
+         0ms |       |            | exprs_1203#join_rhs@925b242l
+         0ms |       |            | exprs_1230#join_rhs@27cb61rj
+         0ms |       |            | exprs_203#join_rhs@06ab71cm
+         0ms |       |            | fields_10#join_rhs@3d18d7a2
+         0ms |       |            | m#@basiclit#b@0a54d5qg
+         0ms |     1 | 0ms @ 1    | num#SsaImpl::TPhi#1028b6ad@46948w5k
+         0ms |       |            | m#Expr::Literal#26818ac5#b@77a0f45r
+         0ms |       |            | exprs_230#join_rhs@b51817o1
+         0ms |     1 | 0ms @ 1    | m#Expr::ValueExpr#d48cef3c#b@b66cf697
+         0ms |       |            | fields_102#join_rhs@3f2afeei
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2_21#join_rhs@ebae26ba
+         0ms |       |            | m#Types::StructType.hasOwnField/4#dispred#bdab6373#ffbff@b67d2917
+         0ms |       |            | num#SsaImpl::WriteRef#f95bac39@5f447fbc
+         0ms |       |            | project#SsaImpl::refRank/4#4de34ab0#4_0132#join_rhs@8f4c5flq
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2_2#join_rhs@52dbc9t7
+         0ms |       |            | project#ControlFlowGraphImpl::CFG::succ/1#7c7a796c@a34c69h2
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2@646e3986
+         0ms |       |            | num#ControlFlowGraphImpl::MkLiteralElementTarget#e05d3a58@10525ags
+         0ms |     1 | 0ms @ 1    | m#Types::Type.getUnderlyingType/0#dispred#e61d6b4a#bf@ce160ec4
+         0ms |       |            | project#IR::IR::FieldReadInstruction#259609fd#3@9a52abi5
+         0ms |       |            | fields_120#join_rhs@fc0b86h1
+         0ms |       |            | project#IR::IR::FieldReadInstruction#259609fd#3_120#join_rhs@c888ecfg
+         0ms |       |            | scopenesting_10#join_rhs@1b4752pk
+         0ms |       |            | num#SsaImpl::ReadRef#99b85030@1891cc8u
+         0ms |       |            | project#Stmt::Assignment.getRhs/1#dispred#b72bcda6@dfe5b0uk
+         0ms |       |            | project#decls@7d63e1u1
+         0ms |       |            | project#IR::IR::Instruction.writes/2#dispred#b1714860_10#join_rhs@d7e9b03r
+         0ms |       |            | project#IR::IR::Instruction.writes/2#dispred#b1714860@25b0d682
+         0ms |       |            | scopenodes_10#join_rhs@bf9e75sm
+         0ms |       |            | specs_10#join_rhs@6d32ef8g
+         0ms |       |            | project#IR::IR::FieldReadInstruction.getBaseInstruction/0#dispred#edb7dd29@859faa9e
+         0ms |       |            | project#IR::IR::InitLiteralStructFieldInstruction#6759cc3b#3_10#join_rhs@207062lu
+         0ms |       |            | project#SsaImpl::refRank/4#4de34ab0#2@ffa168bg
+         0ms |       |            | project#IR::IR::FieldReadInstruction#259609fd#2@142cac5q
+         0ms |       |            | project#Stmt::Assignment.getLhs/1#dispred#ebfba583@458b30nd
+         0ms |       |            | types_10#join_rhs@32231dmf
+         0ms |       |            | objects_02#join_rhs@a8efa2no
+         0ms |       |            | stmts_10#join_rhs@56da80bd
+         0ms |       |            | project#SsaImpl::refRank/4#4de34ab0#3@74885efv
+         0ms |       |            | typeparam_02#join_rhs@40a4c7jd
+         0ms |       |            | underlying_type_10#join_rhs@34355ece
+         0ms |       |            | project#IR::IR::InitLiteralStructFieldInstruction#6759cc3b#2@3dda4bqp
+         0ms |       |            | project#SsaImpl::refRank/4#4de34ab0#4@3b1398dc
+         0ms |       |            | project#SsaImpl::refRank/4#4de34ab0@be98afc1
+         0ms |       |            | project#SsaImpl::refRank/4#4de34ab0#3_0122#max_term@7411f11m
+         0ms |       |            | stmts_1230#join_rhs@320837ru
+         0ms |       |            | project#IR::IR::FieldReadInstruction#259609fd@2049det8
+
+Most expensive predicates for stage 6 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         2ms |       |            | Scopes::Entity.hasQualifiedName/2#dispred#a27f41ce_120#join_rhs@c1646cao
+         2ms |       |            | objecttypes_10#join_rhs@d38363ek
+         1ms |       |            | Scopes::Entity.hasQualifiedName/2#7f285c8e@026d80sj
+         1ms |       |            | objects_10#join_rhs@1e55d3qo
+         1ms |     2 | 1ms @ 2    | Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@1388bw8o
+         1ms |       |            | _project#Types::StructType.getFieldCand/3#dispred#63c5f19b_project#Types::StructType.getFieldCand/3#__#join_rhs@3d91d24k
+         1ms |     4 | 1ms @ 4    | Scopes::Entity.hasQualifiedName/2#dispred#a27f41ce@1388by8o
+         1ms |       |            | component_types_2013#join_rhs@12ae315g
+         1ms |       |            | Types::StructType.hasField/2#dispred#c78cc6cf#bff@e03b2adr
+         1ms |     9 | 1ms @ 2    | _Types::Type.implementsComparable/0#d5b41507#prev_Types::Type.implementsComparable/0#d5b41507#prev_d__#antijoin_rhs@L0#4d92e
+         1ms |       |            | component_types_023#join_rhs@8842c5iv
+         1ms |       |            | num#FlowSummaryImpl::SourceSinkInterpretationInput::TEntityElement#d76d34a4@7e10620d
+         0ms |       |            | _types_10#join_rhs#antijoin_rhs#16@2a08ddf8
+         0ms |       |            | _types_10#join_rhs#antijoin_rhs#14@01b321fb
+         0ms |       |            | m#Types::Type.getName/0#dispred#8fd03732#bf@dff3467e
+         0ms |       |            | _types_10#join_rhs#antijoin_rhs#15@1ff5f4h1
+         0ms |       |            | base_type_10#join_rhs@53df9ep4
+         0ms |       |            | m#Types::Type.hasMethod/2#dispred#c020661a#fbf@c70838ch
+         0ms |       |            | m#Types::Type_not_Types::BoolExprType_Types::Complex128Type_Types::Complex64Type_Types::Float32Type_Types::Float64Type_Types::Int16Type_Types::Int32Type_Types::Int64Type_Types::Int8Type_Types::IntType_GoMicro::GoMicro::ServiceInterfaceType_Twirp::Twirp::ServiceInterfaceType_Types::StringExprType_Types::Uint16Type_Types::Uint32Type_Types::Uint64Type_Types::Uint8Type_Types::UintType_Types::UintptrType_Types::UnsafePointerType#240b3893#b@3b967aci
+         0ms |       |            | const_true@52b5461n
+         0ms |       |            | comment_groups_102#join_rhs@d8d595js
+         0ms |       |            | objects_02#join_rhs@a8efa2no
+         0ms |       |            | containerparent_10#join_rhs@3f9657qu
+         0ms |       |            | objectscopes_10#join_rhs@ec9a7agk
+         0ms |       |            | project#Types::Type.hasMethod/2#dispred#c020661a#fbf@25da528l
+         0ms |       |            | project#Scopes::Entity.getPackage/0#dispred#050f5df5@24b1b8q8
+         0ms |       |            | num#Types::MkTypeSetTerm#4778640c@cf8606q9
+         0ms |       |            | project#Types::StructType.getFieldCand/3#dispred#63c5f19b@72eb0arb
+         0ms |       |            | methodhosts_10#join_rhs@e0ec9715
+         0ms |       |            | element_type_10#join_rhs@f3b8d97t
+         0ms |       |            | underlying_type_10#join_rhs@34355ece
+         0ms |       |            | project#Types::StructType.hasField/2#dispred#c78cc6cf#bff#2@88023360
+         0ms |       |            | project#Types::StructType.getFieldCand/3#dispred#63c5f19b_0122#min_term@04c1dc3d
+         0ms |       |            | project#ExternalFlow::elementSpec/6#c198b464@b16a6bbt
+         0ms |       |            | project#Types::InterfaceType.hasDirectlyEmbeddedType/2#dispred#bfabe2f6_10#join_rhs@07a1b9q1
+         0ms |       |            | project#Types::StructType.getFieldOfEmbedded/4#83ffdce8#bfffff@88e1c4er
+         0ms |       |            | project#Types::StructType.hasField/2#dispred#c78cc6cf#bff@7cfeaff1
+         0ms |       |            | types_10#join_rhs@32231dmf
+         0ms |       |            | project#Types::TypeSetTerm#e1060b89@b39ae1pk
+         0ms |       |            | project#Types::InterfaceType.hasMethod/2#dispred#af376405@4dd636r1
+         0ms |       |            | typename_10#join_rhs@bff09a2m
+         0ms |       |            | project#Types::InterfaceType.hasMethod/2#dispred#af376405_011#min_term@6bbcd5nj
+         0ms |       |            | project#Types::InterfaceType.hasMethod/2#dispred#af376405#2@46478bn4
+         0ms |       |            | typeparam_20#join_rhs@1b85afd7
+         0ms |       |            | project#component_types@bd888ee1
+         0ms |       |            | project#Types::StructType.hasFieldCand/4#dispred#f45100c1#bffff@6981f6mt
+         0ms |       |            | project#Types::StructType.hasField/2#dispred#c78cc6cf#bff#2_10#join_rhs@4c0d00g6
+         0ms |       |            | project#Types::InterfaceType.hasDirectlyEmbeddedType/2#dispred#bfabe2f6@4862644e
+         0ms |       |            | project#Types::InterfaceType.hasMethod/2#dispred#af376405#3@3a52d0b6
+         0ms |       |            | project#Types::StructType.hasFieldCand/4#dispred#f45100c1#bffff_0122#min_term@3b52fdeu
+
+Most expensive predicates for stage 7 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         2ms |       |            | FlowSummaryImpl::Input::encodeContent/2#cf511534#bbf@818dd7j9
+         2ms |       |            | objecttypes_10#join_rhs@d38363ek
+         1ms |       |            | FlowSummaryImpl::Private::External::interpretComponent/1#f55a3aaf@ff5cd6ee
+         1ms |       |            | num#FlowSummaryImpl::Private::TSingletonSummaryComponentStack#d566c198@b9c7fbf2
+         1ms |       |            | objects_10#join_rhs@1e55d3qo
+         1ms |       |            | DataFlowUtil::Content#6d5ee4e1@df92015f
+         1ms |       |            | Scopes::Entity.hasQualifiedName/2#7f285c8e@d1488alk
+         1ms |       |            | FlowSummaryImpl::Private::External::summaryElement/6#f15f4290@61029bra
+         1ms |       |            | Scopes::Callable.getType/0#dispred#55a0e6a2@d33558na
+         1ms |       |            | num#FlowSummaryImpl::SourceSinkInterpretationInput::TEntityElement#d76d34a4@7e10620d
+         0ms |       |            | num#DataFlowUtil::TCollectionContent#1ce696ad@b5679f48
+         0ms |       |            | num#DataFlowUtil::TFieldContent#30950e4a@4f710fsi
+         0ms |       |            | num#FlowSummaryImpl::Private::TArgumentSummaryComponent#a2b7a0d6_1#join_rhs@a505e5b8
+         0ms |       |            | num#FlowSummaryImpl::Private::TContentSummaryComponent#7fdeb06f@f32507jb
+         0ms |       |            | num#DataFlowUtil::TMapKeyContent#be11bbb4@a5ac81h1
+         0ms |     4 | 0ms @ 1    | num#FlowSummaryImpl::Private::TConsSummaryComponentStack#1d1c95eb@e1b941w5
+         0ms |       |            | num#FlowSummaryImpl::Private::TSummaryNodeOutputState#bfa817ec@988672tu
+         0ms |       |            | num#FlowSummaryImpl::Private::TContentSummaryComponent#7fdeb06f_1#join_rhs@f94788m5
+         0ms |       |            | num#FlowSummaryImpl::Private::TReturnSummaryComponent#9ad4b400@f6d9841f
+         0ms |       |            | num#DataFlowUtil::TMapValueContent#68d5ab1f@f9e6282c
+         0ms |       |            | num#FlowSummaryImpl::Private::TArgumentSummaryComponent#a2b7a0d6@304737t6
+         0ms |       |            | num#FlowSummaryImpl::Private::TParameterSummaryComponent#8f10225b_1#join_rhs@65df40eh
+         0ms |       |            | num#Scopes::TFunctionCallable#a3e3b54c@eb5a9ao0
+         0ms |       |            | project#Types::SignatureType.getParameterType/1#dispred#2c11bb7b@63b97bnp
+         0ms |       |            | num#FlowSummaryImpl::Private::TWithContentSummaryComponent#5b19b73c@e2e959ds
+         0ms |       |            | num#FlowSummaryImpl::Private::TReturnSummaryComponent#9ad4b400_1#join_rhs@74e585u1
+         0ms |       |            | project#FlowSummary::SummarizedCallable.propagatesFlow/4#dispred#3c2a2ecc#4@70bb4csp
+         0ms |       |            | num#FlowSummaryImpl::Private::TSingletonSummaryComponentStack#d566c198_10#join_rhs@2f9afb45
+         0ms |       |            | num#FlowSummaryImpl::Private::TSummaryNodeInputState#54e2b605@21dd4813
+         0ms |       |            | num#DataFlowUtil::TPointerContent#0f724d65@9b60db61
+         0ms |       |            | project#FlowSummary::SummarizedCallable.propagatesFlow/4#dispred#3c2a2ecc@67e2e2pk
+         0ms |       |            | num#FlowSummaryImpl::Private::TParameterSummaryComponent#8f10225b@64a9dcuk
+         0ms |       |            | project#DataFlowPrivate::DataFlowCallable.getType/0#dispred#c5fd2880@67fa72ih
+         0ms |       |            | project#ExternalFlow::interpretElement/6#398df775@6f33fdd7
+         0ms |       |            | num#FlowSummaryImpl::Private::TSummaryInternalNode#fbf8ef3b@587bc137
+         0ms |       |            | types_10#join_rhs@32231dmf
+         0ms |       |            | typeparam_20#join_rhs@1b85afd7
+         0ms |       |            | project#Types::StructType.getFieldCand/3#dispred#63c5f19b#bffff_0122#min_term@42123b11
+         0ms |       |            | underlying_type_10#join_rhs@34355ece
+         0ms |       |            | num#FlowSummaryImpl::Private::TWithoutContentSummaryComponent#c6b2dd9f@8b3ed8p1
+         0ms |       |            | project#FlowSummaryImpl::Private::summary/5#3a9d64dc@786a4bja
+         0ms |       |            | objectscopes_10#join_rhs@ec9a7agk
+         0ms |       |            | project#component_types@bd888ee1
+         0ms |       |            | num#FlowSummaryImpl::Private::TSummaryParameterNode#457bfeb9@957b6a0o
+         0ms |       |            | project#FlowSummaryImpl::Private::summary/5#3a9d64dc#2@d52023iv
+         0ms |       |            | project#FlowSummary::SummarizedCallable.propagatesFlow/4#dispred#3c2a2ecc#3@28dd6aar
+         0ms |       |            | project#Types::SignatureType.getParameterType/1#dispred#2c11bb7b#2@c37c70hp
+         0ms |       |            | project#FlowSummary::SummarizedCallable.propagatesFlow/4#dispred#3c2a2ecc#2@e6e434me
+         0ms |       |            | project#Types::StructType.hasFieldCand/4#dispred#f45100c1#bfffb@81ae02a8
+         0ms |       |            | project#Types::StructType.getFieldCand/3#dispred#63c5f19b#bffff@283404rp
+
+Most expensive predicates for stage 8 of completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         1ms |       |            | objects_20#join_rhs@96db0e2m
+         1ms |       |            | Scopes::ValueEntity#a8653a73@b33000vo
+         1ms |       |            | objects_10#join_rhs@1e55d3qo
+         0ms |       |            | fields_10#join_rhs@3d18d7a2
+         0ms |       |            | fields_102#join_rhs@3f2afeei
+         0ms |       |            | m#AST::AstNode.toString/0#dispred#0cb26a30#bf@90c32aoi
+         0ms |       |            | m#Stmt::Assignment.getRhs/0#dispred#51b0f7cb#fb@60ce4abh
+         0ms |       |            | fields_120#join_rhs@fc0b86h1
+         0ms |       |            | m#ControlFlowGraph::ControlFlow::Node.toString/0#dispred#8d8cdfed#bf@1b0ed5u3
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2_12#join_rhs@9ce735k8
+         0ms |       |            | m#Stmt::Assignment.toString/0#dispred#dbd6c434#bf@966643t5
+         0ms |     2 | 0ms @ 1    | m#all_declare::flatten_selector_path/1#df7dd540#bf@44beab42
+         0ms |       |            | m#all_declare::StructFieldNode.get_field/0#dispred#358abd0e#bf@b7d8b4sc
+         0ms |       |            | num#ControlFlowGraphImpl::MkLiteralElementTarget#e05d3a58@10525ags
+         0ms |     1 | 0ms @ 1    | m#Expr::ValueExpr#d48cef3c#b@b66cf697
+         0ms |       |            | project#Types::InterfaceType.hasDirectlyEmbeddedType/2#dispred#bfabe2f6_10#join_rhs@07a1b9q1
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2_21#join_rhs@ebae26ba
+         0ms |       |            | project#IR::IR::VarOrConstTarget#ed566fb7@dae2f43c
+         0ms |       |            | project#DataFlowUtil::Node.hasLocationInfo/5#dispred#c7d73140#bfffff@023b7adq
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2_2#join_rhs@52dbc9t7
+         0ms |       |            | project#IR::IR::InitLiteralStructFieldInstruction#6759cc3b@1181a7r8
+         0ms |       |            | project#IR::IR::InitLiteralStructFieldInstruction#6759cc3b#3@63d95ffs
+         0ms |     1 | 0ms @ 1    | m#all_declare::StructFieldNode.pp/0#6a0382a0#bf@5c2688i4
+         0ms |       |            | num#ControlFlowGraphImpl::MkLhs#586108d2@646e3986
+         0ms |       |            | project#ControlFlowGraph::Write.writesField/3#dispred#ac3ace1e#fffb@63e14eno
+         0ms |       |            | project#ControlFlowGraph::Write.writesField/3#dispred#ac3ace1e#fffb_10#join_rhs@61487bo4
+         0ms |       |            | project#ControlFlowGraph::Write.writesField/3#dispred#ac3ace1e#fffb#2@6fa3350k
+         0ms |       |            | scopenodes_10#join_rhs@bf9e75sm
+         0ms |       |            | project#Types::Type.toString/0#dispred#0c13b6df@e97704ms
+         0ms |       |            | stmts_1023#join_rhs@4b5b33ej
+         0ms |       |            | project#Stmt::Assignment.getRhs/1#dispred#b72bcda6#bff@dfe5b0uk
+         0ms |       |            | specs_10#join_rhs@6d32ef8g
+         0ms |       |            | project#DataFlowUtil::Node.toString/0#dispred#60268bca#bf@95f3f4e7
+         0ms |       |            | project#IR::IR::InitLiteralStructFieldInstruction#6759cc3b#2@df6b61t9
+         0ms |       |            | project#Types::InterfaceType.hasDirectlyEmbeddedType/2#dispred#bfabe2f6@4862644e
+         0ms |       |            | project#IR::IR::InitParameterInstruction#851bf03f#2@866be363
+         0ms |       |            | project#Stmt::Assignment.getLhs/1#dispred#ebfba583@458b30nd
+         0ms |       |            | project#all_declare::StructFieldNode#eb73cf8a@2b24ab58
+         0ms |       |            | project#IR::IR::InitLiteralStructFieldInstruction#6759cc3b#3_10#join_rhs@15580cec
+         0ms |       |            | stmts_10#join_rhs@56da80bd
+         0ms |       |            | project#IR::IR::InitParameterInstruction#851bf03f@62dd4069
+         0ms |       |            | project#ControlFlowGraph::Write.writesField/3#dispred#ac3ace1e#fffb#2_10#join_rhs@f83a1e2l
+         0ms |       |            | project#IR::IR::InitParameterInstruction#851bf03f_10#join_rhs@0925777o
+         0ms |       |            | type_of_0#antijoin_rhs@acc0b6p0
+         0ms |       |            | project#all_declare::StructFieldNode.complete_pp/0#dispred#cb929388@aa735avo
+         0ms |       |            | types_10#join_rhs@32231dmf
+         0ms |       |            | typeparam_20#join_rhs@1b85afd7
+         0ms |       |            | stmts_1230#join_rhs@320837ru
+         0ms |       |            | project#IR::IR::InitLiteralComponentInstruction#e6a3e828#2@49dbccof
+         0ms |       |            | underlying_type_10#join_rhs@34355ece
+
+Most expensive predicates for completed query all_declare.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         2ms |       |            | objecttypes_10#join_rhs@d38363ek
+         2ms |       |            | FlowSummaryImpl::Input::encodeContent/2#cf511534#bbf@818dd7j9
+         2ms |       |            | Scopes::Entity.hasQualifiedName/2#dispred#a27f41ce_120#join_rhs@c1646cao
+         1ms |       |            | DataFlowUtil::Content#6d5ee4e1@df92015f
+         1ms |       |            | FlowSummaryImpl::Private::External::interpretComponent/1#f55a3aaf@ff5cd6ee
+         1ms |       |            | Scopes::Entity.hasQualifiedName/2#dispred#a27f41ce_120#join_rhs@f49a15h0
+         1ms |       |            | Scopes::Callable.getType/0#dispred#55a0e6a2@d33558na
+         1ms |       |            | component_types_023#join_rhs@8842c5iv
+         1ms |     9 | 1ms @ 2    | _Types::Type.implementsComparable/0#d5b41507#prev_Types::Type.implementsComparable/0#d5b41507#prev_d__#antijoin_rhs@L0#4d92e
+         1ms |       |            | objects_10#join_rhs@1e55d3qo
+         1ms |       |            | Scopes::ValueEntity#a8653a73@b33000vo
+         1ms |       |            | num#FlowSummaryImpl::SourceSinkInterpretationInput::TEntityElement#d76d34a4@7e10620d
+         1ms |     2 | 1ms @ 2    | Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@1388bw8o
+         1ms |       |            | objects_20#join_rhs@96db0e2m
+         1ms |       |            | objects_102#join_rhs@cc2a78hn
+         1ms |       |            | Types::StructType.hasField/2#dispred#c78cc6cf#bff@e03b2adr
+         1ms |       |            | component_types_2013#join_rhs@12ae315g
+         1ms |       |            | Scopes::Entity.hasQualifiedName/2#7f285c8e@026d80sj
+         1ms |       |            | num#FlowSummaryImpl::Private::TSingletonSummaryComponentStack#d566c198@b9c7fbf2
+         1ms |     4 | 1ms @ 4    | Scopes::Entity.hasQualifiedName/2#dispred#a27f41ce@1388by8o
+         1ms |       |            | _project#Types::StructType.getFieldCand/3#dispred#63c5f19b_project#Types::StructType.getFieldCand/3#__#join_rhs@3d91d24k
+         1ms |     2 | 1ms @ 2    | Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@771e1xvo
+         1ms |       |            | Scopes::Entity.hasQualifiedName/2#7f285c8e@d1488alk
+         1ms |       |            | FlowSummaryImpl::Private::External::summaryElement/6#f15f4290@61029bra
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373#3@178972nj
+         0ms |       |            | project#Types::Type.hasMethod/2#dispred#c020661a#fbf@25da528l
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373#4@e4c4035e
+         0ms |       |            | project#Types::TypeSetTerm#e1060b89@b39ae1pk
+         0ms |       |            | project#Types::Type.toString/0#dispred#0c13b6df@e97704ms
+         0ms |       |            | project#decls@7d63e1u1
+         0ms |       |            | project#all_declare::StructFieldNode#eb73cf8a@2b24ab58
+         0ms |       |            | project#component_types@bd888ee1
+         0ms |       |            | stmts_10#join_rhs@56da80bd
+         0ms |       |            | specs_10#join_rhs@6d32ef8g
+         0ms |       |            | project#all_declare::StructFieldNode.complete_pp/0#dispred#cb929388@aa735avo
+         0ms |       |            | scopenesting_10#join_rhs@1b4752pk
+         0ms |       |            | stmts_1023#join_rhs@4b5b33ej
+         0ms |       |            | stmts_230#join_rhs@251d96t5
+         0ms |       |            | type_of_0#antijoin_rhs@acc0b6p0
+         0ms |       |            | types_10#join_rhs@32231dmf
+         0ms |       |            | shortestDistances@BasicBlocks::startsBB/1#9a18cf87#1@BasicBlocks::Internal::intraBBSucc/2#bfdf2921#2@30f60298
+         0ms |       |            | stmts_1230#join_rhs@320837ru
+         0ms |       |            | stmts_2#antijoin_rhs@aa26186t
+         0ms |       |            | stmts_20#count_range@5d108609
+         0ms |       |            | typename_10#join_rhs@bff09a2m
+         0ms |       |            | stmts_203#join_rhs@24bd91g2
+         0ms |       |            | scopenodes_10#join_rhs@bf9e75sm
+         0ms |       |            | underlying_type_10#join_rhs@34355ece
+         0ms |       |            | typeparam_02#join_rhs@40a4c7jd
+         0ms |       |            | typeparam_20#join_rhs@1b85afd7
+
+[2024-08-21 23:19:28] Total evaluation times for this run:
+        * Wall-clock duration of evaluation run: 0.9 seconds
+        * Total time spent evaluating predicates: 0.1 seconds

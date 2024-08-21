@@ -1,0 +1,241 @@
+[2024-08-22 00:23:23] Summary of a CodeQL evaluation that started at 2024-08-21T16:23:23.536837300Z
+[2024-08-22 00:23:23] 
+[2024-08-22 00:23:23] Found predicate Locations::getLocatableLocation/1#9ecd27bf@4b9fb25a in the relation cache (size: 151)
+[2024-08-22 00:23:23] Found predicate Files::Container.splitAbsolutePath/2#dispred#ce206381@27a41art in the relation cache (size: 21)
+[2024-08-22 00:23:23] Found predicate Locations::dbLocationInfo/6#ae9d6149@565ec26p in the relation cache (size: 135)
+[2024-08-22 00:23:23] Found predicate types_10#join_rhs@32231dmf in the relation cache (size: 3880)
+[2024-08-22 00:23:23] Found predicate Types::Type.getName/0#dispred#8fd03732@67980f4v in the relation cache (size: 700)
+[2024-08-22 00:23:23] Found predicate Types::BasicInterfaceType#db495bda@aae5212o in the relation cache (size: 52)
+[2024-08-22 00:23:23] Found predicate Types::Type_not_Types::ArrayType_Types::BoolLiteralType_Types::ComplexLiteralType_Types::FloatLiteralType_Types::IntLiteralType_Types::InterfaceType_Types::InvalidType_Types::MapType_Types::NilLiteralType_Types::PointerType_Types::RecvChanType_Types::RuneLiteralType_Types::SendChanType_Types::SendRecvChanType_Types::SignatureType_Types::SliceType_Types::StringLiteralType_Types::StructType_Types::TupleType_Types::TypeParamType_Types::TypeSetLiteralType#83ca736a@5db5220m in the relation cache (size: 700)
+[2024-08-22 00:23:23] Found predicate Locations::getDiagnosticLocation/1#53099a89@d94fe9do in the relation cache (size: 0)
+[2024-08-22 00:23:23] Evaluated non-recursive predicate Types::Type.toString/0#dispred#0c13b6df@51b9eb6t in 7ms (size: 3460).
+Evaluated relational algebra for predicate Types::Type.toString/0#dispred#0c13b6df@51b9eb6t:
+                {2} r1 = JOIN Types::Type_not_Types::ArrayType_Types::BoolLiteralType_Types::ComplexLiteralType_Types::FloatLiteralType_Types::IntLiteralType_Types::InterfaceType_Types::InvalidType_Types::MapType_Types::NilLiteralType_Types::PointerType_Types::RecvChanType_Types::RuneLiteralType_Types::SendChanType_Types::SendRecvChanType_Types::SignatureType_Types::SliceType_Types::StringLiteralType_Types::StructType_Types::TupleType_Types::TypeParamType_Types::TypeSetLiteralType#83ca736a WITH `Types::Type.getName/0#dispred#8fd03732` ON FIRST 1 OUTPUT Lhs.0, Rhs.1
+            
+                {1} r2 = CONSTANT(unique int)[34]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "map type"
+            
+                {2} r3 = SCAN Types::BasicInterfaceType#db495bda OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "basic interface type"
+            
+                {1} r4 = CONSTANT(unique int)[27]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "array type"
+            
+                {1} r5 = CONSTANT(unique int)[28]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "slice type"
+            
+                {1} r6 = CONSTANT(unique int)[32]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "tuple type"
+            
+                {1} r7 = CONSTANT(unique int)[20]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "int literal"
+            
+                {1} r8 = CONSTANT(unique int)[25]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "nil literal"
+            
+                {1} r9 = CONSTANT(unique int)[29]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "struct type"
+            
+                {1} r10 = CONSTANT(unique int)[0]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "invalid type"
+            
+                {1} r11 = CONSTANT(unique int)[19]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "bool literal"
+            
+                {1} r12 = CONSTANT(unique int)[21]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "rune literal"
+            
+                {1} r13 = CONSTANT(unique int)[22]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "float literal"
+            
+                {1} r14 = CONSTANT(unique int)[24]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "string literal"
+            
+                {1} r15 = CONSTANT(unique int)[33]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "signature type"
+            
+                {1} r16 = CONSTANT(unique int)[23]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "complex literal"
+            
+                {1} r17 = CONSTANT(unique int)[35]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "send-channel type"
+            
+                {1} r18 = CONSTANT(unique int)[26]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "type parameter type"
+            
+                {1} r19 = CONSTANT(unique int)[36]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "receive-channel type"
+            
+                {1} r20 = CONSTANT(unique int)[39]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "type set literal type"
+            
+                {1} r21 = CONSTANT(unique int)[31]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "interface type"
+                {2}    | AND NOT Types::BasicInterfaceType#db495bda(FIRST 1)
+            
+                {1} r22 = CONSTANT(unique int)[37]
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "send-receive-channel type"
+            
+                {2} r23 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r10 UNION r11 UNION r12 UNION r13 UNION r14 UNION r15 UNION r16 UNION r17 UNION r18 UNION r19 UNION r20 UNION r21 UNION r22
+                return r23
+
+[2024-08-22 00:23:23] Evaluated non-recursive predicate project#Types::Type.toString/0#dispred#0c13b6df@16e51b27 in 1ms (size: 3460).
+Evaluated relational algebra for predicate project#Types::Type.toString/0#dispred#0c13b6df@16e51b27:
+                {1} r1 = SCAN `Types::Type.toString/0#dispred#0c13b6df` OUTPUT In.0
+                {1}    | STREAM DEDUP
+                return r1
+
+[2024-08-22 00:23:23] Found predicate base_type_10#join_rhs@53df9ep4 in the relation cache (size: 420)
+[2024-08-22 00:23:23] Completed evaluation of a recursive layer containing 1 different predicates (took 6ms). Predicates evaluated:
+all_select::getBaseType/1#be4a6347#fb@ad903fnj (took 4ms) (size: 3880)
+
+Evaluated recursive predicate all_select::getBaseType/1#be4a6347#fb@ad903fnj in 1ms on iteration 1 (delta size: 3460).
+Evaluated relational algebra for predicate all_select::getBaseType/1#be4a6347#fb@ad903fnj on iteration 1 running pipeline base:
+                {2} r1 = SCAN `project#Types::Type.toString/0#dispred#0c13b6df` OUTPUT In.0, In.0
+                return r1
+
+Evaluated recursive predicate all_select::getBaseType/1#be4a6347#fb@ad903fnj in 3ms on iteration 2 (delta size: 404).
+Evaluated relational algebra for predicate all_select::getBaseType/1#be4a6347#fb@ad903fnj on iteration 2 running pipeline standard:
+                {2} r1 = SCAN `all_select::getBaseType/1#be4a6347#fb#prev_delta` OUTPUT In.1, In.0
+                {2}    | JOIN WITH `project#Types::Type.toString/0#dispred#0c13b6df` ON FIRST 1 OUTPUT Lhs.1, Lhs.0
+                {2}    | JOIN WITH base_type_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | AND NOT `all_select::getBaseType/1#be4a6347#fb#prev`(FIRST 2)
+                return r1
+
+Evaluated recursive predicate all_select::getBaseType/1#be4a6347#fb@ad903fnj in 0ms on iteration 3 (delta size: 16).
+Evaluated relational algebra for predicate all_select::getBaseType/1#be4a6347#fb@ad903fnj on iteration 3 running pipeline standard:
+                {2} r1 = SCAN `all_select::getBaseType/1#be4a6347#fb#prev_delta` OUTPUT In.1, In.0
+                {2}    | JOIN WITH `project#Types::Type.toString/0#dispred#0c13b6df` ON FIRST 1 OUTPUT Lhs.1, Lhs.0
+                {2}    | JOIN WITH base_type_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | AND NOT `all_select::getBaseType/1#be4a6347#fb#prev`(FIRST 2)
+                return r1
+
+Pipeline base for all_select::getBaseType/1#be4a6347#fb@ad903fnj was evaluated in 1 iterations totaling 1ms (delta sizes total: 3460).
+Pipeline standard for all_select::getBaseType/1#be4a6347#fb@ad903fnj was evaluated in 2 iterations totaling 3ms (delta sizes total: 420).
+
+[2024-08-22 00:23:23] Found predicate Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs@dab170l5 in the relation cache (size: 14)
+[2024-08-22 00:23:23] Evaluated non-recursive predicate _Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared@3e5f870a in 4ms (size: 14).
+Evaluated relational algebra for predicate _Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared@3e5f870a:
+                {2} r1 = SCAN `all_select::getBaseType/1#be4a6347#fb` OUTPUT In.1, In.0
+                {2}    | JOIN WITH `Types::Type.toString/0#dispred#0c13b6df` ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                return r1
+
+[2024-08-22 00:23:23] Found predicate Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs@16c3bd3a in the relation cache (size: 11)
+[2024-08-22 00:23:23] Found predicate Expr::Ident.getName/0#dispred#79c7231c@f5be04ov in the relation cache (size: 55)
+[2024-08-22 00:23:23] Found predicate Expr::SelectorExpr.getSelector/0#dispred#eddd43ba@df3d5fmv in the relation cache (size: 11)
+[2024-08-22 00:23:23] Found predicate @functionobject@5ede45r7 in the relation cache (size: 4728)
+[2024-08-22 00:23:23] Found predicate objects_20#join_rhs@96db0e2m in the relation cache (size: 13412)
+[2024-08-22 00:23:23] Evaluated non-recursive predicate _@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs@288d17u2 in 0ms (size: 4).
+Evaluated relational algebra for predicate _@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs@288d17u2:
+                {2} r1 = JOIN `_Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared` WITH `Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {3}    | JOIN WITH `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba` ON FIRST 1 OUTPUT Rhs.1, Lhs.1, Lhs.0
+                {3}    | JOIN WITH `Expr::Ident.getName/0#dispred#79c7231c` ON FIRST 1 OUTPUT Rhs.1, Lhs.1, Lhs.2
+                {3}    | JOIN WITH objects_20#join_rhs ON FIRST 1 OUTPUT Rhs.1, Lhs.1, Lhs.2
+                {2}    | JOIN WITH @functionobject ON FIRST 1 OUTPUT Lhs.1, Lhs.2
+                return r1
+
+[2024-08-22 00:23:23] Evaluated non-recursive predicate _Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared@ba6ac33m in 0ms (size: 7).
+Evaluated relational algebra for predicate _Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared@ba6ac33m:
+                {2} r1 = JOIN `_Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared` WITH `Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs` ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+                {2}    | AND NOT `_@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs`(FIRST 2)
+                return r1
+
+[2024-08-22 00:23:23] Found predicate all_select::getSelectorExprPath/1#7b311b34@59a6154i in the relation cache (size: 11)
+[2024-08-22 00:23:23] Found predicate Expr::SelectorExpr.getBase/0#dispred#4750d166@a7bc9asq in the relation cache (size: 11)
+[2024-08-22 00:23:23] Found predicate types@4e2beed8 in the relation cache (size: 3880)
+[2024-08-22 00:23:23] Found predicate Expr::Expr.getType/0#dispred#c339c87f#bf@3d83652f in the relation cache (size: 14)
+[2024-08-22 00:23:23] Evaluated non-recursive predicate _Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs@87302fqv in 0ms (size: 2).
+Evaluated relational algebra for predicate _Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs@87302fqv:
+                {2} r1 = SCAN `_Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared` OUTPUT In.1, In.0
+                {3}    | JOIN WITH `Expr::SelectorExpr.getBase/0#dispred#4750d166` ON FIRST 1 OUTPUT Rhs.1, Lhs.1, Lhs.0
+                {4}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1, Lhs.2
+                {4}    | REWRITE WITH Out.1 := 0
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.2, Lhs.3
+                return r1
+
+[2024-08-22 00:23:23] Evaluated non-recursive predicate #select@6c2ff0he in 0ms (size: 5).
+Evaluated relational algebra for predicate #select@6c2ff0he:
+                {2} r1 = `_Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared` AND NOT `_Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs`(FIRST 2)
+                {2}    | SCAN OUTPUT In.1, In.0
+                {4}    | JOIN WITH `all_select::getSelectorExprPath/1#7b311b34` ON FIRST 1 OUTPUT Lhs.0, _, Lhs.1, Rhs.1
+                {2}    | REWRITE WITH Tmp.1 := ".", Out.1 := (In.2 ++ Tmp.1 ++ In.3) KEEPING 2
+                return r1
+
+[2024-08-22 00:23:23] Found predicate Locations::Locatable.hasLocationInfo/5#dispred#3a271a34@ba0043ds in the relation cache (size: 151)
+[2024-08-22 00:23:23] Found predicate Expr::Expr.toString/0#dispred#dc2488b6@75beea4d in the relation cache (size: 95)
+[2024-08-22 00:23:23] Found predicate project#Expr::Expr.toString/0#dispred#dc2488b6@067b017r in the relation cache (size: 95)
+[2024-08-22 00:23:23] Found predicate Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k in the relation cache (size: 151)
+[2024-08-22 00:23:23] Evaluated non-recursive predicate #select#query@aa871e3i in 0ms (size: 5).
+Evaluated relational algebra for predicate #select#query@aa871e3i:
+                {7} r1 = JOIN #select WITH `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34` ON FIRST 1 OUTPUT Lhs.0, Lhs.1, Rhs.1, Rhs.2, Rhs.3, Rhs.4, Rhs.5
+            
+                {2} r2 = #select AND NOT `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs`(FIRST 1)
+                {7}    | SCAN OUTPUT In.0, In.1, _, _, _, _, _
+                {7}    | REWRITE WITH Out.2 := "", Out.3 := 0, Out.4 := 0, Out.5 := 0, Out.6 := 0
+            
+                {7} r3 = r1 UNION r2
+                {8}    | JOIN WITH `Expr::Expr.toString/0#dispred#dc2488b6` ON FIRST 1 OUTPUT Lhs.0, Rhs.1, Lhs.2, Lhs.3, Lhs.4, Lhs.5, Lhs.6, Lhs.1
+            
+                {2} r4 = #select AND NOT `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs`(FIRST 1)
+                {7}    | SCAN OUTPUT In.0, In.1, _, _, _, _, _
+                {7}    | REWRITE WITH Out.2 := "", Out.3 := 0, Out.4 := 0, Out.5 := 0, Out.6 := 0
+            
+                {7} r5 = r1 UNION r4
+                {7}    | AND NOT `project#Expr::Expr.toString/0#dispred#dc2488b6`(FIRST 1)
+                {8}    | SCAN OUTPUT In.0, _, In.2, In.3, In.4, In.5, In.6, In.1
+                {8}    | REWRITE WITH Out.1 := "(no string representation)"
+            
+                {8} r6 = r3 UNION r5
+                return r6
+
+[2024-08-22 00:23:23] Completed evaluation of query all_select.ql.
+Most expensive predicates for stage 2 of completed query all_select.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         7ms |       |            | Types::Type.toString/0#dispred#0c13b6df@51b9eb6t
+         4ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared@3e5f870a
+         4ms |     3 | 3ms @ 2    | all_select::getBaseType/1#be4a6347#fb@ad903fnj
+         1ms |       |            | project#Types::Type.toString/0#dispred#0c13b6df@16e51b27
+         0ms |       |            | #select@6c2ff0he
+         0ms |       |            | #select#query@aa871e3i
+         0ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs@87302fqv
+         0ms |       |            | _@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs@288d17u2
+         0ms |       |            | _Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared@ba6ac33m
+
+Most expensive predicates for completed query all_select.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         7ms |       |            | Types::Type.toString/0#dispred#0c13b6df@51b9eb6t
+         4ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared@3e5f870a
+         4ms |     3 | 3ms @ 2    | all_select::getBaseType/1#be4a6347#fb@ad903fnj
+         1ms |       |            | project#Types::Type.toString/0#dispred#0c13b6df@16e51b27
+         0ms |       |            | #select@6c2ff0he
+         0ms |       |            | #select#query@aa871e3i
+         0ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs@87302fqv
+         0ms |       |            | _@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs@288d17u2
+         0ms |       |            | _Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared@ba6ac33m
+
+[2024-08-22 00:23:23] Total evaluation times for this run:
+        * Wall-clock duration of evaluation run: 0.0 seconds
+        * Total time spent evaluating predicates: 0.0 seconds

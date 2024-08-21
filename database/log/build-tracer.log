@@ -1,0 +1,234 @@
+[T 16:36:37 27172] Initializing tracer.
+[T 16:36:37 27172] Initializing tags.
+[T 16:36:37 27172] CodeQL CLI version 2.18.0
+[T 16:36:37 27172] Initializing tracer.
+[T 16:36:37 27172] Initializing tags.
+[T 16:36:37 27172] Allocated ID 9D179DB000006A24_0000000000000001 (parent )
+[T 16:36:37 27172] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (27236) ====
+[T 16:36:37 27172] Executing the following tracer actions:
+[T 16:36:37 27172] Tracer actions:
+[T 16:36:37 27172] pre_invocations(0)
+[T 16:36:37 27172] post_invocations(0)
+[T 16:36:37 27172] trace_languages(1): [go]
+[T 16:36:37 27236] Initializing tracer.
+[T 16:36:37 27236] Initializing tags.
+[T 16:36:37 27236] ID set to 9D179DB000006A24_0000000000000001 (parent root)
+[T 16:36:37 27236] Allocated ID BA35B08700006A64_0000000000000001 (parent 9D179DB000006A24_0000000000000001)
+[T 16:36:37 27236] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (27256) ====
+[T 16:36:37 27236] Executing the following tracer actions:
+[T 16:36:37 27236] Tracer actions:
+[T 16:36:37 27236] pre_invocations(0)
+[T 16:36:37 27236] post_invocations(0)
+[T 16:36:37 27236] trace_languages(1): [go]
+[T 16:36:37 27256] Initializing tracer.
+[T 16:36:37 27256] Initializing tags.
+[T 16:36:37 27256] ID set to BA35B08700006A64_0000000000000001 (parent 9D179DB000006A24_0000000000000001)
+[T 16:36:37 27256] Allocated ID 823DF41C00006A78_0000000000000001 (parent BA35B08700006A64_0000000000000001)
+[T 16:36:37 27256] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (27276) ====
+[T 16:36:37 27256] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 16:36:37 27256] Lua: Disabling tracing for language go.
+[T 16:36:37 27256] Executing the following tracer actions:
+[T 16:36:37 27256] Tracer actions:
+[T 16:36:37 27256] pre_invocations(0)
+[T 16:36:37 27256] post_invocations(0)
+[T 16:36:37 27256] trace_languages(0): []
+[T 16:36:38 27276] Initializing tracer.
+[T 16:36:38 27276] Initializing tags.
+[T 16:36:38 27276] ID set to 823DF41C00006A78_0000000000000001 (parent BA35B08700006A64_0000000000000001)
+[T 16:36:38 27276] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+
+[T 17:01:46 26756] Initializing tracer.
+[T 17:01:46 26756] Initializing tags.
+[T 17:01:46 26756] CodeQL CLI version 2.18.0
+[T 17:01:46 26756] Initializing tracer.
+[T 17:01:46 26756] Initializing tags.
+[T 17:01:46 26756] Allocated ID 4A19695500006884_0000000000000001 (parent )
+[T 17:01:46 26756] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (9060) ====
+[T 17:01:46 26756] Executing the following tracer actions:
+[T 17:01:46 26756] Tracer actions:
+[T 17:01:46 26756] pre_invocations(0)
+[T 17:01:46 26756] post_invocations(0)
+[T 17:01:46 26756] trace_languages(1): [go]
+[T 17:01:46 9060] Initializing tracer.
+[T 17:01:46 9060] Initializing tags.
+[T 17:01:46 9060] ID set to 4A19695500006884_0000000000000001 (parent root)
+[T 17:01:46 9060] Allocated ID 8EC6F71B00002364_0000000000000001 (parent 4A19695500006884_0000000000000001)
+[T 17:01:46 9060] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (15432) ====
+[T 17:01:46 9060] Executing the following tracer actions:
+[T 17:01:46 9060] Tracer actions:
+[T 17:01:46 9060] pre_invocations(0)
+[T 17:01:46 9060] post_invocations(0)
+[T 17:01:46 9060] trace_languages(1): [go]
+[T 17:01:46 15432] Initializing tracer.
+[T 17:01:46 15432] Initializing tags.
+[T 17:01:46 15432] ID set to 8EC6F71B00002364_0000000000000001 (parent 4A19695500006884_0000000000000001)
+[T 17:01:46 15432] Allocated ID 6BCAF8C100003C48_0000000000000001 (parent 8EC6F71B00002364_0000000000000001)
+[T 17:01:46 15432] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (22872) ====
+[T 17:01:46 15432] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 17:01:46 15432] Lua: Disabling tracing for language go.
+[T 17:01:46 15432] Executing the following tracer actions:
+[T 17:01:46 15432] Tracer actions:
+[T 17:01:46 15432] pre_invocations(0)
+[T 17:01:46 15432] post_invocations(0)
+[T 17:01:46 15432] trace_languages(0): []
+[T 17:01:46 22872] Initializing tracer.
+[T 17:01:46 22872] Initializing tags.
+[T 17:01:46 22872] ID set to 6BCAF8C100003C48_0000000000000001 (parent 8EC6F71B00002364_0000000000000001)
+[T 17:01:46 22872] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+
+[T 17:19:03 27716] Initializing tracer.
+[T 17:19:03 27716] Initializing tags.
+[T 17:19:03 27716] CodeQL CLI version 2.18.0
+[T 17:19:03 27716] Initializing tracer.
+[T 17:19:03 27716] Initializing tags.
+[T 17:19:03 27716] Allocated ID EF8F888000006C44_0000000000000001 (parent )
+[T 17:19:03 27716] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (12368) ====
+[T 17:19:03 27716] Executing the following tracer actions:
+[T 17:19:03 27716] Tracer actions:
+[T 17:19:03 27716] pre_invocations(0)
+[T 17:19:03 27716] post_invocations(0)
+[T 17:19:03 27716] trace_languages(1): [go]
+[T 17:19:03 12368] Initializing tracer.
+[T 17:19:03 12368] Initializing tags.
+[T 17:19:03 12368] ID set to EF8F888000006C44_0000000000000001 (parent root)
+[T 17:19:03 12368] Allocated ID FADF406E00003050_0000000000000001 (parent EF8F888000006C44_0000000000000001)
+[T 17:19:03 12368] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (25596) ====
+[T 17:19:03 12368] Executing the following tracer actions:
+[T 17:19:03 12368] Tracer actions:
+[T 17:19:03 12368] pre_invocations(0)
+[T 17:19:03 12368] post_invocations(0)
+[T 17:19:03 12368] trace_languages(1): [go]
+[T 17:19:03 25596] Initializing tracer.
+[T 17:19:03 25596] Initializing tags.
+[T 17:19:03 25596] ID set to FADF406E00003050_0000000000000001 (parent EF8F888000006C44_0000000000000001)
+[T 17:19:03 25596] Allocated ID DAED1497000063FC_0000000000000001 (parent FADF406E00003050_0000000000000001)
+[T 17:19:03 25596] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (20236) ====
+[T 17:19:03 25596] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 17:19:03 25596] Lua: Disabling tracing for language go.
+[T 17:19:03 25596] Executing the following tracer actions:
+[T 17:19:03 25596] Tracer actions:
+[T 17:19:03 25596] pre_invocations(0)
+[T 17:19:03 25596] post_invocations(0)
+[T 17:19:03 25596] trace_languages(0): []
+[T 17:19:03 20236] Initializing tracer.
+[T 17:19:03 20236] Initializing tags.
+[T 17:19:03 20236] ID set to DAED1497000063FC_0000000000000001 (parent FADF406E00003050_0000000000000001)
+[T 17:19:03 20236] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+
+[T 17:23:54 31180] Initializing tracer.
+[T 17:23:54 31180] Initializing tags.
+[T 17:23:54 31180] CodeQL CLI version 2.18.0
+[T 17:23:54 31180] Initializing tracer.
+[T 17:23:54 31180] Initializing tags.
+[T 17:23:54 31180] Allocated ID DC1E1CDD000079CC_0000000000000001 (parent )
+[T 17:23:54 31180] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (30704) ====
+[T 17:23:54 31180] Executing the following tracer actions:
+[T 17:23:54 31180] Tracer actions:
+[T 17:23:54 31180] pre_invocations(0)
+[T 17:23:54 31180] post_invocations(0)
+[T 17:23:54 31180] trace_languages(1): [go]
+[T 17:23:54 30704] Initializing tracer.
+[T 17:23:54 30704] Initializing tags.
+[T 17:23:54 30704] ID set to DC1E1CDD000079CC_0000000000000001 (parent root)
+[T 17:23:54 30704] Allocated ID 2B35AA8E000077F0_0000000000000001 (parent DC1E1CDD000079CC_0000000000000001)
+[T 17:23:54 30704] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (29760) ====
+[T 17:23:54 30704] Executing the following tracer actions:
+[T 17:23:54 30704] Tracer actions:
+[T 17:23:54 30704] pre_invocations(0)
+[T 17:23:54 30704] post_invocations(0)
+[T 17:23:54 30704] trace_languages(1): [go]
+[T 17:23:54 29760] Initializing tracer.
+[T 17:23:54 29760] Initializing tags.
+[T 17:23:54 29760] ID set to 2B35AA8E000077F0_0000000000000001 (parent DC1E1CDD000079CC_0000000000000001)
+[T 17:23:54 29760] Allocated ID FB9A4B4200007440_0000000000000001 (parent 2B35AA8E000077F0_0000000000000001)
+[T 17:23:54 29760] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (29652) ====
+[T 17:23:54 29760] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 17:23:54 29760] Lua: Disabling tracing for language go.
+[T 17:23:54 29760] Executing the following tracer actions:
+[T 17:23:54 29760] Tracer actions:
+[T 17:23:54 29760] pre_invocations(0)
+[T 17:23:54 29760] post_invocations(0)
+[T 17:23:54 29760] trace_languages(0): []
+[T 17:23:54 29652] Initializing tracer.
+[T 17:23:54 29652] Initializing tags.
+[T 17:23:54 29652] ID set to FB9A4B4200007440_0000000000000001 (parent 2B35AA8E000077F0_0000000000000001)
+[T 17:23:54 29652] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+
+[T 14:57:39 27892] Initializing tracer.
+[T 14:57:39 27892] Initializing tags.
+[T 14:57:39 27892] CodeQL CLI version 2.18.0
+[T 14:57:39 27892] Initializing tracer.
+[T 14:57:39 27892] Initializing tags.
+[T 14:57:40 27892] Allocated ID 9FFBBF2300006CF4_0000000000000001 (parent )
+[T 14:57:40 27892] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (10064) ====
+[T 14:57:40 27892] Executing the following tracer actions:
+[T 14:57:40 27892] Tracer actions:
+[T 14:57:40 27892] pre_invocations(0)
+[T 14:57:40 27892] post_invocations(0)
+[T 14:57:40 27892] trace_languages(1): [go]
+[T 14:57:40 10064] Initializing tracer.
+[T 14:57:40 10064] Initializing tags.
+[T 14:57:40 10064] ID set to 9FFBBF2300006CF4_0000000000000001 (parent root)
+[T 14:57:40 10064] Allocated ID 35FA6FB100002750_0000000000000001 (parent 9FFBBF2300006CF4_0000000000000001)
+[T 14:57:40 10064] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (9764) ====
+[T 14:57:40 10064] Executing the following tracer actions:
+[T 14:57:40 10064] Tracer actions:
+[T 14:57:40 10064] pre_invocations(0)
+[T 14:57:40 10064] post_invocations(0)
+[T 14:57:40 10064] trace_languages(1): [go]
+[T 14:57:40 9764] Initializing tracer.
+[T 14:57:40 9764] Initializing tags.
+[T 14:57:40 9764] ID set to 35FA6FB100002750_0000000000000001 (parent 9FFBBF2300006CF4_0000000000000001)
+[T 14:57:40 9764] Allocated ID 5FD0D6A300002624_0000000000000001 (parent 35FA6FB100002750_0000000000000001)
+[T 14:57:40 9764] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (28464) ====
+[T 14:57:40 9764] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 14:57:40 9764] Lua: Disabling tracing for language go.
+[T 14:57:40 9764] Executing the following tracer actions:
+[T 14:57:40 9764] Tracer actions:
+[T 14:57:40 9764] pre_invocations(0)
+[T 14:57:40 9764] post_invocations(0)
+[T 14:57:40 9764] trace_languages(0): []
+[T 14:57:41 28464] Initializing tracer.
+[T 14:57:41 28464] Initializing tags.
+[T 14:57:41 28464] ID set to 5FD0D6A300002624_0000000000000001 (parent 35FA6FB100002750_0000000000000001)
+[T 14:57:41 28464] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+
+[T 15:18:22 18088] Initializing tracer.
+[T 15:18:22 18088] Initializing tags.
+[T 15:18:22 18088] CodeQL CLI version 2.18.0
+[T 15:18:22 18088] Initializing tracer.
+[T 15:18:22 18088] Initializing tags.
+[T 15:18:22 18088] Allocated ID 9E1D435B000046A8_0000000000000001 (parent )
+[T 15:18:22 18088] ==== Candidate to intercept: C:\Program Files\codeql\tools\win64\runner.exe (27952) ====
+[T 15:18:22 18088] Executing the following tracer actions:
+[T 15:18:22 18088] Tracer actions:
+[T 15:18:22 18088] pre_invocations(0)
+[T 15:18:22 18088] post_invocations(0)
+[T 15:18:22 18088] trace_languages(1): [go]
+[T 15:18:22 27952] Initializing tracer.
+[T 15:18:22 27952] Initializing tags.
+[T 15:18:22 27952] ID set to 9E1D435B000046A8_0000000000000001 (parent root)
+[T 15:18:23 27952] Allocated ID D963C9DB00006D30_0000000000000001 (parent 9E1D435B000046A8_0000000000000001)
+[T 15:18:23 27952] ==== Candidate to intercept: C:\Windows\System32\cmd.exe (26072) ====
+[T 15:18:23 27952] Executing the following tracer actions:
+[T 15:18:23 27952] Tracer actions:
+[T 15:18:23 27952] pre_invocations(0)
+[T 15:18:23 27952] post_invocations(0)
+[T 15:18:23 27952] trace_languages(1): [go]
+[T 15:18:23 26072] Initializing tracer.
+[T 15:18:23 26072] Initializing tags.
+[T 15:18:23 26072] ID set to D963C9DB00006D30_0000000000000001 (parent 9E1D435B000046A8_0000000000000001)
+[T 15:18:23 26072] Allocated ID AA491CC6000065D8_0000000000000001 (parent D963C9DB00006D30_0000000000000001)
+[T 15:18:23 26072] ==== Candidate to intercept: C:\Program Files\codeql\go\tools\win64\go-autobuilder.exe (26612) ====
+[T 15:18:23 26072] Lua: === Intercepted call to c:\program files\codeql\go\tools\win64\go-autobuilder.exe ===
+[T 15:18:23 26072] Lua: Disabling tracing for language go.
+[T 15:18:23 26072] Executing the following tracer actions:
+[T 15:18:23 26072] Tracer actions:
+[T 15:18:23 26072] pre_invocations(0)
+[T 15:18:23 26072] post_invocations(0)
+[T 15:18:23 26072] trace_languages(0): []
+[T 15:18:23 26612] Initializing tracer.
+[T 15:18:23 26612] Initializing tags.
+[T 15:18:23 26612] ID set to AA491CC6000065D8_0000000000000001 (parent D963C9DB00006D30_0000000000000001)
+[T 15:18:23 26612] Skipping tracer hook installation due to rpc being absent, or it being disabled.
+

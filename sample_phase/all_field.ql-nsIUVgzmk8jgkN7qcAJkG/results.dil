@@ -1,0 +1,3895 @@
+`Files::Input::ContainerBase.getAbsolutePath/0#dispred#0101be76`(
+  /* Files::Input::ContainerBase */ interned unique entity this,
+  interned string result
+)
+{
+  files(this, result) or folders(this, result)
+}
+
+`Files::Container.splitAbsolutePath/2#dispred#ce206381`(
+  /* FileSystem::Make<Files::Input>::Container */ interned entity this,
+  string part, int i
+)
+{
+  exists(interned string call_result#2 |
+    `Files::Input::ContainerBase.getAbsolutePath/0#dispred#0101be76`(this,
+      call_result#2) and
+    regexpCapture(call_result#2, ".*/(([^/]*?)(?:\\.([^.]*))?)", i, part)
+  )
+}
+
+query `Files::Container.splitAbsolutePath/2#dispred#ce206381` =
+`Files::Container.splitAbsolutePath/2#dispred#ce206381`/3
+.
+
+
+/* ---------- END STAGE ---------- */
+Files::Container#49094146(
+  /* FileSystem::Make<Files::Input>::Container.extends */ interned unique entity this
+)
+{
+  exists(interned dontcare string _ | files(this, _)) or
+  exists(interned dontcare string _ | folders(this, _))
+}
+
+AST::DeclParent#a6143158#b(
+  /* AST::DeclParent.extends */ interned unique entity this
+)
+{
+  (
+    exists(interned dontcare string _ | files(this, _)) and
+    Files::Container#49094146(this)
+  )
+  or
+  (
+    Files::Container#49094146(this) and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and stmts(this, arg1, _, _1)
+    )
+  )
+}
+
+incremental
+`AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(
+  /* AST::AstNode */ interned entity this, interned int i,
+  /* AST::AstNode */ interned unique entity result
+)
+{
+  [base_case]
+  (
+    Files::Container#49094146(this) and
+    exists(interned dontcare int _ | exprs(result, _, this, i))
+  )
+  or
+  (
+    exists(interned dontcare int _ | modexprs(result, _, this, i)) and
+    Files::Container#49094146(this)
+  )
+  or
+  (
+    Files::Container#49094146(this) and
+    exists(interned dontcare int _ | decls(result, _, this, i))
+  )
+  [recursive_case]
+  delta previous rec Files::File#0e2ffa35(this) and
+  comment_groups(result, this, i) and
+  not(
+    previous rec `AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(this, i, result)
+  )
+}
+
+incremental
+Files::File#0e2ffa35(/* Files::File.extends */ interned unique entity this)
+{
+  [base_case]
+  AST::DeclParent#a6143158#b(this) and
+  not(
+    exists(interned string arg1, int arg2 |
+      arg1 = "-" and
+      arg2 = 1 and
+      `FileSystem#df18ed9a::Make<Files#fc24a137::Input>::Container.splitAbsolutePath/2#dispred`(this,
+        arg1, arg2)
+    )
+  ) and
+  not(
+    exists(interned string arg1, int arg2 |
+      arg1 = "go" and
+      arg2 = 3 and
+      `FileSystem#df18ed9a::Make<Files#fc24a137::Input>::Container.splitAbsolutePath/2#dispred`(this,
+        arg1, arg2)
+    )
+  )
+  [recursive_case]
+  exists(interned dontcare int _, /* AST::AstNode */ interned dontcare entity _1 |
+    delta previous rec `AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(this, _,
+      _1)
+  ) and
+  AST::DeclParent#a6143158#b(this) and
+  not(previous rec Files::File#0e2ffa35(this))
+}
+
+Locations::TDbLocation#dom#0575099c(/* @location */ interned unique entity loc) {
+  exists(
+    /* @file */ interned dontcare entity _, interned dontcare int _1,
+    interned dontcare int _2, interned dontcare int _3, interned dontcare int _4
+   |
+    locations_default(loc, _, _1, _2, _3, _4)
+  )
+}
+
+num#Locations::TDbLocation#37238dee(
+  /* @location */ interned unique entity loc,
+  /* Locations::TDbLocation */ unique Locations#437a8335::TLocation result
+) =
+  construct<Locations#437a8335::TLocation,0>(Locations::TDbLocation#dom#0575099c/1)
+.
+
+
+Locations::TDbLocation#37238dee(
+  /* @location */ interned unique entity loc,
+  /* Locations::TDbLocation */ unique Locations#437a8335::TLocation result
+)
+{
+  num#Locations::TDbLocation#37238dee(loc, result)
+}
+
+`Locations::dbLocationInfo/6#ae9d6149`(
+  /* Locations::DbLocation */ unique Locations#437a8335::TLocation l,
+  /* Files::File */ interned entity f, interned int startline,
+  interned int startcolumn, interned int endline, interned int endcolumn
+)
+{
+  exists(/* @location */ interned entity loc |
+    Files::File#0e2ffa35(f) and
+    locations_default(loc, f, startline, startcolumn, endline, endcolumn) and
+    Locations::TDbLocation#37238dee(loc, l)
+  )
+}
+
+`Locations::getDiagnosticLocation/1#53099a89`(
+  /* @diagnostic */ interned unique entity d,
+  /* Locations::DbLocation */ Locations#437a8335::TLocation result
+)
+{
+  exists(/* @location */ interned entity loc |
+    exists(
+      interned dontcare int _, interned dontcare string _1,
+      interned dontcare string _2, interned dontcare string _3
+     |
+      diagnostics(d, _, _1, _2, _3, loc)
+    ) and
+    Locations::TDbLocation#37238dee(loc, result)
+  )
+}
+
+`Locations::getLocatableLocation/1#9ecd27bf`(
+  /* @locatable */ interned entity l,
+  /* Locations::DbLocation */ Locations#437a8335::TLocation result
+)
+{
+  exists(/* @location */ interned entity loc |
+    Locations::TDbLocation#37238dee(loc, result) and
+    (has_location(l, loc) or xmllocations(l, loc))
+  )
+}
+
+query `Locations::getLocatableLocation/1#9ecd27bf` =
+`Locations::getLocatableLocation/1#9ecd27bf`/2
+.
+
+query `Locations::getDiagnosticLocation/1#53099a89` =
+`Locations::getDiagnosticLocation/1#53099a89`/2
+.
+
+query `Locations::dbLocationInfo/6#ae9d6149` =
+`Locations::dbLocationInfo/6#ae9d6149`/6
+.
+
+
+/* ---------- END STAGE ---------- */
+@basiclit(/* @basiclit */ interned unique entity X) {
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 3 and exprs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 4 and exprs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 5 and exprs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 6 and exprs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 7 and exprs(X, arg1, _, _1)
+  )
+}
+
+@chantypeexpr(/* @chantypeexpr */ interned unique entity X) {
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 52 and exprs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 53 and exprs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 54 and exprs(X, arg1, _, _1)
+  )
+}
+
+@constobject(/* @constobject */ interned unique entity X) {
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 3 and objects(X, arg1, _)
+  )
+  or
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 4 and objects(X, arg1, _)
+  )
+}
+
+@declparent(/* @declparent */ interned unique entity X) {
+  exists(interned dontcare string _ | files(X, _))
+  or
+  exists(
+    interned int arg1, /* @stmtparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 1 and stmts(X, arg1, _, _1)
+  )
+}
+
+@functionobject(/* @functionobject */ interned unique entity X) {
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 6 and objects(X, arg1, _)
+  )
+  or
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 7 and objects(X, arg1, _)
+  )
+}
+
+@typespec(/* @typespec */ interned unique entity X) {
+  exists(
+    interned int arg1, /* @gendecl */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 2 and specs(X, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @gendecl */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 3 and specs(X, arg1, _, _1)
+  )
+}
+
+AST::AstNode#29acf0d8(/* AST::AstNode.extends */ interned unique entity this) {
+  exists(interned dontcare string _ | files(this, _))
+  or
+  exists(/* @fieldparent */ interned dontcare entity _, interned dontcare int _1 |
+    fields(this, _, _1)
+  )
+  or
+  exists(
+    /* @typeparamdeclparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    typeparamdecls(this, _, _1)
+  )
+  or
+  exists(
+    interned dontcare int _, /* @gendecl */ interned dontcare entity _1,
+    interned dontcare int _2
+   |
+    specs(this, _, _1, _2)
+  )
+  or
+  exists(
+    interned int arg1, /* @declparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 1 and decls(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @declparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 2 and decls(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @declparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 3 and decls(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @declparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 4 and decls(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @declparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 5 and decls(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned dontcare int _, /* @modexprparent */ interned dontcare entity _1,
+    interned dontcare int _2
+   |
+    modexprs(this, _, _1, _2)
+  )
+}
+
+`Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(
+  /* Decls::FieldBase */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  exists(/* @fieldparent */ interned dontcare entity _, interned dontcare int _1 |
+    fields(this, _, _1)
+  ) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 0 and exprs(result, _, this, arg3)
+  )
+}
+
+Decls::ReceiverDecl#512cc764(
+  /* Decls::ReceiverDecl.extends */ interned unique entity this,
+  /* Decls::FuncDecl */ interned entity fd
+)
+{
+  exists(
+    interned int arg1, /* @declparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 5 and decls(fd, arg1, _, _1)
+  ) and
+  exists(interned int arg2 | arg2 = -1 and fields(this, fd, arg2))
+}
+
+`Decls::TypeSpec.getNameExpr/0#dispred#77f2f8df`(
+  /* Decls::TypeSpec */ interned unique entity this,
+  /* Expr::Ident */ interned unique entity result
+)
+{
+  exists(int arg11 |
+    exists(interned int dummyField |
+      @typespec(this) and
+      exists(interned int arg1, interned int arg3 |
+        arg1 = 1 and arg3 = 0 and exprs(result, arg1, this, arg3)
+      ) and
+      exists(interned int arg1 |
+        arg1 = 1 and exprs(result, arg1, this, dummyField)
+      ) and
+      dummyField = 0
+    ) and
+    arg11 = 1 and
+    arg11 = 1
+  )
+}
+
+`Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa`(
+  /* Decls::TypeSpec */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  @typespec(this) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 1 and exprs(result, _, this, arg3)
+  )
+}
+
+Expr::BinaryExpr#7ae2c727(
+  /* Expr::BinaryExpr.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 33 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 34 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 48 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 49 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 43 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 44 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 50 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 51 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 41 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 42 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 45 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 46 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 47 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 35 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 36 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 37 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 38 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 39 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 40 and exprs(this, arg1, _, _1)
+  )
+}
+
+`Expr::Ellipsis.getOperand/0#dispred#9a766893`(
+  /* Expr::Ellipsis */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 2 and exprs(this, arg1, _, _1)
+  ) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 0 and exprs(result, _, this, arg3)
+  )
+}
+
+`Expr::Ident.getName/0#dispred#79c7231c`(
+  /* Expr::Ident */ interned unique entity this, interned string result
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 1 and exprs(this, arg1, _, _1)
+  ) and
+  exists(interned dontcare string _ | literals(this, result, _))
+}
+
+Expr::Literal#26818ac5(/* Expr::Literal.extends */ interned unique entity this) {
+  @basiclit(this)
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 8 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 9 and exprs(this, arg1, _, _1)
+  )
+}
+
+Expr::BasicLit#ad5f8c2e(/* Expr::BasicLit.extends */ interned unique entity this)
+{
+  @basiclit(this) and Expr::Literal#26818ac5(this)
+}
+
+Expr::CompositeLit#f7622b9a(
+  /* Expr::CompositeLit.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 9 and exprs(this, arg1, _, _1)
+  ) and
+  Expr::Literal#26818ac5(this)
+}
+
+Expr::FuncLit#fdf196ce(/* Expr::FuncLit.extends */ interned unique entity this) {
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 8 and exprs(this, arg1, _, _1)
+  ) and
+  Expr::Literal#26818ac5(this)
+}
+
+`Expr::OperatorExpr.getOperator/0#dispred#a5782541`(
+  /* Expr::OperatorExpr */ interned unique entity this, string result
+)
+{
+  (
+    result = "+" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 41 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "&" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 31 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "&" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 50 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "&^" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 51 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "^" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 29 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "*" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 30 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "==" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 35 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = ">=" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 40 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = ">" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 39 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "&&" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 34 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "<=" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 38 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "||" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 33 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "<" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 37 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "-" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 27 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "*" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 45 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "!=" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 36 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "!" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 28 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "|" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 43 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "+" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 26 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "/" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 46 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "<-" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 32 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "%" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 47 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "<<" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 48 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = ">>" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 49 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "-" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 42 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "^" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 44 and exprs(this, arg1, _, _1)
+    )
+  )
+}
+
+`Expr::ParenExpr.getExpr/0#dispred#e76a565b`(
+  /* Expr::ParenExpr */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 10 and exprs(this, arg1, _, _1)
+  ) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 0 and exprs(result, _, this, arg3)
+  )
+}
+
+incremental
+`Expr::Expr.stripParens/0#dispred#d1b9a4ef`(
+  /* Expr::Expr */ interned entity this, /* Expr::Expr */ entity result
+)
+{
+  [base_case]
+  exists(
+    interned dontcare int _, /* @exprparent */ interned dontcare entity _1,
+    interned dontcare int _2
+   |
+    exprs(this, _, _1, _2)
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 10 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  result = this
+  [recursive_case]
+  exists(/* Expr::Expr */ interned entity call_result#2 |
+    delta previous rec `Expr::Expr.stripParens/0#dispred#d1b9a4ef`(call_result#2,
+      result) and
+    `Expr::ParenExpr.getExpr/0#dispred#e76a565b`(this, call_result#2)
+  ) and
+  not(previous rec `Expr::Expr.stripParens/0#dispred#d1b9a4ef`(this, result))
+}
+
+`Expr::SelectorExpr.getSelector/0#dispred#eddd43ba`(
+  /* Expr::SelectorExpr */ interned unique entity this,
+  /* Expr::Ident */ interned unique entity result
+)
+{
+  exists(int arg12 |
+    exists(interned int dummyField |
+      exists(
+        interned int arg1, /* @exprparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 11 and exprs(this, arg1, _, _1)
+      ) and
+      exists(interned int arg1, interned int arg3 |
+        arg1 = 1 and arg3 = 1 and exprs(result, arg1, this, arg3)
+      ) and
+      exists(interned int arg1 |
+        arg1 = 1 and exprs(result, arg1, this, dummyField)
+      ) and
+      dummyField = 1
+    ) and
+    arg12 = 1 and
+    arg12 = 1
+  )
+}
+
+`Expr::StarExpr.getBase/0#dispred#59d875f2#bf`(
+  /* Expr::StarExpr */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 18 and exprs(this, arg1, _, _1)
+  ) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 0 and exprs(result, _, this, arg3)
+  )
+}
+
+`Expr::StarExpr.getBase/0#dispred#59d875f2#fb`(
+  /* Expr::StarExpr */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 18 and exprs(this, arg1, _, _1)
+  ) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 0 and exprs(result, _, this, arg3)
+  )
+}
+
+Expr::UnaryExpr#3d621e5f(
+  /* Expr::UnaryExpr.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 28 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 29 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 26 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 27 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 30 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 31 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 32 and exprs(this, arg1, _, _1)
+  )
+}
+
+Files::Container#49094146(
+  /* FileSystem::Make<Files::Input>::Container.extends */ interned unique entity this
+)
+{
+  exists(interned dontcare string _ | files(this, _)) or
+  exists(interned dontcare string _ | folders(this, _))
+}
+
+Files::ExtractedOrExternalFile#4f1f33c0(
+  /* Files::ExtractedOrExternalFile.extends */ interned unique entity this
+)
+{
+  Files::Container#49094146(this) and @declparent(this)
+}
+
+GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b(
+  /* GoMod::GoModExpr */ interned unique entity this
+)
+{
+  exists(
+    interned dontcare int _, /* @modexprparent */ interned dontcare entity _1,
+    interned dontcare int _2
+   |
+    modexprs(this, _, _1, _2)
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 3 and modexprs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and modexprs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and modexprs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 4 and modexprs(this, arg1, _, _1)
+    )
+  )
+}
+
+`GoMod::GoModLine.getRawToken/1#dispred#85e36918`(
+  /* GoMod::GoModLine */ interned entity this, interned int i,
+  interned string result
+)
+{
+  exists(
+    interned int arg1, /* @modexprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 1 and modexprs(this, arg1, _, _1)
+  ) and
+  modtokens(result, this, i)
+}
+
+`GoMod::GoModLine.getToken/1#dispred#4447bb8c`(
+  /* GoMod::GoModLine */ interned entity this, int i, interned string result
+)
+{
+  exists(/* GoMod::GoModLineBlock */ interned entity cast_result#GoModLineBlock |
+    i = 0 and
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and modexprs(cast_result#GoModLineBlock, arg1, _, _1)
+    ) and
+    exists(interned int arg2 |
+      arg2 = 0 and modtokens(result, cast_result#GoModLineBlock, arg2)
+    ) and
+    exists(interned int arg1, interned dontcare int _ |
+      arg1 = 1 and modexprs(this, arg1, cast_result#GoModLineBlock, _)
+    )
+  )
+  or
+  exists(interned int Sub#result |
+    exists(
+      /* GoMod::GoModLineBlock */ interned entity cast_result#GoModLineBlock#2
+     |
+      exists(
+        interned int arg1, /* @modexprparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 2 and modexprs(cast_result#GoModLineBlock#2, arg1, _, _1)
+      ) and
+      exists(interned int arg1, interned dontcare int _ |
+        arg1 = 1 and modexprs(this, arg1, cast_result#GoModLineBlock#2, _)
+      )
+    ) and
+    `GoMod::GoModLine.getRawToken/1#dispred#85e36918`(this, Sub#result, result) and
+    Minus(i, 1, Sub#result)
+  )
+  or
+  (
+    `GoMod::GoModLine.getRawToken/1#dispred#85e36918`(this, i, result) and
+    not(
+      exists(
+        /* GoMod::GoModLineBlock */ interned entity cast_result#GoModLineBlock#2
+       |
+        exists(interned int arg1, interned dontcare int _ |
+          arg1 = 1 and modexprs(this, arg1, cast_result#GoModLineBlock#2, _)
+        ) and
+        exists(
+          interned int arg1, /* @modexprparent */ interned dontcare entity _,
+          interned dontcare int _1
+         |
+          arg1 = 2 and modexprs(cast_result#GoModLineBlock#2, arg1, _, _1)
+        )
+      )
+    )
+  )
+}
+
+GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b(
+  /* GoMod::GoModLine */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @modexprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 1 and modexprs(this, arg1, _, _1)
+  ) and
+  not(
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "exclude" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  ) and
+  not(
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "go" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  ) and
+  not(
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "module" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  ) and
+  not(
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "replace" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  ) and
+  not(
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "require" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  )
+}
+
+`Locations::Locatable.hasLocationInfo/5#dispred#3a271a34`(
+  /* Locations::Locatable */ entity this, interned string filepath,
+  int startline, int startcolumn, int endline, int endcolumn
+)
+{
+  exists(/* Locations::DbLocation */ Locations#437a8335::TLocation call_result |
+    exists(/* Files::File */ interned entity f |
+      files(f, filepath) and
+      `Locations#437a8335::Cached::dbLocationInfo/6`(call_result, f, startline,
+        startcolumn, endline, endcolumn)
+    ) and
+    `Locations#437a8335::Cached::getLocatableLocation/1`(this, call_result)
+  )
+}
+
+`Scopes::DeclaredType.getSpec/0#dispred#2a88491c`(
+  /* Scopes::DeclaredType */ interned entity this,
+  /* Decls::TypeSpec */ interned entity result
+)
+{
+  exists(/* Expr::Ident */ interned entity call_result |
+    `Decls::TypeSpec.getNameExpr/0#dispred#77f2f8df`(result, call_result) and
+    defs(call_result, this)
+  ) and
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 1 and objects(this, arg1, _)
+  )
+}
+
+Scopes::TypeEntity#4c87fada(
+  /* Scopes::TypeEntity.extends */ interned unique entity this
+)
+{
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 1 and objects(this, arg1, _)
+  )
+  or
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 2 and objects(this, arg1, _)
+  )
+}
+
+Scopes::ValueEntity#a8653a73(
+  /* Scopes::ValueEntity.extends */ interned unique entity this
+)
+{
+  @constobject(this)
+  or
+  exists(interned int arg1, interned dontcare string _ |
+    arg1 = 5 and objects(this, arg1, _)
+  )
+  or
+  @functionobject(this)
+}
+
+`Stmt::Assignment.getOperator/0#dispred#5955ddc2`(
+  /* Stmt::Assignment */ interned unique entity this, string result
+)
+{
+  (
+    result = "+=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 26 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "&=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 31 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "&^=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 36 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 24 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = ":=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 25 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "*=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 28 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "|=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 32 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "/=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 29 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "%=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 30 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "<<=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 34 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = ">>=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 35 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "-=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 27 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "^=" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 33 and stmts(this, arg1, _, _1)
+    )
+  )
+}
+
+`Stmt::SwitchStmt.getBody/0#dispred#c0c536ab#bf`(
+  /* Stmt::SwitchStmt */ interned unique entity this,
+  /* Stmt::BlockStmt */ interned unique entity result
+)
+{
+  exists(int arg11 |
+    exists(interned int dummyField |
+      exists(
+        interned int arg1, /* @stmtparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 19 and stmts(this, arg1, _, _1)
+      ) and
+      exists(interned int arg1, interned int arg3 |
+        arg1 = 15 and arg3 = 2 and stmts(result, arg1, this, arg3)
+      ) and
+      exists(interned int arg1 |
+        arg1 = 15 and stmts(result, arg1, this, dummyField)
+      ) and
+      dummyField = 2
+    ) and
+    arg11 = 15 and
+    arg11 = 15
+  )
+}
+
+incremental
+`Types::Type.getUnderlyingType/0#dispred#e61d6b4a`(
+  /* Types::Type */ interned entity this, /* Types::Type */ entity result
+)
+{
+  [base_case]
+  exists(interned dontcare int _ | types(this, _)) and
+  not(exists(interned int arg1 | arg1 = 38 and types(this, arg1))) and
+  not(exists(interned int arg1 | arg1 = 26 and types(this, arg1))) and
+  result = this
+  [recursive_case]
+  exists(/* Types::Type */ interned entity call_result#2 |
+    delta previous rec `Types::Type.getUnderlyingType/0#dispred#e61d6b4a`(call_result#2,
+      result) and
+    underlying_type(this, call_result#2)
+  ) and
+  not(
+    previous rec `Types::Type.getUnderlyingType/0#dispred#e61d6b4a`(this, result)
+  )
+}
+
+m#Expr::TypeExpr#28cffc9d#b(
+  /* Expr::TypeExpr.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 23 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 20 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 21 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 22 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 24 and exprs(this, arg1, _, _1)
+  )
+  or
+  @chantypeexpr(this)
+  or
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 25 and exprs(this, arg1, _, _1)
+  )
+}
+
+incremental
+`m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(
+  /* Expr::Expr */ interned unique entity e
+)
+{
+  [base_case]
+  m#Expr::TypeExpr#28cffc9d#b(e)
+  or
+  exists(/* Expr::GenericTypeInstantiationExpr.extends */ interned entity this_m |
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 12 and exprs(this_m, arg1, _, _1)
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(e, _, this_m, arg3)
+    )
+  )
+  or
+  exists(/* Expr::CallExpr.extends */ interned entity this_m |
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 17 and exprs(this_m, arg1, _, _1)
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(e, _, this_m, arg3)
+    )
+  )
+  [recursive_case]
+  (
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e_m) and
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 0 and exprs(e, _, e_m, arg3)
+      )
+    )
+    or
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e_m) and
+      `Expr::ParenExpr.getExpr/0#dispred#e76a565b`(e_m, e)
+    )
+    or
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e_m) and
+      `Expr::StarExpr.getBase/0#dispred#59d875f2#bf`(e_m, e)
+    )
+    or
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e_m) and
+      `Expr::Ellipsis.getOperand/0#dispred#9a766893`(e_m, e)
+    )
+  ) and
+  not(previous rec `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e))
+}
+
+incremental
+`m#Expr::isTypeExprTopDown/1#0306c5bb#b`(
+  /* Expr::Expr */ interned unique entity e
+)
+{
+  [base_case] m#Expr::TypeExpr#28cffc9d#b(e)
+  [recursive_case]
+  (
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e_m) and
+      exists(interned dontcare int _, interned dontcare int _1 |
+        exprs(e_m, _, e, _1)
+      )
+    )
+    or
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e_m) and
+      `Expr::ParenExpr.getExpr/0#dispred#e76a565b`(e, e_m)
+    )
+    or
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e_m) and
+      `Expr::StarExpr.getBase/0#dispred#59d875f2#fb`(e, e_m)
+    )
+    or
+    exists(/* Expr::Expr */ interned entity e_m |
+      delta previous rec `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e_m) and
+      `Expr::Ellipsis.getOperand/0#dispred#9a766893`(e, e_m)
+    )
+  ) and
+  not(previous rec `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e))
+}
+
+`Stmt::CaseClause.getExpr/1#dispred#83df8657#ffb`(
+  /* Stmt::CaseClause */ interned entity this, int i,
+  /* Expr::Expr */ interned unique entity result
+)
+{
+  exists(int Add#result |
+    exists(interned int Minus#result |
+      exists(
+        interned int arg1, /* @stmtparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 17 and stmts(this, arg1, _, _1)
+      ) and
+      exists(interned dontcare int _ | exprs(result, _, this, Minus#result)) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(result) and
+      Negate(Add#result, Minus#result)
+    ) and
+    PlusInt(i, 1, Add#result)
+  )
+}
+
+m#Expr::TypeName#ddac9018#bf(
+  /* Expr::TypeName.extends */ interned unique entity this
+)
+{
+  `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(this) or
+  `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(this)
+}
+
+m#Expr::Name#9002049d#bf(/* Expr::Name.extends */ interned unique entity this) {
+  m#Expr::TypeName#ddac9018#bf(this) or
+  `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(this)
+}
+
+`m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf`(
+  /* Expr::Ident */ interned unique entity this
+)
+{
+  m#Expr::Name#9002049d#bf(this)
+  or
+  exists(/* Expr::Name.extends */ interned entity this_m |
+    `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba`(this_m, this) and
+    m#Expr::Name#9002049d#bf(this_m)
+  )
+}
+
+`Expr::Ident.refersTo/1#dispred#253d9cdc#bf`(
+  /* Expr::Ident */ interned entity this, /* Scopes::Entity */ interned entity e
+)
+{
+  (uses(this, e) and `m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf`(this))
+  or
+  (defs(this, e) and `m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf`(this))
+}
+
+Expr::Name#9002049d#bf(
+  /* Expr::Name.extends */ interned entity this,
+  /* Scopes::Entity */ interned entity target
+)
+{
+  (
+    `Expr::Ident.refersTo/1#dispred#253d9cdc#bf`(this, target)
+    or
+    exists(/* Expr::Ident */ interned entity call_result |
+      `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba`(this, call_result) and
+      `Expr::Ident.refersTo/1#dispred#253d9cdc#bf`(call_result, target)
+    )
+  ) and
+  m#Expr::Name#9002049d#bf(this)
+}
+
+Expr::TypeName#ddac9018#bf(
+  /* Expr::TypeName.extends */ interned entity this,
+  /* Scopes::TypeEntity */ interned entity target
+)
+{
+  Scopes::TypeEntity#4c87fada(target) and
+  Expr::Name#9002049d#bf(this, target) and
+  m#Expr::TypeName#ddac9018#bf(this)
+}
+
+Expr::ValueName#28d6d7c9#bf(
+  /* Expr::ValueName.extends */ interned entity this,
+  /* Scopes::ValueEntity */ interned entity target
+)
+{
+  `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(this) and
+  Expr::Name#9002049d#bf(this, target) and
+  Scopes::ValueEntity#a8653a73(target)
+}
+
+Expr::ConstantName#4bb94861#bf(
+  /* Expr::ConstantName.extends */ interned entity this,
+  /* Scopes::Constant */ interned entity target
+)
+{
+  @constobject(target) and
+  Expr::ValueName#28d6d7c9#bf(this, target) and
+  `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(this)
+}
+
+Expr::Name_not_Expr::LabelName_Expr::PackageName_Expr::TypeName_Expr::ValueName#51d1487d#b(
+  /* Expr::Name */ interned unique entity this
+)
+{
+  `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(this) and
+  exists(/* Scopes::Entity */ interned dontcare entity _ |
+    Expr::Name#9002049d#bf(this, _)
+  ) and
+  not(
+    exists(/* Scopes::Label */ interned entity dummyField |
+      Expr::Name#9002049d#bf(this, dummyField) and
+      exists(interned int arg1, interned dontcare string _ |
+        arg1 = 8 and objects(dummyField, arg1, _)
+      )
+    )
+  ) and
+  not(
+    exists(/* Scopes::PackageEntity */ interned entity dummyField |
+      Expr::Name#9002049d#bf(this, dummyField) and
+      exists(interned int arg1, interned dontcare string _ |
+        arg1 = 0 and objects(dummyField, arg1, _)
+      )
+    )
+  ) and
+  not(
+    exists(/* Scopes::TypeEntity */ interned dontcare entity _ |
+      Expr::TypeName#ddac9018#bf(this, _)
+    )
+  ) and
+  not(
+    exists(/* Scopes::ValueEntity */ interned dontcare entity _ |
+      Expr::ValueName#28d6d7c9#bf(this, _)
+    )
+  )
+}
+
+Expr::ValueName_not_Expr::ConstantName_Expr::FunctionName_Expr::VariableName#2d5f3f78#b(
+  /* Expr::ValueName */ interned unique entity this
+)
+{
+  `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(this) and
+  exists(/* Scopes::ValueEntity */ interned dontcare entity _ |
+    Expr::ValueName#28d6d7c9#bf(this, _)
+  ) and
+  not(
+    exists(/* Scopes::Constant */ interned dontcare entity _ |
+      Expr::ConstantName#4bb94861#bf(this, _)
+    )
+  ) and
+  not(
+    exists(/* Scopes::Function */ interned entity dummyField |
+      Expr::ValueName#28d6d7c9#bf(this, dummyField) and
+      @functionobject(dummyField)
+    )
+  ) and
+  not(
+    exists(/* Scopes::Variable */ interned entity dummyField |
+      Expr::ValueName#28d6d7c9#bf(this, dummyField) and
+      exists(interned int arg1, interned dontcare string _ |
+        arg1 = 5 and objects(dummyField, arg1, _)
+      )
+    )
+  )
+}
+
+incremental
+`Expr::isTypeExprBottomUp/1#0930a8e1#b`(
+  /* Expr::Expr */ interned unique entity e
+)
+{
+  [base_case]
+  (
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e) and
+    exists(/* Scopes::TypeEntity */ interned dontcare entity _ |
+      Expr::TypeName#ddac9018#bf(e, _)
+    )
+  )
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 20 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 21 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 22 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 23 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 24 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  or
+  (@chantypeexpr(e) and `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e))
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 25 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  or
+  (
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 14 and exprs(e, arg1, _, _1)
+    ) and
+    `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+  )
+  [recursive_case]
+  (
+    (
+      exists(/* Expr::Expr */ interned entity call_result |
+        delta previous rec `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result) and
+        exists(interned int arg3, interned dontcare int _ |
+          arg3 = 0 and exprs(call_result, _, e, arg3)
+        )
+      ) and
+      exists(
+        interned int arg1, /* @exprparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 12 and exprs(e, arg1, _, _1)
+      ) and
+      `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::Expr */ interned entity call_result#2 |
+        delta previous rec `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result#2) and
+        `Expr::ParenExpr.getExpr/0#dispred#e76a565b`(e, call_result#2)
+      ) and
+      `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::Expr */ interned entity call_result#3 |
+        delta previous rec `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result#3) and
+        `Expr::StarExpr.getBase/0#dispred#59d875f2#bf`(e, call_result#3)
+      ) and
+      `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::Expr */ interned entity call_result#4 |
+        delta previous rec `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result#4) and
+        `Expr::Ellipsis.getOperand/0#dispred#9a766893`(e, call_result#4)
+      ) and
+      `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`(e)
+    )
+  ) and
+  not(previous rec `Expr::isTypeExprBottomUp/1#0930a8e1#b`(e))
+}
+
+Expr::CallExpr#61d732e2(/* Expr::CallExpr.extends */ interned unique entity this)
+{
+  exists(/* Expr::Expr */ interned entity callee |
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 17 and exprs(this, arg1, _, _1)
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(callee, _, this, arg3)
+    ) and
+    not(`Expr::isTypeExprBottomUp/1#0930a8e1#b`(callee))
+  )
+  or
+  (
+    has_ellipsis(this) and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 17 and exprs(this, arg1, _, _1)
+    )
+  )
+}
+
+`Expr::CallExpr.getCalleeExpr/0#dispred#79846a31`(
+  /* Expr::CallExpr */ interned entity this,
+  /* Expr::Expr */ interned entity result
+)
+{
+  exists(/* Expr::Expr */ interned entity call_result |
+    exists(interned dontcare int _ |
+      exists(interned int arg1 |
+        arg1 = 13 and exprs(call_result, arg1, this, _)
+      ) and
+      Expr::CallExpr#61d732e2(this) and
+      exists(interned int arg1, interned int arg3 |
+        arg1 = 13 and arg3 = 0 and exprs(call_result, arg1, this, arg3)
+      ) and
+      _ = 0
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(result, _, call_result, arg3)
+    )
+  )
+  or
+  (
+    Expr::CallExpr#61d732e2(this) and
+    not(
+      exists(interned dontcare int _ |
+        exists(/* Expr::Expr */ interned entity call_result |
+          exists(interned int arg1 |
+            arg1 = 13 and exprs(call_result, arg1, this, _)
+          ) and
+          exists(interned int arg1, interned int arg3 |
+            arg1 = 13 and arg3 = 0 and exprs(call_result, arg1, this, arg3)
+          )
+        ) and
+        _ = 0
+      )
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(result, _, this, arg3)
+    )
+  )
+}
+
+`Expr::CallExpr.getCalleeName/0#dispred#bd6f81a3`(
+  /* Expr::CallExpr */ interned entity this, interned string result
+)
+{
+  exists(/* Expr::Expr */ interned entity callee |
+    exists(/* Expr::Expr */ interned entity call_result#2 |
+      `Expr::CallExpr.getCalleeExpr/0#dispred#79846a31`(this, call_result#2) and
+      `Expr::Expr.stripParens/0#dispred#d1b9a4ef`(call_result#2, callee)
+    ) and
+    (
+      `Expr::Ident.getName/0#dispred#79c7231c`(callee, result)
+      or
+      exists(/* Expr::Ident */ interned entity call_result#5 |
+        `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba`(callee,
+          call_result#5) and
+        `Expr::Ident.getName/0#dispred#79c7231c`(call_result#5, result)
+      )
+    )
+  )
+}
+
+Expr::ConversionExpr#ccd1bfd3(
+  /* Expr::ConversionExpr.extends */ interned unique entity this
+)
+{
+  exists(/* Expr::Expr */ interned entity call_result |
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 17 and exprs(this, arg1, _, _1)
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(call_result, _, this, arg3)
+    ) and
+    `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result)
+  )
+}
+
+Expr::GenericTypeInstantiationExpr#97afd7ab(
+  /* Expr::GenericTypeInstantiationExpr.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 14 and exprs(this, arg1, _, _1)
+  )
+  or
+  exists(/* Expr::Expr */ interned entity call_result |
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 12 and exprs(this, arg1, _, _1)
+    ) and
+    exists(interned int arg3, interned dontcare int _ |
+      arg3 = 0 and exprs(call_result, _, this, arg3)
+    ) and
+    `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result)
+  )
+}
+
+Expr::IndexExpr#45304cc6(
+  /* Expr::IndexExpr.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 12 and exprs(this, arg1, _, _1)
+  ) and
+  not(
+    exists(/* Expr::Expr */ interned entity call_result |
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 0 and exprs(call_result, _, this, arg3)
+      ) and
+      `Expr::isTypeExprBottomUp/1#0930a8e1#b`(call_result)
+    )
+  )
+}
+
+`Scopes::Entity.getAReference/0#dispred#9b8ad1b8#fb`(
+  /* Scopes::Entity */ interned entity this,
+  /* Expr::Name */ interned entity result
+)
+{
+  (
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(result) and
+    Expr::Name_not_Expr::LabelName_Expr::PackageName_Expr::TypeName_Expr::ValueName#51d1487d#b(result) and
+    Expr::Name#9002049d#bf(result, this)
+  )
+  or
+  (
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(result) and
+    Expr::ValueName_not_Expr::ConstantName_Expr::FunctionName_Expr::VariableName#2d5f3f78#b(result) and
+    Expr::ValueName#28d6d7c9#bf(result, this)
+  )
+  or
+  (
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(result) and
+    Expr::ConstantName#4bb94861#bf(result, this)
+  )
+}
+
+noinline `project#Scopes::Builtin::nil/0#c367ea02#nullary`() {
+  exists(int arg11 | arg11 = 4 and arg11 = 4)
+}
+
+`Scopes::Builtin::nil/0#c367ea02`(
+  /* Scopes::BuiltinConstant */ interned unique entity result
+)
+{
+  exists(interned string dummyField |
+    `project#Scopes::Builtin::nil/0#c367ea02#nullary`() and
+    dummyField = "nil" and
+    exists(interned int arg1 | arg1 = 4 and objects(result, arg1, dummyField))
+  ) and
+  exists(interned int arg1, interned string arg2 |
+    arg1 = 4 and arg2 = "nil" and objects(result, arg1, arg2)
+  )
+}
+
+incremental
+Decls::FieldDecl#c3078bef(
+  /* Decls::FieldDecl.extends */ interned unique entity this,
+  /* Expr::StructTypeExpr */ interned entity st
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::StructTypeExpr#133b930b(st) and
+  exists(interned dontcare int _ | fields(this, st, _))
+}
+
+incremental
+Decls::InterfaceMemberSpec#36d857a6(
+  /* Decls::InterfaceMemberSpec.extends */ interned unique entity this,
+  /* Expr::InterfaceTypeExpr */ interned entity ite, interned int idx
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::InterfaceTypeExpr#acb8dfc0(ite) and
+  fields(this, ite, idx)
+}
+
+incremental
+Decls::MethodSpec#fa46175b(
+  /* Decls::MethodSpec.extends */ interned unique entity this,
+  /* Expr::Expr */ interned unique entity name,
+  /* Expr::InterfaceTypeExpr */ interned entity ite, interned int idx
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Decls::InterfaceMemberSpec#36d857a6(this, ite, idx) and
+  exists(interned int arg3, interned dontcare int _ |
+    arg3 = 1 and exprs(name, _, this, arg3)
+  )
+}
+
+incremental
+Decls::ParameterDecl#95dc5c04(
+  /* Decls::ParameterDecl.extends */ interned unique entity this,
+  interned int rawIndex, /* Expr::FuncTypeExpr */ interned entity ft
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Decls::ParameterOrResultDecl#ce65f41b(this, rawIndex, ft) and
+  GTE(rawIndex, 0)
+}
+
+incremental
+Decls::ParameterOrResultDecl#ce65f41b(
+  /* Decls::ParameterOrResultDecl.extends */ interned unique entity this,
+  interned int rawIndex, /* Expr::FuncTypeExpr */ interned entity ft
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::FuncTypeExpr#aa926b75(ft) and
+  fields(this, ft, rawIndex)
+}
+
+incremental
+Decls::ResultVariableDecl#ae16ad9c(
+  /* Decls::ResultVariableDecl.extends */ interned unique entity this,
+  interned int rawIndex, /* Expr::FuncTypeExpr */ interned entity ft
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Decls::ParameterOrResultDecl#ce65f41b(this, rawIndex, ft) and
+  LT(rawIndex, 0)
+}
+
+incremental
+Expr::ArrayTypeExpr#93f4ae6b(
+  /* Expr::ArrayTypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::TypeExpr#28cffc9d#b(this) and
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 20 and exprs(this, arg1, _, _1)
+  )
+}
+
+incremental
+Expr::ChanTypeExpr#d6aa7343(
+  /* Expr::ChanTypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::TypeExpr#28cffc9d#b(this) and @chantypeexpr(this)
+}
+
+incremental
+Expr::FuncTypeExpr#aa926b75(
+  /* Expr::FuncTypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::TypeExpr#28cffc9d#b(this) and
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 22 and exprs(this, arg1, _, _1)
+  )
+}
+
+incremental
+Expr::InterfaceTypeExpr#acb8dfc0(
+  /* Expr::InterfaceTypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::TypeExpr#28cffc9d#b(this) and
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 23 and exprs(this, arg1, _, _1)
+  )
+}
+
+incremental
+Expr::MapTypeExpr#c6e658fd(
+  /* Expr::MapTypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::TypeExpr#28cffc9d#b(this) and
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 24 and exprs(this, arg1, _, _1)
+  )
+}
+
+incremental
+Expr::StructTypeExpr#133b930b(
+  /* Expr::StructTypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case] false()
+  [recursive_case]
+  delta previous rec Expr::TypeExpr#28cffc9d#b(this) and
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 21 and exprs(this, arg1, _, _1)
+  )
+}
+
+incremental
+Expr::TypeExpr#28cffc9d#b(
+  /* Expr::TypeExpr.extends */ interned unique entity this
+)
+{
+  [base_case]
+  m#Expr::TypeExpr#28cffc9d#b(this) and
+  `Expr::isTypeExprBottomUp/1#0930a8e1#b`(this)
+  [recursive_case]
+  delta previous rec `Expr::isTypeExprTopDown/1#0306c5bb#b`(this) and
+  m#Expr::TypeExpr#28cffc9d#b(this) and
+  not(previous rec Expr::TypeExpr#28cffc9d#b(this))
+}
+
+incremental
+`Expr::isTypeExprTopDown/1#0306c5bb#b`(/* Expr::Expr */ interned unique entity e)
+{
+  [base_case]
+  (
+    exists(/* Expr::CompositeLit */ interned entity any#expr# |
+      Expr::CompositeLit#f7622b9a(any#expr#) and
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 0 and exprs(e, _, any#expr#, arg3)
+      )
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  (
+    exists(/* Expr::TypeAssertExpr */ interned entity any#expr##2 |
+      exists(
+        interned int arg1, /* @exprparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 16 and exprs(any#expr##2, arg1, _, _1)
+      ) and
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 1 and exprs(e, _, any#expr##2, arg3)
+      )
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  (
+    exists(/* Decls::TypeParamDecl */ interned entity any#expr##6 |
+      exists(
+        /* @typeparamdeclparent */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        typeparamdecls(any#expr##6, _, _1)
+      ) and
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 0 and exprs(e, _, any#expr##6, arg3)
+      )
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  exists(int dummyField |
+    exists(interned int Add#result |
+      exists(/* Decls::TypeParamDecl */ interned entity any#expr##7 |
+        exists(
+          /* @typeparamdeclparent */ interned dontcare entity _,
+          interned dontcare int _1
+         |
+          typeparamdecls(any#expr##7, _, _1)
+        ) and
+        exists(interned dontcare int _ | exprs(e, _, any#expr##7, Add#result))
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e) and
+      PlusInt(dummyField, 1, Add#result)
+    ) and
+    GTE(dummyField, 0)
+  )
+  or
+  (
+    exists(/* Decls::ReceiverDecl */ interned entity any#expr##8 |
+      exists(/* Decls::FuncDecl */ interned dontcare entity _ |
+        Decls::ReceiverDecl#512cc764(any#expr##8, _)
+      ) and
+      `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(any#expr##8, e)
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  (
+    exists(/* Decls::ValueSpec */ interned entity any#expr##14 |
+      exists(
+        interned int arg1, /* @gendecl */ interned dontcare entity _,
+        interned dontcare int _1
+       |
+        arg1 = 1 and specs(any#expr##14, arg1, _, _1)
+      ) and
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 0 and exprs(e, _, any#expr##14, arg3)
+      )
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  (
+    exists(/* Decls::TypeSpec */ interned dontcare entity _ |
+      `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa`(_, e)
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  (
+    exists(/* Expr::GenericTypeInstantiationExpr */ interned entity any#expr##16 |
+      Expr::GenericTypeInstantiationExpr#97afd7ab(any#expr##16) and
+      exists(interned int arg3, interned dontcare int _ |
+        arg3 = 0 and exprs(e, _, any#expr##16, arg3)
+      )
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+  )
+  or
+  exists(int dummyField |
+    exists(interned int Add#result |
+      exists(
+        /* Expr::GenericTypeInstantiationExpr */ interned entity any#expr##17
+       |
+        Expr::GenericTypeInstantiationExpr#97afd7ab(any#expr##17) and
+        exists(interned dontcare int _ | exprs(e, _, any#expr##17, Add#result))
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e) and
+      PlusInt(dummyField, 1, Add#result)
+    ) and
+    GTE(dummyField, 0)
+  )
+  or
+  (
+    exists(/* Stmt::CaseClause */ interned entity call_result#19 |
+      exists(/* Stmt::BlockStmt */ interned entity call_result#2 |
+        exists(/* Stmt::TypeSwitchStmt */ interned dontcare entity _ |
+          `Stmt::SwitchStmt.getBody/0#dispred#c0c536ab#bf`(_, call_result#2)
+        ) and
+        exists(interned int arg1, interned dontcare int _ |
+          arg1 = 17 and stmts(call_result#19, arg1, call_result#2, _)
+        )
+      ) and
+      exists(dontcare int _ |
+        `Stmt::CaseClause.getExpr/1#dispred#83df8657#ffb`(call_result#19, _, e)
+      )
+    ) and
+    `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e) and
+    not(
+      exists(/* Scopes::BuiltinConstant */ interned entity call_result#21 |
+        `Scopes::Entity.getAReference/0#dispred#9b8ad1b8#fb`(call_result#21, e) and
+        `Scopes::Builtin::nil/0#c367ea02`(call_result#21)
+      )
+    )
+  )
+  [recursive_case]
+  (
+    (
+      exists(/* Expr::ArrayTypeExpr */ interned entity any#expr##3 |
+        delta previous rec Expr::ArrayTypeExpr#93f4ae6b(any#expr##3) and
+        exists(interned int arg3, interned dontcare int _ |
+          arg3 = 1 and exprs(e, _, any#expr##3, arg3)
+        )
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Decls::FieldDecl */ interned entity any#expr##4 |
+        exists(/* Expr::StructTypeExpr */ interned dontcare entity _ |
+          delta previous rec Decls::FieldDecl#c3078bef(any#expr##4, _)
+        ) and
+        `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(any#expr##4, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Decls::ParameterDecl */ interned entity any#expr##5 |
+        exists(
+          interned dontcare int _,
+          /* Expr::FuncTypeExpr */ interned dontcare entity _1
+         |
+          delta previous rec Decls::ParameterDecl#95dc5c04(any#expr##5, _, _1)
+        ) and
+        `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(any#expr##5, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Decls::ResultVariableDecl */ interned entity any#expr##9 |
+        exists(
+          interned dontcare int _,
+          /* Expr::FuncTypeExpr */ interned dontcare entity _1
+         |
+          delta previous rec Decls::ResultVariableDecl#ae16ad9c(any#expr##9, _,
+            _1)
+        ) and
+        `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(any#expr##9, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Decls::MethodSpec */ interned entity any#expr##10 |
+        exists(
+          /* Expr::Expr */ interned dontcare entity _,
+          /* Expr::InterfaceTypeExpr */ interned dontcare entity _1,
+          interned dontcare int _2
+         |
+          delta previous rec Decls::MethodSpec#fa46175b(any#expr##10, _, _1, _2)
+        ) and
+        `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(any#expr##10, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::MapTypeExpr */ interned entity any#expr##11 |
+        delta previous rec Expr::MapTypeExpr#c6e658fd(any#expr##11) and
+        exists(interned int arg3, interned dontcare int _ |
+          arg3 = 0 and exprs(e, _, any#expr##11, arg3)
+        )
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::MapTypeExpr */ interned entity any#expr##12 |
+        delta previous rec Expr::MapTypeExpr#c6e658fd(any#expr##12) and
+        exists(interned int arg3, interned dontcare int _ |
+          arg3 = 1 and exprs(e, _, any#expr##12, arg3)
+        )
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::ChanTypeExpr */ interned entity any#expr##13 |
+        delta previous rec Expr::ChanTypeExpr#d6aa7343(any#expr##13) and
+        exists(interned int arg3, interned dontcare int _ |
+          arg3 = 0 and exprs(e, _, any#expr##13, arg3)
+        )
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::SelectorExpr */ interned entity any#expr##19 |
+        delta previous rec `Expr::isTypeExprTopDown/1#0306c5bb#b`(any#expr##19) and
+        exists(
+          interned int arg1, /* @exprparent */ interned dontcare entity _,
+          interned dontcare int _1
+         |
+          arg1 = 11 and exprs(any#expr##19, arg1, _, _1)
+        ) and
+        exists(interned int arg3, interned dontcare int _ |
+          arg3 = 0 and exprs(e, _, any#expr##19, arg3)
+        )
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::ParenExpr */ interned entity any#expr##20 |
+        delta previous rec `Expr::isTypeExprTopDown/1#0306c5bb#b`(any#expr##20) and
+        `Expr::ParenExpr.getExpr/0#dispred#e76a565b`(any#expr##20, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::StarExpr */ interned entity any#expr##21 |
+        delta previous rec `Expr::isTypeExprTopDown/1#0306c5bb#b`(any#expr##21) and
+        `Expr::StarExpr.getBase/0#dispred#59d875f2#fb`(any#expr##21, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+    or
+    (
+      exists(/* Expr::Ellipsis */ interned entity any#expr##22 |
+        delta previous rec `Expr::isTypeExprTopDown/1#0306c5bb#b`(any#expr##22) and
+        `Expr::Ellipsis.getOperand/0#dispred#9a766893`(any#expr##22, e)
+      ) and
+      `m#Expr::isTypeExprTopDown/1#0306c5bb#b`(e)
+    )
+  ) and
+  not(previous rec `Expr::isTypeExprTopDown/1#0306c5bb#b`(e))
+}
+
+Decls::EmbeddingSpec#637dfc5e(
+  /* Decls::EmbeddingSpec.extends */ interned unique entity this,
+  /* Expr::InterfaceTypeExpr */ interned entity ite, interned int idx
+)
+{
+  Decls::InterfaceMemberSpec#36d857a6(this, ite, idx) and
+  not(
+    exists(
+      interned int arg3, /* Expr::Expr */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg3 = 1 and exprs(_, _1, this, arg3)
+    )
+  )
+}
+
+AST::AstNode_not_Stmt::Assignment_Decls::BadDecl_Stmt::BadStmt_Stmt::BlockStmt_Stmt::BreakStmt_Stmt::CaseClause_Stmt::CommClause_Comments::Comment_Comments::CommentGroup_Decls::ConstDecl_Stmt::ContinueStmt_Stmt::DecStmt_Stmt::DeclStmt_Stmt::DeferStmt_Decls::EmbeddingSpec_Stmt::EmptyStmt_Expr::Expr_Stmt::ExprStmt_Stmt::ExpressionSwitchStmt_Files::ExtractedOrExternalFile_Stmt::FallthroughStmt_Decls::FieldDecl_Stmt::ForStmt_Decls::FuncDecl_Expr::FuncLit_Expr::FuncTypeExpr_GoMod::GoModExpr_Stmt::GoStmt_Stmt::GotoStmt_Stmt::IfStmt_Decls::ImportDecl_Decls::ImportSpec_Stmt::IncStmt_Expr::InterfaceTypeExpr_Stmt::LabeledStmt_Decls::MethodSpec_Decls::ParameterDecl_Stmt::RangeStmt_Decls::ReceiverDecl_Decls::ResultVariableDecl_Stmt::ReturnStmt_Stmt::SelectStmt_Stmt::SendStmt_Expr::StructTypeExpr_Decls::TypeDecl_Decls::TypeParamDecl_Decls::TypeSpec_Stmt::TypeSwitchStmt_Decls::ValueSpec_Decls::VarDecl#bd337792(
+  /* AST::AstNode */ interned unique entity this
+)
+{
+  AST::AstNode#29acf0d8(this) and
+  not(
+    exists(
+      interned dontcare int _, /* @modexprparent */ interned dontcare entity _1,
+      interned dontcare int _2
+     |
+      modexprs(this, _, _1, _2)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and decls(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      /* Expr::InterfaceTypeExpr */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      Decls::EmbeddingSpec#637dfc5e(this, _, _1)
+    )
+  ) and
+  not(Files::ExtractedOrExternalFile#4f1f33c0(this)) and
+  not(
+    exists(/* Expr::StructTypeExpr */ interned dontcare entity _ |
+      Decls::FieldDecl#c3078bef(this, _)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 5 and decls(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and decls(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @gendecl */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 0 and specs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      /* Expr::Expr */ interned dontcare entity _,
+      /* Expr::InterfaceTypeExpr */ interned dontcare entity _1,
+      interned dontcare int _2
+     |
+      Decls::MethodSpec#fa46175b(this, _, _1, _2)
+    )
+  ) and
+  not(
+    exists(
+      interned dontcare int _,
+      /* Expr::FuncTypeExpr */ interned dontcare entity _1
+     |
+      Decls::ParameterDecl#95dc5c04(this, _, _1)
+    )
+  ) and
+  not(
+    exists(/* Decls::FuncDecl */ interned dontcare entity _ |
+      Decls::ReceiverDecl#512cc764(this, _)
+    )
+  ) and
+  not(
+    exists(
+      interned dontcare int _,
+      /* Expr::FuncTypeExpr */ interned dontcare entity _1
+     |
+      Decls::ResultVariableDecl#ae16ad9c(this, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 3 and decls(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      /* @typeparamdeclparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      typeparamdecls(this, _, _1)
+    )
+  ) and
+  not(@typespec(this)) and
+  not(
+    exists(
+      interned int arg1, /* @gendecl */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and specs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 4 and decls(this, arg1, _, _1)
+    )
+  )
+}
+
+Expr::TypeSetLiteralExpr#3bcfc417(
+  /* Expr::TypeSetLiteralExpr.extends */ interned unique entity this
+)
+{
+  exists(
+    interned int arg1, /* @exprparent */ interned dontcare entity _,
+    interned dontcare int _1
+   |
+    arg1 = 25 and exprs(this, arg1, _, _1)
+  ) and
+  Expr::TypeExpr#28cffc9d#b(this)
+}
+
+Expr::Expr_not_Expr::ArrayTypeExpr_Expr::BadExpr_Expr::BasicLit_Expr::BinaryExpr_Expr::CallExpr_Expr::ChanTypeExpr_Expr::CompositeLit_Expr::ConversionExpr_Expr::Ellipsis_Expr::FuncLit_Expr::FuncTypeExpr_Expr::GenericFunctionInstantiationExpr_Expr::GenericTypeInstantiationExpr_Expr::Ident_Expr::IndexExpr_Expr::InterfaceTypeExpr_Expr::KeyValueExpr_Expr::MapTypeExpr_Expr::ParenExpr_Expr::SelectorExpr_Expr::SliceExpr_Expr::StarExpr_Expr::StructTypeExpr_Expr::TypeAssertExpr_Expr::TypeSetLiteralExpr_Expr::UnaryExpr#c5f2e8c7(
+  /* Expr::Expr */ interned unique entity this
+)
+{
+  exists(
+    interned dontcare int _, /* @exprparent */ interned dontcare entity _1,
+    interned dontcare int _2
+   |
+    exprs(this, _, _1, _2)
+  ) and
+  not(Expr::ArrayTypeExpr#93f4ae6b(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 0 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::BasicLit#ad5f8c2e(this)) and
+  not(Expr::BinaryExpr#7ae2c727(this)) and
+  not(Expr::CallExpr#61d732e2(this)) and
+  not(Expr::ChanTypeExpr#d6aa7343(this)) and
+  not(Expr::CompositeLit#f7622b9a(this)) and
+  not(Expr::ConversionExpr#ccd1bfd3(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::FuncLit#fdf196ce(this)) and
+  not(Expr::FuncTypeExpr#aa926b75(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 13 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::GenericTypeInstantiationExpr#97afd7ab(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::IndexExpr#45304cc6(this)) and
+  not(Expr::InterfaceTypeExpr#acb8dfc0(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 19 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::MapTypeExpr#c6e658fd(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 10 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 11 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 15 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 18 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::StructTypeExpr#133b930b(this)) and
+  not(
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 16 and exprs(this, arg1, _, _1)
+    )
+  ) and
+  not(Expr::TypeSetLiteralExpr#3bcfc417(this)) and
+  not(Expr::UnaryExpr#3d621e5f(this))
+}
+
+all_field::StructField#2f54dcd2(
+  /* all_field::StructField.extends */ interned unique entity this,
+  /* Expr::StructTypeExpr */ interned entity parent
+)
+{
+  Expr::StructTypeExpr#133b930b(parent) and
+  exists(interned dontcare int _ | fields(this, parent, _))
+}
+
+`AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(
+  /* AST::AstNode */ interned entity this, interned int i,
+  /* AST::AstNode */ interned unique entity result
+)
+{
+  exists(/* Expr::StructTypeExpr */ interned dontcare entity _ |
+    all_field::StructField#2f54dcd2(this, _)
+  ) and
+  exists(interned dontcare int _ | exprs(result, _, this, i))
+}
+
+noinline
+project#all_field::StructField#2f54dcd2(/* Expr::Expr */ interned entity this)
+{
+  exists(/* all_field::StructField */ interned dontcare entity _ |
+    all_field::StructField#2f54dcd2(_, this)
+  )
+}
+
+`m#Expr::Expr.getType/0#dispred#c339c87f#bf`(
+  /* Expr::Expr */ interned unique entity this
+)
+{
+  Expr::CompositeLit#f7622b9a(this) or
+  Expr::StructTypeExpr#133b930b(this) or
+  exists(/* Decls::TypeSpec */ interned dontcare entity _ |
+    `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa`(_, this)
+  ) or
+  project#all_field::StructField#2f54dcd2(this) or
+  exists(/* Decls::FieldBase */ interned dontcare entity _ |
+    `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(_, this)
+  )
+}
+
+`Expr::Expr.getType/0#5429ad93#bf`(
+  /* Expr::Expr */ interned entity this,
+  /* Types::Type */ interned entity result
+)
+{
+  `m#Expr::Expr.getType/0#dispred#c339c87f#bf`(this) and
+  (
+    type_of(this, result)
+    or
+    (
+      not(exists(/* @type */ interned dontcare entity _ | type_of(this, _))) and
+      exists(interned int arg1 | arg1 = 0 and types(result, arg1))
+    )
+  )
+}
+
+`Expr::Expr.getType/0#dispred#c339c87f#bf`(
+  /* Expr::Expr */ interned entity this,
+  /* Types::Type */ interned entity result
+)
+{
+  (
+    `m#Expr::Expr.getType/0#dispred#c339c87f#bf`(this) and
+    not(Expr::FuncLit#fdf196ce(this)) and
+    `Expr::Expr.getType/0#5429ad93#bf`(this, result)
+  )
+  or
+  (
+    Expr::FuncLit#fdf196ce(this) and
+    `m#Expr::Expr.getType/0#dispred#c339c87f#bf`(this) and
+    `Expr::Expr.getType/0#5429ad93#bf`(this, result) and
+    exists(interned int arg1 | arg1 = 33 and types(result, arg1))
+  )
+}
+
+`Decls::FieldBase.getType/0#dispred#6ab87e7f`(
+  /* Decls::FieldBase */ interned entity this,
+  /* Types::Type */ interned entity result
+)
+{
+  exists(/* Expr::Expr */ interned entity call_result#2 |
+    `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a`(this, call_result#2) and
+    `Expr::Expr.getType/0#dispred#c339c87f#bf`(call_result#2, result)
+  )
+}
+
+Expr::ArrayOrSliceLit#f00107b4(
+  /* Expr::ArrayOrSliceLit.extends */ interned entity this,
+  /* Types::CompositeType */ interned entity type
+)
+{
+  exists(/* Types::Type */ interned entity call_result#2 |
+    Expr::CompositeLit#f7622b9a(this) and
+    `Expr::Expr.getType/0#dispred#c339c87f#bf`(this, call_result#2) and
+    `Types::Type.getUnderlyingType/0#dispred#e61d6b4a`(call_result#2, type)
+  ) and
+  (
+    exists(interned int arg1 | arg1 = 27 and types(type, arg1))
+    or
+    exists(interned int arg1 | arg1 = 28 and types(type, arg1))
+  )
+}
+
+Expr::ArrayLit#334bd992(
+  /* Expr::ArrayLit.extends */ interned entity this,
+  /* Types::ArrayType */ interned entity type
+)
+{
+  exists(interned int arg1 | arg1 = 27 and types(type, arg1)) and
+  Expr::ArrayOrSliceLit#f00107b4(this, type)
+}
+
+Expr::MapLit#5b6b0c4e(
+  /* Expr::MapLit.extends */ interned entity this,
+  /* Types::MapType */ interned entity mt
+)
+{
+  exists(/* Types::Type */ interned entity call_result#2 |
+    Expr::CompositeLit#f7622b9a(this) and
+    `Expr::Expr.getType/0#dispred#c339c87f#bf`(this, call_result#2) and
+    `Types::Type.getUnderlyingType/0#dispred#e61d6b4a`(call_result#2, mt)
+  ) and
+  exists(interned int arg1 | arg1 = 34 and types(mt, arg1))
+}
+
+Expr::SliceLit#b736b22a(
+  /* Expr::SliceLit.extends */ interned entity this,
+  /* Types::SliceType */ interned entity type
+)
+{
+  exists(interned int arg1 | arg1 = 28 and types(type, arg1)) and
+  Expr::ArrayOrSliceLit#f00107b4(this, type)
+}
+
+Expr::StructLit#db88fded(
+  /* Expr::StructLit.extends */ interned entity this,
+  /* Types::StructType */ interned entity st
+)
+{
+  exists(/* Types::Type */ interned entity call_result#2 |
+    Expr::CompositeLit#f7622b9a(this) and
+    `Expr::Expr.getType/0#dispred#c339c87f#bf`(this, call_result#2) and
+    `Types::Type.getUnderlyingType/0#dispred#e61d6b4a`(call_result#2, st)
+  ) and
+  exists(interned int arg1 | arg1 = 29 and types(st, arg1))
+}
+
+noinline
+project#Expr::ArrayLit#334bd992(/* Expr::CompositeLit */ interned entity this)
+{
+  exists(/* Types::ArrayType */ interned dontcare entity _ |
+    Expr::ArrayLit#334bd992(this, _)
+  )
+}
+
+noinline
+project#Expr::MapLit#5b6b0c4e(/* Expr::CompositeLit */ interned entity this)
+{
+  exists(/* Types::MapType */ interned dontcare entity _ |
+    Expr::MapLit#5b6b0c4e(this, _)
+  )
+}
+
+noinline
+project#Expr::SliceLit#b736b22a(/* Expr::CompositeLit */ interned entity this)
+{
+  exists(/* Types::SliceType */ interned dontcare entity _ |
+    Expr::SliceLit#b736b22a(this, _)
+  )
+}
+
+noinline
+project#Expr::StructLit#db88fded(/* Expr::CompositeLit */ interned entity this)
+{
+  exists(/* Types::StructType */ interned dontcare entity _ |
+    Expr::StructLit#db88fded(this, _)
+  )
+}
+
+Expr::CompositeLit_not_Expr::ArrayLit_Expr::MapLit_Expr::SliceLit_Expr::StructLit#92d6e822(
+  /* Expr::CompositeLit */ interned unique entity this
+)
+{
+  Expr::CompositeLit#f7622b9a(this) and
+  not(project#Expr::ArrayLit#334bd992(this)) and
+  not(project#Expr::MapLit#5b6b0c4e(this)) and
+  not(project#Expr::SliceLit#b736b22a(this)) and
+  not(project#Expr::StructLit#db88fded(this))
+}
+
+incremental
+`Expr::Expr.toString/0#dispred#dc2488b6`(
+  /* Expr::Expr */ interned entity this, string result
+)
+{
+  [base_case]
+  (
+    result = "expression" and
+    Expr::Expr_not_Expr::ArrayTypeExpr_Expr::BadExpr_Expr::BasicLit_Expr::BinaryExpr_Expr::CallExpr_Expr::ChanTypeExpr_Expr::CompositeLit_Expr::ConversionExpr_Expr::Ellipsis_Expr::FuncLit_Expr::FuncTypeExpr_Expr::GenericFunctionInstantiationExpr_Expr::GenericTypeInstantiationExpr_Expr::Ident_Expr::IndexExpr_Expr::InterfaceTypeExpr_Expr::KeyValueExpr_Expr::MapTypeExpr_Expr::ParenExpr_Expr::SelectorExpr_Expr::SliceExpr_Expr::StarExpr_Expr::StructTypeExpr_Expr::TypeAssertExpr_Expr::TypeSetLiteralExpr_Expr::UnaryExpr#c5f2e8c7(this)
+  )
+  or
+  (result = "array type" and Expr::ArrayTypeExpr#93f4ae6b(this))
+  or
+  (
+    result = "bad expression" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 0 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    Expr::BasicLit#ad5f8c2e(this) and
+    exists(interned dontcare string _ | literals(this, _, result))
+  )
+  or
+  exists(string call_result |
+    Expr::BinaryExpr#7ae2c727(this) and
+    `Expr::OperatorExpr.getOperator/0#dispred#a5782541`(this, call_result) and
+    Append("...", call_result, "...", result)
+  )
+  or
+  (
+    Expr::CallExpr#61d732e2(this) and
+    (
+      exists(interned string call_result |
+        `Expr::CallExpr.getCalleeName/0#dispred#bd6f81a3`(this, call_result) and
+        Append("call to ", call_result, result)
+      )
+      or
+      (
+        not(
+          exists(interned dontcare string _ |
+            `Expr::CallExpr.getCalleeName/0#dispred#bd6f81a3`(this, _)
+          )
+        ) and
+        result = "function call"
+      )
+    )
+  )
+  or
+  (result = "channel type" and Expr::ChanTypeExpr#d6aa7343(this))
+  or
+  (
+    result = "composite literal" and
+    Expr::CompositeLit_not_Expr::ArrayLit_Expr::MapLit_Expr::SliceLit_Expr::StructLit#92d6e822(this)
+  )
+  or
+  (result = "array literal" and project#Expr::ArrayLit#334bd992(this))
+  or
+  (result = "map literal" and project#Expr::MapLit#5b6b0c4e(this))
+  or
+  (result = "slice literal" and project#Expr::SliceLit#b736b22a(this))
+  or
+  (result = "struct literal" and project#Expr::StructLit#db88fded(this))
+  or
+  (result = "type conversion" and Expr::ConversionExpr#ccd1bfd3(this))
+  or
+  (
+    result = "..." and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "function literal" and Expr::FuncLit#fdf196ce(this))
+  or
+  (result = "function type" and Expr::FuncTypeExpr#aa926b75(this))
+  or
+  (
+    result = "generic function instantiation expression" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 13 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "generic type instantiation expression" and
+    Expr::GenericTypeInstantiationExpr#97afd7ab(this)
+  )
+  or
+  `Expr::Ident.getName/0#dispred#79c7231c`(this, result)
+  or
+  (result = "index expression" and Expr::IndexExpr#45304cc6(this))
+  or
+  (result = "interface type" and Expr::InterfaceTypeExpr#acb8dfc0(this))
+  or
+  (
+    result = "key-value pair" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 19 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "map type" and Expr::MapTypeExpr#c6e658fd(this))
+  or
+  (
+    result = "(...)" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 10 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "slice expression" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 15 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "star expression" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 18 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "struct type" and Expr::StructTypeExpr#133b930b(this))
+  or
+  (
+    result = "type assertion" and
+    exists(
+      interned int arg1, /* @exprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 16 and exprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "type set literal" and Expr::TypeSetLiteralExpr#3bcfc417(this))
+  or
+  exists(string call_result |
+    Expr::UnaryExpr#3d621e5f(this) and
+    `Expr::OperatorExpr.getOperator/0#dispred#a5782541`(this, call_result) and
+    Append(call_result, "...", result)
+  )
+  [recursive_case]
+  exists(string call_result |
+    exists(/* Expr::Ident */ interned entity call_result#2 |
+      delta previous rec `Expr::Expr.toString/0#dispred#dc2488b6`(call_result#2,
+        call_result) and
+      `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba`(this, call_result#2)
+    ) and
+    Append("selection of ", call_result, result)
+  ) and
+  not(previous rec `Expr::Expr.toString/0#dispred#dc2488b6`(this, result))
+}
+
+`AST::AstNode.toString/0#dispred#0cb26a30`(
+  /* AST::AstNode */ interned entity this, string result
+)
+{
+  (
+    result = "AST node" and
+    AST::AstNode_not_Stmt::Assignment_Decls::BadDecl_Stmt::BadStmt_Stmt::BlockStmt_Stmt::BreakStmt_Stmt::CaseClause_Stmt::CommClause_Comments::Comment_Comments::CommentGroup_Decls::ConstDecl_Stmt::ContinueStmt_Stmt::DecStmt_Stmt::DeclStmt_Stmt::DeferStmt_Decls::EmbeddingSpec_Stmt::EmptyStmt_Expr::Expr_Stmt::ExprStmt_Stmt::ExpressionSwitchStmt_Files::ExtractedOrExternalFile_Stmt::FallthroughStmt_Decls::FieldDecl_Stmt::ForStmt_Decls::FuncDecl_Expr::FuncLit_Expr::FuncTypeExpr_GoMod::GoModExpr_Stmt::GoStmt_Stmt::GotoStmt_Stmt::IfStmt_Decls::ImportDecl_Decls::ImportSpec_Stmt::IncStmt_Expr::InterfaceTypeExpr_Stmt::LabeledStmt_Decls::MethodSpec_Decls::ParameterDecl_Stmt::RangeStmt_Decls::ReceiverDecl_Decls::ResultVariableDecl_Stmt::ReturnStmt_Stmt::SelectStmt_Stmt::SendStmt_Expr::StructTypeExpr_Decls::TypeDecl_Decls::TypeParamDecl_Decls::TypeSpec_Stmt::TypeSwitchStmt_Decls::ValueSpec_Decls::VarDecl#bd337792(this)
+  )
+  or
+  exists(string call_result |
+    `Stmt::Assignment.getOperator/0#dispred#5955ddc2`(this, call_result) and
+    Append("... ", call_result, " ...", result)
+  )
+  or
+  (
+    result = "bad declaration" and
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 0 and decls(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "bad statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 0 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "block statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 15 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "break statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 11 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "case clause" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 17 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "comm clause" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 20 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "comment" and
+    exists(
+      interned dontcare int _, /* @comment_group */ interned dontcare entity _1,
+      interned dontcare int _2, interned dontcare string _3
+     |
+      comments(this, _, _1, _2, _3)
+    )
+  )
+  or
+  (
+    result = "comment group" and
+    exists(/* @file */ interned dontcare entity _, interned dontcare int _1 |
+      comment_groups(this, _, _1)
+    )
+  )
+  or
+  (
+    result = "constant declaration" and
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and decls(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "continue statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 12 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "decrement statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 7 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "declaration statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "defer statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 9 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "interface embedding" and
+    exists(
+      /* Expr::InterfaceTypeExpr */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      Decls::EmbeddingSpec#637dfc5e(this, _, _1)
+    )
+  )
+  or
+  (
+    result = "empty statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  `Expr::Expr.toString/0#dispred#dc2488b6`(this, result)
+  or
+  (
+    result = "expression statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 4 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "expression-switch statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 18 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  files(this, result)
+  or
+  (
+    result = "fallthrough statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 14 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "field declaration" and
+    exists(/* Expr::StructTypeExpr */ interned dontcare entity _ |
+      Decls::FieldDecl#c3078bef(this, _)
+    )
+  )
+  or
+  (
+    result = "for statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 22 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "function declaration" and
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 5 and decls(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "function literal" and Expr::FuncLit#fdf196ce(this))
+  or
+  (result = "function type" and Expr::FuncTypeExpr#aa926b75(this))
+  or
+  (
+    result = "go.mod expression" and
+    GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b(this)
+  )
+  or
+  (
+    result = "go.mod (" and
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 3 and modexprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "go.mod line" and
+    GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b(this)
+  )
+  or
+  (
+    result = "go.mod exclude line" and
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "exclude" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  )
+  or
+  (
+    result = "go.mod go line" and
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "go" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  )
+  or
+  (
+    result = "go.mod module line" and
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "module" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  )
+  or
+  (
+    result = "go.mod replace line" and
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "replace" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  )
+  or
+  (
+    result = "go.mod require line" and
+    exists(int arg1, interned string arg2 |
+      arg1 = 0 and
+      arg2 = "require" and
+      `GoMod::GoModLine.getToken/1#dispred#4447bb8c`(this, arg1, arg2)
+    )
+  )
+  or
+  (
+    result = "go.mod line block" and
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 2 and modexprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "go.mod )" and
+    exists(
+      interned int arg1, /* @modexprparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 4 and modexprs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "go statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 8 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "goto statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 13 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "if statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 16 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "import declaration" and
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and decls(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "import specifier" and
+    exists(
+      interned int arg1, /* @gendecl */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 0 and specs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "increment statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 6 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "interface type" and Expr::InterfaceTypeExpr#acb8dfc0(this))
+  or
+  (
+    result = "labeled statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 3 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "method declaration" and
+    exists(
+      /* Expr::Expr */ interned dontcare entity _,
+      /* Expr::InterfaceTypeExpr */ interned dontcare entity _1,
+      interned dontcare int _2
+     |
+      Decls::MethodSpec#fa46175b(this, _, _1, _2)
+    )
+  )
+  or
+  (
+    result = "parameter declaration" and
+    exists(
+      interned dontcare int _,
+      /* Expr::FuncTypeExpr */ interned dontcare entity _1
+     |
+      Decls::ParameterDecl#95dc5c04(this, _, _1)
+    )
+  )
+  or
+  (
+    result = "range statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 23 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "receiver declaration" and
+    exists(/* Decls::FuncDecl */ interned dontcare entity _ |
+      Decls::ReceiverDecl#512cc764(this, _)
+    )
+  )
+  or
+  (
+    result = "result variable declaration" and
+    exists(
+      interned dontcare int _,
+      /* Expr::FuncTypeExpr */ interned dontcare entity _1
+     |
+      Decls::ResultVariableDecl#ae16ad9c(this, _, _1)
+    )
+  )
+  or
+  (
+    result = "return statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 10 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "select statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 21 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "send statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 5 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (result = "struct type" and Expr::StructTypeExpr#133b930b(this))
+  or
+  (
+    result = "type declaration" and
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 3 and decls(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "type parameter declaration" and
+    exists(
+      /* @typeparamdeclparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      typeparamdecls(this, _, _1)
+    )
+  )
+  or
+  (result = "type declaration specifier" and @typespec(this))
+  or
+  (
+    result = "type-switch statement" and
+    exists(
+      interned int arg1, /* @stmtparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 19 and stmts(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "value declaration specifier" and
+    exists(
+      interned int arg1, /* @gendecl */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 1 and specs(this, arg1, _, _1)
+    )
+  )
+  or
+  (
+    result = "variable declaration" and
+    exists(
+      interned int arg1, /* @declparent */ interned dontcare entity _,
+      interned dontcare int _1
+     |
+      arg1 = 4 and decls(this, arg1, _, _1)
+    )
+  )
+}
+
+`all_field::StructField.direct_pp/0#dispred#47adab9f`(
+  /* all_field::StructField */ interned entity this, string result
+)
+{
+  exists(interned string call_result#5, string call_result#6 |
+    exists(/* AST::AstNode */ interned entity call_result#7 |
+      exists(/* Expr::StructTypeExpr */ interned entity parent |
+        exists(/* Types::StructType */ interned entity sall |
+          exists(/* Expr::Expr */ interned entity call_result#2 |
+            exists(/* Scopes::DeclaredType */ interned entity dall |
+              exists(/* Decls::TypeSpec */ interned entity call_result#3 |
+                `Scopes::DeclaredType.getSpec/0#dispred#2a88491c`(dall,
+                  call_result#3) and
+                `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa`(call_result#3,
+                  call_result#2)
+              ) and
+              exists(interned dontcare int _ | objects(dall, _, call_result#5))
+            ) and
+            `Expr::Expr.getType/0#dispred#c339c87f#bf`(call_result#2, sall)
+          ) and
+          exists(interned int arg1 | arg1 = 29 and types(sall, arg1)) and
+          `Expr::Expr.getType/0#dispred#c339c87f#bf`(parent, sall)
+        ) and
+        all_field::StructField#2f54dcd2(this, parent)
+      ) and
+      exists(interned int arg1 |
+        arg1 = 1 and
+        `AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(this, arg1, call_result#7)
+      ) and
+      `AST::AstNode.toString/0#dispred#0cb26a30`(call_result#7, call_result#6)
+    ) and
+    Append(call_result#5, ".", call_result#6, result)
+  )
+}
+
+incremental
+`all_field::StructField.pp_ign_root/0#2f2b6bb5`(
+  /* all_field::StructField */ interned entity this, string result
+)
+{
+  [base_case]
+  exists(/* AST::AstNode */ interned entity call_result#12 |
+    exists(interned int arg1 |
+      arg1 = 1 and
+      `AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(this, arg1, call_result#12)
+    ) and
+    exists(/* Expr::StructTypeExpr */ interned dontcare entity _ |
+      all_field::StructField#2f54dcd2(this, _)
+    ) and
+    `AST::AstNode.toString/0#dispred#0cb26a30`(call_result#12, result)
+  )
+  [recursive_case]
+  exists(string call_result#7, string call_result#9 |
+    exists(/* AST::AstNode */ interned entity call_result#8 |
+      exists(/* Types::Type */ interned entity call_result#5 |
+        exists(/* Scopes::DeclaredType */ interned entity dall |
+          exists(/* Decls::TypeSpec */ interned entity call_result#4 |
+            exists(/* Expr::Expr */ interned entity call_result#3 |
+              exists(/* Types::Type */ interned entity call_result |
+                exists(/* Expr::StructTypeExpr */ interned entity sall |
+                  exists(
+                    /* all_field::StructField */ interned entity cast_result#StructField
+                   |
+                    delta previous rec `all_field::StructField.pp_ign_root/0#2f2b6bb5`(cast_result#StructField,
+                      call_result#9) and
+                    exists(interned dontcare int _ |
+                      fields(cast_result#StructField, sall, _)
+                    )
+                  ) and
+                  Expr::StructTypeExpr#133b930b(sall) and
+                  `Expr::Expr.getType/0#dispred#c339c87f#bf`(sall, call_result)
+                ) and
+                `Expr::Expr.getType/0#dispred#c339c87f#bf`(call_result#3,
+                  call_result)
+              ) and
+              `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa`(call_result#4,
+                call_result#3)
+            ) and
+            `Scopes::DeclaredType.getSpec/0#dispred#2a88491c`(dall,
+              call_result#4)
+          ) and
+          objecttypes(dall, call_result#5)
+        ) and
+        `Decls::FieldBase.getType/0#dispred#6ab87e7f`(this, call_result#5)
+      ) and
+      exists(/* Expr::StructTypeExpr */ interned dontcare entity _ |
+        all_field::StructField#2f54dcd2(this, _)
+      ) and
+      exists(interned int arg1 |
+        arg1 = 1 and
+        `AST::AstNode.getChild/1#dispred#d41ad3bf#bff`(this, arg1, call_result#8)
+      ) and
+      `AST::AstNode.toString/0#dispred#0cb26a30`(call_result#8, call_result#7)
+    ) and
+    Append(call_result#7, ".", call_result#9, result)
+  ) and
+  not(
+    previous rec `all_field::StructField.pp_ign_root/0#2f2b6bb5`(this, result)
+  )
+}
+
+`all_field::StructField.pp/0#dispred#30bcd7f4`(
+  /* all_field::StructField */ interned entity this, string result
+)
+{
+  exists(string call_result#7, string call_result#8 |
+    exists(/* all_field::StructField */ interned entity cast_result#StructField |
+      exists(/* Types::Type */ interned entity call_result#5 |
+        exists(/* Scopes::DeclaredType */ interned entity dall |
+          exists(/* Decls::TypeSpec */ interned entity call_result#4 |
+            exists(/* Expr::Expr */ interned entity call_result#3 |
+              exists(/* Types::Type */ interned entity call_result |
+                exists(/* Expr::StructTypeExpr */ interned entity sall |
+                  Expr::StructTypeExpr#133b930b(sall) and
+                  exists(interned dontcare int _ |
+                    fields(cast_result#StructField, sall, _)
+                  ) and
+                  `Expr::Expr.getType/0#dispred#c339c87f#bf`(sall, call_result)
+                ) and
+                `Expr::Expr.getType/0#dispred#c339c87f#bf`(call_result#3,
+                  call_result)
+              ) and
+              `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa`(call_result#4,
+                call_result#3)
+            ) and
+            `Scopes::DeclaredType.getSpec/0#dispred#2a88491c`(dall,
+              call_result#4)
+          ) and
+          objecttypes(dall, call_result#5)
+        ) and
+        `Decls::FieldBase.getType/0#dispred#6ab87e7f`(this, call_result#5)
+      ) and
+      `all_field::StructField.direct_pp/0#dispred#47adab9f`(this, call_result#7) and
+      `all_field::StructField.pp_ign_root/0#2f2b6bb5`(cast_result#StructField,
+        call_result#8)
+    ) and
+    Append(call_result#7, ".", call_result#8, result)
+  )
+  or
+  `all_field::StructField.direct_pp/0#dispred#47adab9f`(this, result)
+}
+
+noinline
+`project#AST::AstNode.toString/0#dispred#0cb26a30`(
+  /* all_field::StructField */ interned entity all
+)
+{
+  exists(dontcare string _ | `AST::AstNode.toString/0#dispred#0cb26a30`(all, _))
+}
+
+#select#query(
+  /* all_field::StructField */ interned entity all, string all#toString,
+  string all#file_name, int all#start_line, int all#start_col, int all#end_line,
+  int all#end_col, string #col
+)
+{
+  `all_field::StructField.pp/0#dispred#30bcd7f4`(all, #col) and
+  (
+    `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34`(all,
+      all#file_name, all#start_line, all#start_col, all#end_line, all#end_col)
+    or
+    (
+      not(
+        exists(
+          interned dontcare string _, dontcare int _1, dontcare int _2,
+          dontcare int _3, dontcare int _4
+         |
+          `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34`(all, _, _1,
+            _2, _3, _4)
+        )
+      ) and
+      all#file_name = "" and
+      all#start_line = 0 and
+      all#start_col = 0 and
+      all#end_line = 0 and
+      all#end_col = 0
+    )
+  ) and
+  (
+    `AST::AstNode.toString/0#dispred#0cb26a30`(all, all#toString)
+    or
+    (
+      not(`project#AST::AstNode.toString/0#dispred#0cb26a30`(all)) and
+      all#toString = "(no string representation)"
+    )
+  )
+}
+
+query #select = #select#query/8 .
+
+
+/* ---------- END STAGE ---------- */

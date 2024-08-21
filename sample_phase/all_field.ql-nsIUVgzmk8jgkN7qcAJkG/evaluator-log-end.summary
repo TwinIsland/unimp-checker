@@ -1,0 +1,112 @@
+Completed evaluation of query all_field.ql.
+Most expensive predicates for stage 2 of completed query all_field.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         0ms |       |            | Expr::TypeSetLiteralExpr#3bcfc417@9275d15b
+         0ms |     4 | 0ms @ 1    | Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb
+         0ms |       |            | Expr::UnaryExpr#3d621e5f@eb575f2r
+         0ms |       |            | GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b@72157f8q
+         0ms |       |            | GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b@c02708sa
+         0ms |     1 | 0ms @ 1    | Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs@2d07e0il
+         0ms |       |            | Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs@9fd0b01o
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2@efc8ecbl
+         0ms |       |            | GoMod::GoModLine.getRawToken/1#dispred#85e36918@fbe0fbv1
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs@cf0b8c6q
+         0ms |       |            | Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1@9d73977l
+         0ms |       |            | all_field::StructField#2f54dcd2@f087f55d
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs@7f284c8i
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#1@1ffe5494
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4@be0b1djq
+         0ms |       |            | m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf@fcf0657c
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#1@65eb42la
+         0ms |       |            | _Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared@a39fe1n5
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c@7b7ed195
+         0ms |     2 | 0ms @ 1    | Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#2@91a170u0
+         0ms |       |            | Stmt::Assignment.getOperator/0#dispred#5955ddc2@67ba2cai
+         0ms |       |            | _Expr::isTypeExprBottomUp/1#0930a8e1#b_exprs_10#join_rhs_exprs_230#join_rhs#antijoin_rhs@493a72v7
+         0ms |       |            | m#Expr::Name#9002049d#bf@cd5615ir
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3@daad62r4
+         0ms |       |            | m#Expr::TypeName#ddac9018#bf@1afe50qq
+         0ms |       |            | project#all_field::StructField#2f54dcd2@896b4c28
+         0ms |       |            | m#Expr::Expr.getType/0#dispred#c339c87f#bf@617f145f
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#3@132c96m4
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#2@65f0d49h
+         0ms |       |            | all_field::StructField#2f54dcd2_10#join_rhs@89fa388v
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs#1@13248dn0
+         0ms |       |            | modexprs_10#join_rhs@aa8f95j5
+         0ms |       |            | modtokens_120#join_rhs@2459649f
+         0ms |       |            | modexprs_120#join_rhs@0d28dc10
+         0ms |       |            | project#AST::AstNode.toString/0#dispred#0cb26a30@df6b26cq
+         0ms |       |            | modtokens_102#join_rhs@28d8f1oj
+         0ms |       |            | m#Expr::TypeExpr#28cffc9d#b@60fdafnm
+         0ms |       |            | _GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs@664956dn
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs@69b5f2nt
+         0ms |       |            | all_field::StructField.pp/0#dispred#30bcd7f4@58ae31kr
+         0ms |       |            | modexprs_0#antijoin_rhs@10fe12h4
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#3@c99734t2
+         0ms |     2 | 0ms @ 1    | all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs@87ffdbth
+         0ms |       |            | all_field::StructField.direct_pp/0#dispred#47adab9f@58b954sg
+
+Most expensive predicates for completed query all_field.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         0ms |       |            | Expr::TypeSetLiteralExpr#3bcfc417@9275d15b
+         0ms |     4 | 0ms @ 1    | Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb
+         0ms |       |            | Expr::UnaryExpr#3d621e5f@eb575f2r
+         0ms |       |            | GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b@72157f8q
+         0ms |       |            | GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b@c02708sa
+         0ms |     1 | 0ms @ 1    | Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs@2d07e0il
+         0ms |       |            | Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs@9fd0b01o
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2@efc8ecbl
+         0ms |       |            | GoMod::GoModLine.getRawToken/1#dispred#85e36918@fbe0fbv1
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs@cf0b8c6q
+         0ms |       |            | Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1@9d73977l
+         0ms |       |            | all_field::StructField#2f54dcd2@f087f55d
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs@7f284c8i
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#1@1ffe5494
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4@be0b1djq
+         0ms |       |            | m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf@fcf0657c
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#1@65eb42la
+         0ms |       |            | _Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared@a39fe1n5
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c@7b7ed195
+         0ms |     2 | 0ms @ 1    | Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#2@91a170u0
+         0ms |       |            | Stmt::Assignment.getOperator/0#dispred#5955ddc2@67ba2cai
+         0ms |       |            | _Expr::isTypeExprBottomUp/1#0930a8e1#b_exprs_10#join_rhs_exprs_230#join_rhs#antijoin_rhs@493a72v7
+         0ms |       |            | m#Expr::Name#9002049d#bf@cd5615ir
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3@daad62r4
+         0ms |       |            | m#Expr::TypeName#ddac9018#bf@1afe50qq
+         0ms |       |            | project#all_field::StructField#2f54dcd2@896b4c28
+         0ms |       |            | m#Expr::Expr.getType/0#dispred#c339c87f#bf@617f145f
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#3@132c96m4
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#2@65f0d49h
+         0ms |       |            | all_field::StructField#2f54dcd2_10#join_rhs@89fa388v
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs#1@13248dn0
+         0ms |       |            | modexprs_10#join_rhs@aa8f95j5
+         0ms |       |            | modtokens_120#join_rhs@2459649f
+         0ms |       |            | modexprs_120#join_rhs@0d28dc10
+         0ms |       |            | project#AST::AstNode.toString/0#dispred#0cb26a30@df6b26cq
+         0ms |       |            | modtokens_102#join_rhs@28d8f1oj
+         0ms |       |            | m#Expr::TypeExpr#28cffc9d#b@60fdafnm
+         0ms |       |            | _GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs@664956dn
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs@69b5f2nt
+         0ms |       |            | all_field::StructField.pp/0#dispred#30bcd7f4@58ae31kr
+         0ms |       |            | modexprs_0#antijoin_rhs@10fe12h4
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#3@c99734t2
+         0ms |     2 | 0ms @ 1    | all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs@87ffdbth
+         0ms |       |            | all_field::StructField.direct_pp/0#dispred#47adab9f@58b954sg
+
+[2024-08-21 23:19:35] Total evaluation times for this run:
+        * Wall-clock duration of evaluation run: 0.0 seconds
+        * Total time spent evaluating predicates: 0.0 seconds

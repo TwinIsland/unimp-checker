@@ -1,0 +1,1550 @@
+[2024-08-21 23:19:35] Summary of a CodeQL evaluation that started at 2024-08-21T15:19:35.122246300Z
+[2024-08-21 23:19:35] 
+[2024-08-21 23:19:35] Found predicate Locations::getLocatableLocation/1#9ecd27bf@4b9fb25a in the relation cache (size: 151)
+[2024-08-21 23:19:35] Found predicate Files::Container.splitAbsolutePath/2#dispred#ce206381@27a41art in the relation cache (size: 21)
+[2024-08-21 23:19:35] Found predicate Locations::dbLocationInfo/6#ae9d6149@565ec26p in the relation cache (size: 135)
+[2024-08-21 23:19:35] Found predicate Locations::getDiagnosticLocation/1#53099a89@d94fe9do in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate Scopes::DeclaredType.getSpec/0#dispred#2a88491c@6db9adsj in the relation cache (size: 2)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs@9fd0b01o in 0ms (size: 2).
+Evaluated relational algebra for predicate Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs@9fd0b01o:
+                {2} r1 = SCAN `Scopes::DeclaredType.getSpec/0#dispred#2a88491c` OUTPUT In.1, In.0
+                return r1
+
+[2024-08-21 23:19:35] Found predicate exprs_10#join_rhs@9091b3aa in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate @chantypeexpr@0c4ac7ue in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate Expr::CompositeLit#f7622b9a@c36189o2 in the relation cache (size: 3)
+[2024-08-21 23:19:35] Found predicate Decls::FieldBase.getTypeExpr/0#dispred#3baac12a@a38030g0 in the relation cache (size: 9)
+[2024-08-21 23:19:35] Found predicate Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa@fff27938 in the relation cache (size: 2)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate m#Expr::TypeExpr#28cffc9d#b@60fdafnm in 0ms (size: 6).
+Evaluated relational algebra for predicate m#Expr::TypeExpr#28cffc9d#b@60fdafnm:
+                {1} r1 = CONSTANT(unique int)[20]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r2 = CONSTANT(unique int)[21]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r3 = CONSTANT(unique int)[22]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r4 = CONSTANT(unique int)[23]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r5 = CONSTANT(unique int)[24]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r6 = CONSTANT(unique int)[25]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r7 = @chantypeexpr UNION r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6
+                return r7
+
+[2024-08-21 23:19:35] Found predicate typeparamdecls@9916d6bg in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate fields_102#join_rhs@3f2afeei in the relation cache (size: 9)
+[2024-08-21 23:19:35] Found predicate exprs@9b6b37qk in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate exprs_230#join_rhs@b51817o1 in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate Expr::StarExpr.getBase/0#dispred#59d875f2#bf@aa68458m in the relation cache (size: 3)
+[2024-08-21 23:19:35] Found predicate Expr::ParenExpr.getExpr/0#dispred#e76a565b@d41a50pu in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate Expr::Ellipsis.getOperand/0#dispred#9a766893@761963sr in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate specs_10#join_rhs@6d32ef8g in the relation cache (size: 5)
+[2024-08-21 23:19:35] Found predicate exprs_203#join_rhs@06ab71cm in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate Expr::StarExpr.getBase/0#dispred#59d875f2#bf_10#join_rhs@58c8afpq in the relation cache (size: 3)
+[2024-08-21 23:19:35] Found predicate Decls::ReceiverDecl#512cc764@28ed135v in the relation cache (size: 1)
+[2024-08-21 23:19:35] Found predicate Stmt::SwitchStmt.getBody/0#dispred#c0c536ab#bf@c4995c57 in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate fields_10#join_rhs@3d18d7a2 in the relation cache (size: 9)
+[2024-08-21 23:19:35] Completed evaluation of a recursive layer containing 1 different predicates (took 0ms). Predicates evaluated:
+m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb (took 0ms) (size: 14)
+
+Evaluated recursive predicate m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb in 0ms on iteration 1 (delta size: 10).
+Evaluated relational algebra for predicate m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb on iteration 1 running pipeline base:
+                {1} r1 = CONSTANT(unique int)[12]
+                {2}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+            
+                {1} r2 = CONSTANT(unique int)[17]
+                {2}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+            
+                {1} r3 = m#Expr::TypeExpr#28cffc9d#b UNION r1 UNION r2
+                return r3
+
+Evaluated recursive predicate m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb in 0ms on iteration 2 (delta size: 4).
+Evaluated relational algebra for predicate m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb on iteration 2 running pipeline standard:
+                {1} r1 = JOIN `m#Expr::isTypeExprBottomUp/1#0930a8e1#b#prev_delta` WITH `Expr::Ellipsis.getOperand/0#dispred#9a766893` ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r2 = JOIN `m#Expr::isTypeExprBottomUp/1#0930a8e1#b#prev_delta` WITH `Expr::ParenExpr.getExpr/0#dispred#e76a565b` ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r3 = JOIN `m#Expr::isTypeExprBottomUp/1#0930a8e1#b#prev_delta` WITH `Expr::StarExpr.getBase/0#dispred#59d875f2#bf` ON FIRST 1 OUTPUT Rhs.1
+            
+                {2} r4 = SCAN `m#Expr::isTypeExprBottomUp/1#0930a8e1#b#prev_delta` OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+            
+                {1} r5 = r1 UNION r2 UNION r3 UNION r4
+                {1}    | AND NOT `m#Expr::isTypeExprBottomUp/1#0930a8e1#b#prev`(FIRST 1)
+                return r5
+
+Pipeline base for m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb was evaluated in 1 iterations totaling 0ms (delta sizes total: 10).
+Pipeline standard for m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb was evaluated in 1 iterations totaling 0ms (delta sizes total: 4).
+
+[2024-08-21 23:19:35] Found predicate exprs_032#join_rhs@a3262br5 in the relation cache (size: 95)
+[2024-08-21 23:19:35] Completed evaluation of a recursive layer containing 1 different predicates (took 0ms). Predicates evaluated:
+m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 (took 0ms) (size: 12)
+
+Evaluated recursive predicate m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 in 0ms on iteration 1 (delta size: 6).
+Evaluated relational algebra for predicate m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 on iteration 1 running pipeline base:
+                return m#Expr::TypeExpr#28cffc9d#b
+
+Evaluated recursive predicate m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 in 0ms on iteration 2 (delta size: 6).
+Evaluated relational algebra for predicate m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 on iteration 2 running pipeline standard:
+                {1} r1 = JOIN `m#Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::Ellipsis.getOperand/0#dispred#9a766893_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r2 = JOIN `m#Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::ParenExpr.getExpr/0#dispred#e76a565b_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r3 = JOIN `m#Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::StarExpr.getBase/0#dispred#59d875f2#bf_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r4 = JOIN `m#Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH exprs ON FIRST 1 OUTPUT Rhs.2
+            
+                {1} r5 = r1 UNION r2 UNION r3 UNION r4
+                {1}    | AND NOT `m#Expr::isTypeExprTopDown/1#0306c5bb#b#prev`(FIRST 1)
+                return r5
+
+Pipeline base for m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 was evaluated in 1 iterations totaling 0ms (delta sizes total: 6).
+Pipeline standard for m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8 was evaluated in 1 iterations totaling 0ms (delta sizes total: 6).
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Decls::ReceiverDecl#512cc764_0#antijoin_rhs@ae7c78o1 in 0ms (size: 1).
+Evaluated relational algebra for predicate Decls::ReceiverDecl#512cc764_0#antijoin_rhs@ae7c78o1:
+                {1} r1 = SCAN Decls::ReceiverDecl#512cc764 OUTPUT In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate m#Expr::TypeName#ddac9018#bf@1afe50qq in 0ms (size: 20).
+Evaluated relational algebra for predicate m#Expr::TypeName#ddac9018#bf@1afe50qq:
+                {1} r1 = `m#Expr::isTypeExprTopDown/1#0306c5bb#b` UNION `m#Expr::isTypeExprBottomUp/1#0930a8e1#b`
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate m#Expr::Name#9002049d#bf@cd5615ir in 0ms (size: 20).
+Evaluated relational algebra for predicate m#Expr::Name#9002049d#bf@cd5615ir:
+                {1} r1 = m#Expr::TypeName#ddac9018#bf UNION `m#Expr::isTypeExprTopDown/1#0306c5bb#b`
+                return r1
+
+[2024-08-21 23:19:35] Found predicate Expr::SelectorExpr.getSelector/0#dispred#eddd43ba@df3d5fmv in the relation cache (size: 11)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf@fcf0657c in 0ms (size: 24).
+Evaluated relational algebra for predicate m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf@fcf0657c:
+                {1} r1 = JOIN `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba` WITH m#Expr::Name#9002049d#bf ON FIRST 1 OUTPUT Lhs.1
+            
+                {1} r2 = m#Expr::Name#9002049d#bf UNION r1
+                return r2
+
+[2024-08-21 23:19:35] Found predicate uses@e2cf6f8j in the relation cache (size: 36)
+[2024-08-21 23:19:35] Found predicate defs@8287e1im in the relation cache (size: 17)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::Ident.refersTo/1#dispred#253d9cdc#bf@46008e9p in 0ms (size: 8).
+Evaluated relational algebra for predicate Expr::Ident.refersTo/1#dispred#253d9cdc#bf@46008e9p:
+                {2} r1 = JOIN defs WITH `m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf` ON FIRST 1 OUTPUT Lhs.0, Lhs.1
+            
+                {2} r2 = JOIN uses WITH `m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf` ON FIRST 1 OUTPUT Lhs.0, Lhs.1
+            
+                {2} r3 = r1 UNION r2
+                return r3
+
+[2024-08-21 23:19:35] Found predicate Expr::SelectorExpr.getSelector/0#dispred#eddd43ba_10#join_rhs@ae9c924j in the relation cache (size: 11)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::Name#9002049d#bf@b33a12j2 in 0ms (size: 8).
+Evaluated relational algebra for predicate Expr::Name#9002049d#bf@b33a12j2:
+                {2} r1 = JOIN `Expr::SelectorExpr.getSelector/0#dispred#eddd43ba_10#join_rhs` WITH `Expr::Ident.refersTo/1#dispred#253d9cdc#bf` ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+            
+                {2} r2 = `Expr::Ident.refersTo/1#dispred#253d9cdc#bf` UNION r1
+                {2}    | JOIN WITH m#Expr::Name#9002049d#bf ON FIRST 1 OUTPUT Lhs.0, Lhs.1
+                return r2
+
+[2024-08-21 23:19:35] Found predicate Scopes::TypeEntity#4c87fada@11f46798 in the relation cache (size: 744)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::TypeName#ddac9018#bf@a3bb4eql in 0ms (size: 0).
+Evaluated relational algebra for predicate Expr::TypeName#ddac9018#bf@a3bb4eql:
+                {2} r1 = SCAN Expr::Name#9002049d#bf OUTPUT In.1, In.0
+                {2}    | JOIN WITH Scopes::TypeEntity#4c87fada ON FIRST 1 OUTPUT Lhs.1, Lhs.0
+                {2}    | JOIN WITH m#Expr::TypeName#ddac9018#bf ON FIRST 1 OUTPUT Lhs.0, Lhs.1
+                return r1
+
+[2024-08-21 23:19:35] Completed evaluation of a recursive layer containing 1 different predicates (took 0ms). Predicates evaluated:
+Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4 (took 0ms) (size: 6)
+
+Evaluated recursive predicate Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4 in 0ms on iteration 1 (delta size: 6).
+Evaluated relational algebra for predicate Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4 on iteration 1 running pipeline base:
+                {1} r1 = JOIN @chantypeexpr WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r2 = JOIN `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` WITH Expr::TypeName#ddac9018#bf ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r3 = CONSTANT(unique int)[14]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r4 = CONSTANT(unique int)[20]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r5 = CONSTANT(unique int)[21]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r6 = CONSTANT(unique int)[22]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r7 = CONSTANT(unique int)[23]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r8 = CONSTANT(unique int)[24]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r9 = CONSTANT(unique int)[25]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r10 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9
+                return r10
+
+Pipeline base for Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4 was evaluated in 1 iterations totaling 0ms (delta sizes total: 6).
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _Expr::isTypeExprBottomUp/1#0930a8e1#b_exprs_10#join_rhs_exprs_230#join_rhs#antijoin_rhs@493a72v7 in 0ms (size: 0).
+Evaluated relational algebra for predicate _Expr::isTypeExprBottomUp/1#0930a8e1#b_exprs_10#join_rhs_exprs_230#join_rhs#antijoin_rhs@493a72v7:
+                {1} r1 = CONSTANT(unique int)[12]
+                {2}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {2}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2, Lhs.0
+                {1}    | JOIN WITH `Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.1
+                return r1
+
+[2024-08-21 23:19:35] Found predicate Expr::GenericTypeInstantiationExpr#97afd7ab@a684d67h by cachaca (size: 0)
+[2024-08-21 23:19:35] Completed evaluation of a recursive layer containing 14 different predicates (took 0ms). Predicates evaluated:
+Decls::FieldDecl#c3078bef@c64e39wb (took 0ms) (size: 6)
+Decls::InterfaceMemberSpec#36d857a6@c64e38wb (took 0ms) (size: 0)
+Decls::MethodSpec#fa46175b@c64e37wb (took 0ms) (size: 0)
+Expr::ChanTypeExpr#d6aa7343@c64e36wb (took 0ms) (size: 0)
+Expr::ArrayTypeExpr#93f4ae6b@c64e35wb (took 0ms) (size: 0)
+Expr::StructTypeExpr#133b930b@c64e34wb (took 0ms) (size: 2)
+Expr::FuncTypeExpr#aa926b75@c64e33wb (took 0ms) (size: 4)
+Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb (took 0ms) (size: 0)
+Expr::MapTypeExpr#c6e658fd@c64e31wb (took 0ms) (size: 0)
+Expr::TypeExpr#28cffc9d#b@c64e30wb (took 0ms) (size: 6)
+Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb (took 0ms) (size: 2)
+Decls::ResultVariableDecl#ae16ad9c@c64e3yrb (took 0ms) (size: 0)
+Decls::ParameterDecl#95dc5c04@c64e3xrb (took 0ms) (size: 2)
+Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb (took 0ms) (size: 2)
+
+Evaluated recursive predicate Decls::FieldDecl#c3078bef@c64e39wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Decls::FieldDecl#c3078bef@c64e39wb on iteration 1 running pipeline base:
+                {2} r1 = EMPTY(unique entity, unique entity)
+                return r1
+
+Evaluated recursive predicate Decls::InterfaceMemberSpec#36d857a6@c64e38wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Decls::InterfaceMemberSpec#36d857a6@c64e38wb on iteration 1 running pipeline base:
+                {3} r1 = EMPTY(unique entity, unique entity, unique int)
+                return r1
+
+Evaluated recursive predicate Decls::MethodSpec#fa46175b@c64e37wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Decls::MethodSpec#fa46175b@c64e37wb on iteration 1 running pipeline base:
+                {4} r1 = EMPTY(unique entity, unique entity, unique entity, unique int)
+                return r1
+
+Evaluated recursive predicate Expr::ChanTypeExpr#d6aa7343@c64e36wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Expr::ChanTypeExpr#d6aa7343@c64e36wb on iteration 1 running pipeline base:
+                {1} r1 = EMPTY(unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::ArrayTypeExpr#93f4ae6b@c64e35wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Expr::ArrayTypeExpr#93f4ae6b@c64e35wb on iteration 1 running pipeline base:
+                {1} r1 = EMPTY(unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::StructTypeExpr#133b930b@c64e34wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Expr::StructTypeExpr#133b930b@c64e34wb on iteration 1 running pipeline base:
+                {1} r1 = EMPTY(unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::FuncTypeExpr#aa926b75@c64e33wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Expr::FuncTypeExpr#aa926b75@c64e33wb on iteration 1 running pipeline base:
+                {1} r1 = EMPTY(unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb on iteration 1 running pipeline base:
+                {1} r1 = EMPTY(unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::MapTypeExpr#c6e658fd@c64e31wb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Expr::MapTypeExpr#c6e658fd@c64e31wb on iteration 1 running pipeline base:
+                {1} r1 = EMPTY(unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::TypeExpr#28cffc9d#b@c64e30wb in 0ms on iteration 1 (delta size: 6).
+Evaluated relational algebra for predicate Expr::TypeExpr#28cffc9d#b@c64e30wb on iteration 1 running pipeline base:
+                {1} r1 = JOIN m#Expr::TypeExpr#28cffc9d#b WITH `Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb in 0ms on iteration 1 (delta size: 2).
+Evaluated relational algebra for predicate Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb on iteration 1 running pipeline base:
+                {1} r1 = `_Stmt::CaseClause.getExpr/1#dispred#83df8657#ffb_Stmt::SwitchStmt.getBody/0#dispred#c0c536ab#bf_m#Ex__#shared` AND NOT `_Scopes::Builtin::nil/0#c367ea02_Scopes::Entity.getAReference/0#dispred#9b8ad1b8#fb_10#join_rhs__Stm__#antijoin_rhs`(FIRST 1)
+            
+                {1} r2 = SCAN `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa` OUTPUT In.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r3 = JOIN Decls::ReceiverDecl#512cc764_0#antijoin_rhs WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r4 = SCAN Expr::GenericTypeInstantiationExpr#97afd7ab OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r5 = SCAN Expr::CompositeLit#f7622b9a OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r6 = JOIN exprs_203#join_rhs WITH Expr::GenericTypeInstantiationExpr#97afd7ab ON FIRST 1 OUTPUT Lhs.1, Lhs.2
+                {4}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0, _, Lhs.1, _
+                {2}    | REWRITE WITH Tmp.1 := 1, Out.1 := (In.2 - Tmp.1), Tmp.3 := 0, TEST Out.1 >= Tmp.3 KEEPING 2
+                {1}    | SCAN OUTPUT In.0
+            
+                {2} r7 = JOIN typeparamdecls_0#antijoin_rhs WITH exprs_203#join_rhs ON FIRST 1 OUTPUT Rhs.1, Rhs.2
+                {4}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0, _, Lhs.1, _
+                {2}    | REWRITE WITH Tmp.1 := 1, Out.1 := (In.2 - Tmp.1), Tmp.3 := 0, TEST Out.1 >= Tmp.3 KEEPING 2
+                {1}    | SCAN OUTPUT In.0
+            
+                {1} r8 = CONSTANT(unique int)[1]
+                {2}    | JOIN WITH specs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r9 = CONSTANT(unique int)[16]
+                {2}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := 1
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r10 = SCAN typeparamdecls OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r11 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r10
+                return r11
+
+Evaluated recursive predicate Decls::ResultVariableDecl#ae16ad9c@c64e3yrb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Decls::ResultVariableDecl#ae16ad9c@c64e3yrb on iteration 1 running pipeline base:
+                {3} r1 = EMPTY(unique entity, unique int, unique entity)
+                return r1
+
+Evaluated recursive predicate Decls::ParameterDecl#95dc5c04@c64e3xrb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Decls::ParameterDecl#95dc5c04@c64e3xrb on iteration 1 running pipeline base:
+                {3} r1 = EMPTY(unique entity, unique int, unique entity)
+                return r1
+
+Evaluated recursive predicate Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb in 0ms on iteration 1 (delta size: 0).
+Evaluated relational algebra for predicate Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb on iteration 1 running pipeline base:
+                {3} r1 = EMPTY(unique entity, unique int, unique entity)
+                return r1
+
+Evaluated recursive predicate Expr::ChanTypeExpr#d6aa7343@c64e36wb in 0ms on iteration 2 (delta size: 0).
+Evaluated relational algebra for predicate Expr::ChanTypeExpr#d6aa7343@c64e36wb on iteration 2 running pipeline standard:
+                {1} r1 = JOIN Expr::TypeExpr#28cffc9d#b#prev_delta WITH @chantypeexpr ON FIRST 1 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::ArrayTypeExpr#93f4ae6b@c64e35wb in 0ms on iteration 2 (delta size: 0).
+Evaluated relational algebra for predicate Expr::ArrayTypeExpr#93f4ae6b@c64e35wb on iteration 2 running pipeline standard:
+                {2} r1 = SCAN Expr::TypeExpr#28cffc9d#b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 20
+                {1}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::StructTypeExpr#133b930b@c64e34wb in 0ms on iteration 2 (delta size: 2).
+Evaluated relational algebra for predicate Expr::StructTypeExpr#133b930b@c64e34wb on iteration 2 running pipeline standard:
+                {2} r1 = SCAN Expr::TypeExpr#28cffc9d#b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 21
+                {1}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::FuncTypeExpr#aa926b75@c64e33wb in 0ms on iteration 2 (delta size: 4).
+Evaluated relational algebra for predicate Expr::FuncTypeExpr#aa926b75@c64e33wb on iteration 2 running pipeline standard:
+                {2} r1 = SCAN Expr::TypeExpr#28cffc9d#b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 22
+                {1}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb in 0ms on iteration 2 (delta size: 0).
+Evaluated relational algebra for predicate Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb on iteration 2 running pipeline standard:
+                {2} r1 = SCAN Expr::TypeExpr#28cffc9d#b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 23
+                {1}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::MapTypeExpr#c6e658fd@c64e31wb in 0ms on iteration 2 (delta size: 0).
+Evaluated relational algebra for predicate Expr::MapTypeExpr#c6e658fd@c64e31wb on iteration 2 running pipeline standard:
+                {2} r1 = SCAN Expr::TypeExpr#28cffc9d#b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 24
+                {1}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::TypeExpr#28cffc9d#b@c64e30wb in 0ms on iteration 2 (delta size: 0).
+Evaluated relational algebra for predicate Expr::TypeExpr#28cffc9d#b@c64e30wb on iteration 2 running pipeline standard:
+                {1} r1 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH m#Expr::TypeExpr#28cffc9d#b ON FIRST 1 OUTPUT Lhs.0
+                {1}    | AND NOT Expr::TypeExpr#28cffc9d#b#prev(FIRST 1)
+                return r1
+
+Evaluated recursive predicate Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb in 0ms on iteration 2 (delta size: 0).
+Evaluated relational algebra for predicate Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb on iteration 2 running pipeline standard:
+                {1} r1 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::Ellipsis.getOperand/0#dispred#9a766893` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r2 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::ParenExpr.getExpr/0#dispred#e76a565b` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r3 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::StarExpr.getBase/0#dispred#59d875f2#bf` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r4 = SCAN Decls::FieldDecl#c3078bef#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r5 = SCAN Decls::MethodSpec#fa46175b#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r6 = SCAN Decls::ResultVariableDecl#ae16ad9c#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r7 = SCAN Decls::ParameterDecl#95dc5c04#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r8 = SCAN Expr::ChanTypeExpr#d6aa7343#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r9 = SCAN Expr::ArrayTypeExpr#93f4ae6b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 1
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r10 = SCAN Expr::MapTypeExpr#c6e658fd#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r11 = SCAN Expr::MapTypeExpr#c6e658fd#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 1
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r12 = SCAN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 11
+                {2}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r13 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r10 UNION r11 UNION r12
+                {1}    | AND NOT `Expr::isTypeExprTopDown/1#0306c5bb#b#prev`(FIRST 1)
+                return r13
+
+Evaluated recursive predicate Decls::FieldDecl#c3078bef@c64e39wb in 0ms on iteration 3 (delta size: 6).
+Evaluated relational algebra for predicate Decls::FieldDecl#c3078bef@c64e39wb on iteration 3 running pipeline standard:
+                {2} r1 = JOIN Expr::StructTypeExpr#133b930b#prev_delta WITH fields_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, Lhs.0
+                return r1
+
+Evaluated recursive predicate Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb in 0ms on iteration 3 (delta size: 2).
+Evaluated relational algebra for predicate Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb on iteration 3 running pipeline standard:
+                {3} r1 = JOIN Expr::FuncTypeExpr#aa926b75#prev_delta WITH fields_102#join_rhs ON FIRST 1 OUTPUT Rhs.1, Rhs.2, Lhs.0
+                return r1
+
+Evaluated recursive predicate Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb in 0ms on iteration 4 (delta size: 0).
+Evaluated relational algebra for predicate Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb on iteration 4 running pipeline standard:
+                {1} r1 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::Ellipsis.getOperand/0#dispred#9a766893` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r2 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::ParenExpr.getExpr/0#dispred#e76a565b` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r3 = JOIN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` WITH `Expr::StarExpr.getBase/0#dispred#59d875f2#bf` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r4 = SCAN Decls::FieldDecl#c3078bef#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r5 = SCAN Decls::MethodSpec#fa46175b#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r6 = SCAN Decls::ResultVariableDecl#ae16ad9c#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r7 = SCAN Decls::ParameterDecl#95dc5c04#prev_delta OUTPUT In.0
+                {1}    | JOIN WITH `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r8 = SCAN Expr::ChanTypeExpr#d6aa7343#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r9 = SCAN Expr::ArrayTypeExpr#93f4ae6b#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 1
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r10 = SCAN Expr::MapTypeExpr#c6e658fd#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r11 = SCAN Expr::MapTypeExpr#c6e658fd#prev_delta OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 1
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {2} r12 = SCAN `Expr::isTypeExprTopDown/1#0306c5bb#b#prev_delta` OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 11
+                {2}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {1}    | JOIN WITH exprs_230#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {1}    | JOIN WITH `m#Expr::isTypeExprTopDown/1#0306c5bb#b` ON FIRST 1 OUTPUT Lhs.0
+            
+                {1} r13 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r10 UNION r11 UNION r12
+                {1}    | AND NOT `Expr::isTypeExprTopDown/1#0306c5bb#b#prev`(FIRST 1)
+                return r13
+
+Evaluated recursive predicate Decls::ResultVariableDecl#ae16ad9c@c64e3yrb in 0ms on iteration 4 (delta size: 0).
+Evaluated relational algebra for predicate Decls::ResultVariableDecl#ae16ad9c@c64e3yrb on iteration 4 running pipeline standard:
+                {4} r1 = SCAN Decls::ParameterOrResultDecl#ce65f41b#prev_delta OUTPUT In.0, In.1, In.2, _
+                {3}    | REWRITE WITH Tmp.3 := 0, TEST InOut.1 < Tmp.3 KEEPING 3
+                return r1
+
+Evaluated recursive predicate Decls::ParameterDecl#95dc5c04@c64e3xrb in 0ms on iteration 4 (delta size: 2).
+Evaluated relational algebra for predicate Decls::ParameterDecl#95dc5c04@c64e3xrb on iteration 4 running pipeline standard:
+                {4} r1 = SCAN Decls::ParameterOrResultDecl#ce65f41b#prev_delta OUTPUT In.0, In.1, In.2, _
+                {3}    | REWRITE WITH Tmp.3 := 0, TEST InOut.1 >= Tmp.3 KEEPING 3
+                return r1
+
+Pipeline base for Decls::FieldDecl#c3078bef@c64e39wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Decls::FieldDecl#c3078bef@c64e39wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 6).
+Pipeline base for Decls::InterfaceMemberSpec#36d857a6@c64e38wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Decls::MethodSpec#fa46175b@c64e37wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Expr::ChanTypeExpr#d6aa7343@c64e36wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Expr::ChanTypeExpr#d6aa7343@c64e36wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Expr::ArrayTypeExpr#93f4ae6b@c64e35wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Expr::ArrayTypeExpr#93f4ae6b@c64e35wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Expr::StructTypeExpr#133b930b@c64e34wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Expr::StructTypeExpr#133b930b@c64e34wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 2).
+Pipeline base for Expr::FuncTypeExpr#aa926b75@c64e33wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Expr::FuncTypeExpr#aa926b75@c64e33wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 4).
+Pipeline base for Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Expr::InterfaceTypeExpr#acb8dfc0@c64e32wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Expr::MapTypeExpr#c6e658fd@c64e31wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Expr::MapTypeExpr#c6e658fd@c64e31wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Expr::TypeExpr#28cffc9d#b@c64e30wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 6).
+Pipeline standard for Expr::TypeExpr#28cffc9d#b@c64e30wb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 2).
+Pipeline standard for Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb was evaluated in 2 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Decls::ResultVariableDecl#ae16ad9c@c64e3yrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Decls::ResultVariableDecl#ae16ad9c@c64e3yrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline base for Decls::ParameterDecl#95dc5c04@c64e3xrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Decls::ParameterDecl#95dc5c04@c64e3xrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 2).
+Pipeline base for Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 0).
+Pipeline standard for Decls::ParameterOrResultDecl#ce65f41b@c64e3wrb was evaluated in 1 iterations totaling 0ms (delta sizes total: 2).
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate all_field::StructField#2f54dcd2@f087f55d in 0ms (size: 6).
+Evaluated relational algebra for predicate all_field::StructField#2f54dcd2@f087f55d:
+                {2} r1 = JOIN fields_10#join_rhs WITH Expr::StructTypeExpr#133b930b ON FIRST 1 OUTPUT Lhs.1, Lhs.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate project#all_field::StructField#2f54dcd2@896b4c28 in 0ms (size: 2).
+Evaluated relational algebra for predicate project#all_field::StructField#2f54dcd2@896b4c28:
+                {1} r1 = SCAN all_field::StructField#2f54dcd2 OUTPUT In.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate m#Expr::Expr.getType/0#dispred#c339c87f#bf@617f145f in 0ms (size: 14).
+Evaluated relational algebra for predicate m#Expr::Expr.getType/0#dispred#c339c87f#bf@617f145f:
+                {1} r1 = SCAN `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa` OUTPUT In.1
+            
+                {1} r2 = SCAN `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` OUTPUT In.1
+            
+                {1} r3 = project#all_field::StructField#2f54dcd2 UNION Expr::CompositeLit#f7622b9a UNION Expr::StructTypeExpr#133b930b UNION r1 UNION r2
+                return r3
+
+[2024-08-21 23:19:35] Found predicate types_10#join_rhs@32231dmf in the relation cache (size: 3880)
+[2024-08-21 23:19:35] Found predicate type_of@dded9f0r in the relation cache (size: 83)
+[2024-08-21 23:19:35] Found predicate type_of_0#antijoin_rhs@acc0b6p0 in the relation cache (size: 83)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::Expr.getType/0#5429ad93#bf@4092c8lk in 0ms (size: 14).
+Evaluated relational algebra for predicate Expr::Expr.getType/0#5429ad93#bf@4092c8lk:
+                {2} r1 = JOIN `m#Expr::Expr.getType/0#dispred#c339c87f#bf` WITH type_of ON FIRST 1 OUTPUT Lhs.0, Rhs.1
+            
+                {1} r2 = `m#Expr::Expr.getType/0#dispred#c339c87f#bf` AND NOT type_of_0#antijoin_rhs(FIRST 1)
+                {2}    | SCAN OUTPUT _, In.0
+                {2}    | REWRITE WITH Out.0 := 0
+                {2}    | JOIN WITH types_10#join_rhs ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+            
+                {2} r3 = r1 UNION r2
+                return r3
+
+[2024-08-21 23:19:35] Found predicate Expr::FuncLit#fdf196ce@23effdr4 in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate types@4e2beed8 in the relation cache (size: 3880)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::Expr.getType/0#dispred#c339c87f#bf@190fa3ee in 0ms (size: 14).
+Evaluated relational algebra for predicate Expr::Expr.getType/0#dispred#c339c87f#bf@190fa3ee:
+                {1} r1 = `m#Expr::Expr.getType/0#dispred#c339c87f#bf` AND NOT Expr::FuncLit#fdf196ce(FIRST 1)
+                {2}    | JOIN WITH `Expr::Expr.getType/0#5429ad93#bf` ON FIRST 1 OUTPUT Lhs.0, Rhs.1
+            
+                {1} r2 = JOIN Expr::FuncLit#fdf196ce WITH `m#Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Lhs.0
+                {3}    | JOIN WITH `Expr::Expr.getType/0#5429ad93#bf` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.0
+                {3}    | REWRITE WITH Out.1 := 33
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.2, Lhs.0
+            
+                {2} r3 = r1 UNION r2
+                return r3
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs@2256f2p2 in 0ms (size: 14).
+Evaluated relational algebra for predicate Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs@2256f2p2:
+                {2} r1 = SCAN `Expr::Expr.getType/0#dispred#c339c87f#bf` OUTPUT In.1, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate all_field::StructField#2f54dcd2_10#join_rhs@89fa388v in 0ms (size: 6).
+Evaluated relational algebra for predicate all_field::StructField#2f54dcd2_10#join_rhs@89fa388v:
+                {2} r1 = SCAN all_field::StructField#2f54dcd2 OUTPUT In.1, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate AST::AstNode.getChild/1#dispred#d41ad3bf#bff@9b8dc2i0 in 0ms (size: 12).
+Evaluated relational algebra for predicate AST::AstNode.getChild/1#dispred#d41ad3bf#bff@9b8dc2i0:
+                {3} r1 = JOIN all_field::StructField#2f54dcd2 WITH exprs_203#join_rhs ON FIRST 1 OUTPUT Lhs.0, Rhs.2, Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Found predicate modexprs@9b1971jh in the relation cache (size: 2)
+[2024-08-21 23:19:35] Found predicate comment_groups@987d3bto in the relation cache (size: 5)
+[2024-08-21 23:19:35] Found predicate decls_10#join_rhs@129431gk in the relation cache (size: 8)
+[2024-08-21 23:19:35] Found predicate @typespec@85fda2qq in the relation cache (size: 2)
+[2024-08-21 23:19:35] Found predicate stmts_10#join_rhs@56da80bd in the relation cache (size: 13)
+[2024-08-21 23:19:35] Found predicate comments@694a3d62 in the relation cache (size: 5)
+[2024-08-21 23:19:35] Found predicate files@1ebcd3es in the relation cache (size: 3)
+[2024-08-21 23:19:35] Found predicate fields@a4cee7c1 in the relation cache (size: 9)
+[2024-08-21 23:19:35] Found predicate specs@1fd7c5es in the relation cache (size: 5)
+[2024-08-21 23:19:35] Found predicate _decls_10#join_rhs#antijoin_rhs#4@cbe1479n in the relation cache (size: 4)
+[2024-08-21 23:19:35] Found predicate literals@a37e8fj2 in the relation cache (size: 64)
+[2024-08-21 23:19:35] Found predicate Expr::Ident.getName/0#dispred#79c7231c@f5be04ov in the relation cache (size: 55)
+[2024-08-21 23:19:35] Found predicate has_ellipsis@a26ca4hj in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs_exprs_230#join_rhs#shared@036ffeea in the relation cache (size: 4)
+[2024-08-21 23:19:35] Found predicate Expr::BasicLit#ad5f8c2e@c8d872v1 in the relation cache (size: 9)
+[2024-08-21 23:19:35] Found predicate Expr::OperatorExpr.getOperator/0#dispred#a5782541@e13af9fg in the relation cache (size: 1)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#1@cca503iu in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs@4f5edb27 in the relation cache (size: 55)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#9@be3a31fs in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#8@66c123de in the relation cache (size: 3)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#7@ee8191r7 in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#6@de6ed036 in the relation cache (size: 11)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#5@a3d6000j in the relation cache (size: 3)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#4@b41a66ru in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#3@3edaac83 in the relation cache (size: 0)
+[2024-08-21 23:19:35] Found predicate _exprs_10#join_rhs#antijoin_rhs#2@d0bc1b11 in the relation cache (size: 0)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate modexprs_10#join_rhs@aa8f95j5 in 0ms (size: 2).
+Evaluated relational algebra for predicate modexprs_10#join_rhs@aa8f95j5:
+                {2} r1 = SCAN modexprs OUTPUT In.1, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate modtokens_120#join_rhs@2459649f in 0ms (size: 4).
+Evaluated relational algebra for predicate modtokens_120#join_rhs@2459649f:
+                {3} r1 = SCAN modtokens OUTPUT In.1, In.2, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate modexprs_120#join_rhs@0d28dc10 in 0ms (size: 2).
+Evaluated relational algebra for predicate modexprs_120#join_rhs@0d28dc10:
+                {3} r1 = SCAN modexprs OUTPUT In.1, In.2, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _modexprs_10#join_rhs#antijoin_rhs#1@65eb42la in 0ms (size: 2).
+Evaluated relational algebra for predicate _modexprs_10#join_rhs#antijoin_rhs#1@65eb42la:
+                {1} r1 = CONSTANT(unique int)[1]
+                {1}    | JOIN WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate modtokens_102#join_rhs@28d8f1oj in 0ms (size: 4).
+Evaluated relational algebra for predicate modtokens_102#join_rhs@28d8f1oj:
+                {3} r1 = SCAN modtokens OUTPUT In.1, In.0, In.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate GoMod::GoModLine.getRawToken/1#dispred#85e36918@fbe0fbv1 in 0ms (size: 4).
+Evaluated relational algebra for predicate GoMod::GoModLine.getRawToken/1#dispred#85e36918@fbe0fbv1:
+                {3} r1 = JOIN _modexprs_10#join_rhs#antijoin_rhs#1 WITH modtokens_102#join_rhs ON FIRST 1 OUTPUT Lhs.0, Rhs.2, Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs@664956dn in 0ms (size: 0).
+Evaluated relational algebra for predicate _GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs@664956dn:
+                {4} r1 = SCAN `GoMod::GoModLine.getRawToken/1#dispred#85e36918` OUTPUT In.0, _, In.1, In.2
+                {4}    | REWRITE WITH Out.1 := 1
+                {5}    | JOIN WITH modexprs ON FIRST 2 OUTPUT Rhs.2, _, Lhs.0, Lhs.2, Lhs.3
+                {5}    | REWRITE WITH Out.1 := 2
+                {3}    | JOIN WITH modexprs ON FIRST 2 OUTPUT Lhs.2, Lhs.3, Lhs.4
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate GoMod::GoModLine.getToken/1#dispred#4447bb8c@7b7ed195 in 0ms (size: 4).
+Evaluated relational algebra for predicate GoMod::GoModLine.getToken/1#dispred#4447bb8c@7b7ed195:
+                {3} r1 = `GoMod::GoModLine.getRawToken/1#dispred#85e36918` AND NOT `_GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs`(FIRST 3)
+            
+                {1} r2 = CONSTANT(unique int)[2]
+            
+                {2} r3 = JOIN r2 WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT _, Rhs.1
+                {2}    | REWRITE WITH Out.0 := 1
+                {1}    | JOIN WITH modexprs_120#join_rhs ON FIRST 2 OUTPUT Rhs.2
+                {4}    | JOIN WITH `GoMod::GoModLine.getRawToken/1#dispred#85e36918` ON FIRST 1 OUTPUT Lhs.0, _, Rhs.2, Rhs.1
+                {3}    | REWRITE WITH Tmp.1 := 1, Out.1 := (Tmp.1 + In.3) KEEPING 3
+            
+                {2} r4 = JOIN r2 WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := 0
+                {3}    | JOIN WITH modtokens_120#join_rhs ON FIRST 2 OUTPUT _, Lhs.0, Rhs.2
+                {3}    | REWRITE WITH Out.0 := 1
+                {3}    | JOIN WITH modexprs_120#join_rhs ON FIRST 2 OUTPUT Rhs.2, _, Lhs.2
+                {3}    | REWRITE WITH Out.1 := 0
+            
+                {3} r5 = r1 UNION r3 UNION r4
+                return r5
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs@cf0b8c6q in 0ms (size: 4).
+Evaluated relational algebra for predicate GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs@cf0b8c6q:
+                {3} r1 = SCAN `GoMod::GoModLine.getToken/1#dispred#4447bb8c` OUTPUT In.1, In.2, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate modexprs_0#antijoin_rhs@10fe12h4 in 0ms (size: 2).
+Evaluated relational algebra for predicate modexprs_0#antijoin_rhs@10fe12h4:
+                {1} r1 = SCAN modexprs OUTPUT In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _modexprs_10#join_rhs#antijoin_rhs#3@c99734t2 in 0ms (size: 0).
+Evaluated relational algebra for predicate _modexprs_10#join_rhs#antijoin_rhs#3@c99734t2:
+                {1} r1 = CONSTANT(unique int)[4]
+                {1}    | JOIN WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _modexprs_10#join_rhs#antijoin_rhs#2@91a170u0 in 0ms (size: 0).
+Evaluated relational algebra for predicate _modexprs_10#join_rhs#antijoin_rhs#2@91a170u0:
+                {1} r1 = CONSTANT(unique int)[2]
+                {1}    | JOIN WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _modexprs_10#join_rhs#antijoin_rhs@87ffdbth in 0ms (size: 0).
+Evaluated relational algebra for predicate _modexprs_10#join_rhs#antijoin_rhs@87ffdbth:
+                {1} r1 = CONSTANT(unique int)[3]
+                {1}    | JOIN WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b@c02708sa in 0ms (size: 0).
+Evaluated relational algebra for predicate GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b@c02708sa:
+                {1} r1 = modexprs_0#antijoin_rhs AND NOT _modexprs_10#join_rhs#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT _modexprs_10#join_rhs#antijoin_rhs#1(FIRST 1)
+                {1}    | AND NOT _modexprs_10#join_rhs#antijoin_rhs#2(FIRST 1)
+                {1}    | AND NOT _modexprs_10#join_rhs#antijoin_rhs#3(FIRST 1)
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Stmt::Assignment.getOperator/0#dispred#5955ddc2@67ba2cai in 0ms (size: 5).
+Evaluated relational algebra for predicate Stmt::Assignment.getOperator/0#dispred#5955ddc2@67ba2cai:
+                {1} r1 = CONSTANT(unique int)[24]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "="
+            
+                {1} r2 = CONSTANT(unique int)[25]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := ":="
+            
+                {1} r3 = CONSTANT(unique int)[26]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "+="
+            
+                {1} r4 = CONSTANT(unique int)[27]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "-="
+            
+                {1} r5 = CONSTANT(unique int)[28]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "*="
+            
+                {1} r6 = CONSTANT(unique int)[29]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "/="
+            
+                {1} r7 = CONSTANT(unique int)[30]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "%="
+            
+                {1} r8 = CONSTANT(unique int)[31]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "&="
+            
+                {1} r9 = CONSTANT(unique int)[32]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "|="
+            
+                {1} r10 = CONSTANT(unique int)[33]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "^="
+            
+                {1} r11 = CONSTANT(unique int)[34]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "<<="
+            
+                {1} r12 = CONSTANT(unique int)[35]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := ">>="
+            
+                {1} r13 = CONSTANT(unique int)[36]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "&^="
+            
+                {2} r14 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r10 UNION r11 UNION r12 UNION r13
+                return r14
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4@be0b1djq in 0ms (size: 0).
+Evaluated relational algebra for predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4@be0b1djq:
+                {2} r1 = CONSTANT(unique int, string)[0,"require"]
+                {1}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3@daad62r4 in 0ms (size: 0).
+Evaluated relational algebra for predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3@daad62r4:
+                {2} r1 = CONSTANT(unique int, string)[0,"replace"]
+                {1}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2@efc8ecbl in 0ms (size: 1).
+Evaluated relational algebra for predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2@efc8ecbl:
+                {2} r1 = CONSTANT(unique int, string)[0,"module"]
+                {1}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1@9d73977l in 0ms (size: 1).
+Evaluated relational algebra for predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1@9d73977l:
+                {2} r1 = CONSTANT(unique int, string)[0,"go"]
+                {1}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs@2d07e0il in 0ms (size: 0).
+Evaluated relational algebra for predicate _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs@2d07e0il:
+                {2} r1 = CONSTANT(unique int, string)[0,"exclude"]
+                {1}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b@72157f8q in 0ms (size: 0).
+Evaluated relational algebra for predicate GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b@72157f8q:
+                {1} r1 = _modexprs_10#join_rhs#antijoin_rhs#1 AND NOT `_GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs`(FIRST 1)
+                {1}    | AND NOT `_GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1`(FIRST 1)
+                {1}    | AND NOT `_GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2`(FIRST 1)
+                {1}    | AND NOT `_GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3`(FIRST 1)
+                {1}    | AND NOT `_GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4`(FIRST 1)
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _decls_10#join_rhs#antijoin_rhs#3@132c96m4 in 0ms (size: 0).
+Evaluated relational algebra for predicate _decls_10#join_rhs#antijoin_rhs#3@132c96m4:
+                {1} r1 = CONSTANT(unique int)[4]
+                {1}    | JOIN WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _decls_10#join_rhs#antijoin_rhs#2@65f0d49h in 0ms (size: 2).
+Evaluated relational algebra for predicate _decls_10#join_rhs#antijoin_rhs#2@65f0d49h:
+                {1} r1 = CONSTANT(unique int)[3]
+                {1}    | JOIN WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _decls_10#join_rhs#antijoin_rhs#1@1ffe5494 in 0ms (size: 0).
+Evaluated relational algebra for predicate _decls_10#join_rhs#antijoin_rhs#1@1ffe5494:
+                {1} r1 = CONSTANT(unique int)[2]
+                {1}    | JOIN WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _decls_10#join_rhs#antijoin_rhs@7f284c8i in 0ms (size: 2).
+Evaluated relational algebra for predicate _decls_10#join_rhs#antijoin_rhs@7f284c8i:
+                {1} r1 = CONSTANT(unique int)[1]
+                {1}    | JOIN WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate AST::AstNode#29acf0d8@ef8eae6i in 0ms (size: 27).
+Evaluated relational algebra for predicate AST::AstNode#29acf0d8@ef8eae6i:
+                {1} r1 = SCAN files OUTPUT In.0
+            
+                {1} r2 = SCAN fields OUTPUT In.0
+            
+                {1} r3 = SCAN specs OUTPUT In.0
+            
+                {1} r4 = _decls_10#join_rhs#antijoin_rhs UNION _decls_10#join_rhs#antijoin_rhs#1 UNION _decls_10#join_rhs#antijoin_rhs#2 UNION _decls_10#join_rhs#antijoin_rhs#3 UNION _decls_10#join_rhs#antijoin_rhs#4 UNION modexprs_0#antijoin_rhs UNION typeparamdecls_0#antijoin_rhs UNION r1 UNION r2 UNION r3
+                return r4
+
+[2024-08-21 23:19:35] Found predicate Files::ExtractedOrExternalFile#4f1f33c0@a8fae0ar in the relation cache (size: 3)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _specs_10#join_rhs#antijoin_rhs#1@13248dn0 in 0ms (size: 0).
+Evaluated relational algebra for predicate _specs_10#join_rhs#antijoin_rhs#1@13248dn0:
+                {1} r1 = CONSTANT(unique int)[1]
+                {1}    | JOIN WITH specs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Decls::ParameterDecl#95dc5c04_0#antijoin_rhs@8c9e7e63 in 0ms (size: 2).
+Evaluated relational algebra for predicate Decls::ParameterDecl#95dc5c04_0#antijoin_rhs@8c9e7e63:
+                {1} r1 = SCAN Decls::ParameterDecl#95dc5c04 OUTPUT In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _specs_10#join_rhs#antijoin_rhs@69b5f2nt in 0ms (size: 3).
+Evaluated relational algebra for predicate _specs_10#join_rhs#antijoin_rhs@69b5f2nt:
+                {1} r1 = CONSTANT(unique int)[0]
+                {1}    | JOIN WITH specs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Decls::FieldDecl#c3078bef_0#antijoin_rhs@d13dc3bp in 0ms (size: 6).
+Evaluated relational algebra for predicate Decls::FieldDecl#c3078bef_0#antijoin_rhs@d13dc3bp:
+                {1} r1 = SCAN Decls::FieldDecl#c3078bef OUTPUT In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate AST::AstNode_not_Stmt::Assignment_Decls::BadDecl_Stmt::BadStmt_Stmt::BlockStmt_Stmt::BreakStmt_Stmt::CaseClause_Stmt::CommClause_Comments::Comment_Comments::CommentGroup_Decls::ConstDecl_Stmt::ContinueStmt_Stmt::DecStmt_Stmt::DeclStmt_Stmt::DeferStmt_Decls::EmbeddingSpec_Stmt::EmptyStmt_Expr::Expr_Stmt::ExprStmt_Stmt::ExpressionSwitchStmt_Files::ExtractedOrExternalFile_Stmt::FallthroughStmt_Decls::FieldDecl_Stmt::ForStmt_Decls::FuncDecl_Expr::FuncLit_Expr::FuncTypeExpr_GoMod::GoModExpr_Stmt::GoStmt_Stmt::GotoStmt_Stmt::IfStmt_Decls::ImportDecl_Decls::ImportSpec_Stmt::IncStmt_Expr::InterfaceTypeExpr_Stmt::LabeledStmt_Decls::MethodSpec_Decls::ParameterDecl_Stmt::RangeStmt_Decls::ReceiverDecl_Decls::ResultVariableDecl_Stmt::ReturnStmt_Stmt::SelectStmt_Stmt::SendStmt_Expr::StructTypeExpr_Decls::TypeDecl_Decls::TypeParamDecl_Decls::TypeSpec_Stmt::TypeSwitchStmt_Decls::ValueSpec_Decls::VarDecl#bd337792@9eae60gr in 0ms (size: 0).
+Evaluated relational algebra for predicate AST::AstNode_not_Stmt::Assignment_Decls::BadDecl_Stmt::BadStmt_Stmt::BlockStmt_Stmt::BreakStmt_Stmt::CaseClause_Stmt::CommClause_Comments::Comment_Comments::CommentGroup_Decls::ConstDecl_Stmt::ContinueStmt_Stmt::DecStmt_Stmt::DeclStmt_Stmt::DeferStmt_Decls::EmbeddingSpec_Stmt::EmptyStmt_Expr::Expr_Stmt::ExprStmt_Stmt::ExpressionSwitchStmt_Files::ExtractedOrExternalFile_Stmt::FallthroughStmt_Decls::FieldDecl_Stmt::ForStmt_Decls::FuncDecl_Expr::FuncLit_Expr::FuncTypeExpr_GoMod::GoModExpr_Stmt::GoStmt_Stmt::GotoStmt_Stmt::IfStmt_Decls::ImportDecl_Decls::ImportSpec_Stmt::IncStmt_Expr::InterfaceTypeExpr_Stmt::LabeledStmt_Decls::MethodSpec_Decls::ParameterDecl_Stmt::RangeStmt_Decls::ReceiverDecl_Decls::ResultVariableDecl_Stmt::ReturnStmt_Stmt::SelectStmt_Stmt::SendStmt_Expr::StructTypeExpr_Decls::TypeDecl_Decls::TypeParamDecl_Decls::TypeSpec_Stmt::TypeSwitchStmt_Decls::ValueSpec_Decls::VarDecl#bd337792@9eae60gr:
+                {1} r1 = AST::AstNode#29acf0d8 AND NOT modexprs_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT _decls_10#join_rhs#antijoin_rhs#1(FIRST 1)
+                {1}    | AND NOT Decls::EmbeddingSpec#637dfc5e_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT Files::ExtractedOrExternalFile#4f1f33c0(FIRST 1)
+                {1}    | AND NOT Decls::FieldDecl#c3078bef_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT _decls_10#join_rhs#antijoin_rhs#4(FIRST 1)
+                {1}    | AND NOT _decls_10#join_rhs#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT _specs_10#join_rhs#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT Decls::MethodSpec#fa46175b_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT Decls::ParameterDecl#95dc5c04_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT Decls::ReceiverDecl#512cc764_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT Decls::ResultVariableDecl#ae16ad9c_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT _decls_10#join_rhs#antijoin_rhs#2(FIRST 1)
+                {1}    | AND NOT typeparamdecls_0#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT @typespec(FIRST 1)
+                {1}    | AND NOT _specs_10#join_rhs#antijoin_rhs#1(FIRST 1)
+                {1}    | AND NOT _decls_10#join_rhs#antijoin_rhs#3(FIRST 1)
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::CallExpr#61d732e2@86a365eu in 0ms (size: 4).
+Evaluated relational algebra for predicate Expr::CallExpr#61d732e2@86a365eu:
+                {2} r1 = _exprs_10#join_rhs_exprs_230#join_rhs#shared AND NOT `Expr::isTypeExprBottomUp/1#0930a8e1#b`(FIRST 1)
+                {1}    | SCAN OUTPUT In.1
+            
+                {2} r2 = SCAN has_ellipsis OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := 17
+                {1}    | JOIN WITH exprs ON FIRST 2 OUTPUT Lhs.0
+            
+                {1} r3 = r1 UNION r2
+                return r3
+
+[2024-08-21 23:19:35] Found predicate exprs_1023#join_rhs@ae5314ha in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate exprs_1203#join_rhs@925b242l in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate _Expr::CallExpr#61d732e2_exprs_exprs_1203#join_rhs#antijoin_rhs@2e21c53n by cachaca (size: 0)
+[2024-08-21 23:19:35] Found predicate Expr::CallExpr.getCalleeExpr/0#dispred#79846a31@17548fmm by cachaca (size: 4)
+[2024-08-21 23:19:35] Found predicate Expr::Expr.stripParens/0#dispred#d1b9a4ef@cc3f60rh in the relation cache (size: 95)
+[2024-08-21 23:19:35] Found predicate Expr::CallExpr.getCalleeName/0#dispred#bd6f81a3@8732570o by cachaca (size: 4)
+[2024-08-21 23:19:35] Found predicate Expr::CallExpr.getCalleeName/0#dispred#bd6f81a3_0#antijoin_rhs@5a24dat4 by cachaca (size: 4)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::BinaryExpr#7ae2c727@13566e2b in 0ms (size: 0).
+Evaluated relational algebra for predicate Expr::BinaryExpr#7ae2c727@13566e2b:
+                {1} r1 = CONSTANT(unique int)[33]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r2 = CONSTANT(unique int)[34]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r3 = CONSTANT(unique int)[35]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r4 = CONSTANT(unique int)[36]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r5 = CONSTANT(unique int)[37]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r6 = CONSTANT(unique int)[38]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r7 = CONSTANT(unique int)[39]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r8 = CONSTANT(unique int)[40]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r9 = CONSTANT(unique int)[41]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r10 = CONSTANT(unique int)[42]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r11 = CONSTANT(unique int)[43]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r12 = CONSTANT(unique int)[44]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r13 = CONSTANT(unique int)[45]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r14 = CONSTANT(unique int)[46]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r15 = CONSTANT(unique int)[47]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r16 = CONSTANT(unique int)[48]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r17 = CONSTANT(unique int)[49]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r18 = CONSTANT(unique int)[50]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r19 = CONSTANT(unique int)[51]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r20 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r10 UNION r11 UNION r12 UNION r13 UNION r14 UNION r15 UNION r16 UNION r17 UNION r18 UNION r19
+                return r20
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::TypeSetLiteralExpr#3bcfc417@9275d15b in 0ms (size: 0).
+Evaluated relational algebra for predicate Expr::TypeSetLiteralExpr#3bcfc417@9275d15b:
+                {1} r1 = CONSTANT(unique int)[25]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+                {1}    | JOIN WITH Expr::TypeExpr#28cffc9d#b ON FIRST 1 OUTPUT Lhs.0
+                return r1
+
+[2024-08-21 23:19:35] Found predicate Expr::IndexExpr#45304cc6@3e081645 by cachaca (size: 0)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::ConversionExpr#ccd1bfd3@45dffdo6 in 0ms (size: 0).
+Evaluated relational algebra for predicate Expr::ConversionExpr#ccd1bfd3@45dffdo6:
+                {1} r1 = JOIN _exprs_10#join_rhs_exprs_230#join_rhs#shared WITH `Expr::isTypeExprBottomUp/1#0930a8e1#b` ON FIRST 1 OUTPUT Lhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::UnaryExpr#3d621e5f@eb575f2r in 0ms (size: 1).
+Evaluated relational algebra for predicate Expr::UnaryExpr#3d621e5f@eb575f2r:
+                {1} r1 = CONSTANT(unique int)[26]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r2 = CONSTANT(unique int)[27]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r3 = CONSTANT(unique int)[28]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r4 = CONSTANT(unique int)[29]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r5 = CONSTANT(unique int)[30]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r6 = CONSTANT(unique int)[31]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r7 = CONSTANT(unique int)[32]
+                {1}    | JOIN WITH exprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1
+            
+                {1} r8 = r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7
+                return r8
+
+[2024-08-21 23:19:35] Found predicate Expr::Expr_not_Expr::ArrayTypeExpr_Expr::BadExpr_Expr::BasicLit_Expr::BinaryExpr_Expr::CallExpr_Expr::ChanTypeExpr_Expr::CompositeLit_Expr::ConversionExpr_Expr::Ellipsis_Expr::FuncLit_Expr::FuncTypeExpr_Expr::GenericFunctionInstantiationExpr_Expr::GenericTypeInstantiationExpr_Expr::Ident_Expr::IndexExpr_Expr::InterfaceTypeExpr_Expr::KeyValueExpr_Expr::MapTypeExpr_Expr::ParenExpr_Expr::SelectorExpr_Expr::SliceExpr_Expr::StarExpr_Expr::StructTypeExpr_Expr::TypeAssertExpr_Expr::TypeSetLiteralExpr_Expr::UnaryExpr#c5f2e8c7@9dc5534l by cachaca (size: 0)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate _Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared@a39fe1n5 in 0ms (size: 3).
+Evaluated relational algebra for predicate _Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared@a39fe1n5:
+                {2} r1 = JOIN Expr::CompositeLit#f7622b9a WITH `Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Rhs.1, Lhs.0
+                return r1
+
+[2024-08-21 23:19:35] Found predicate underlying_type_10#join_rhs@34355ece in the relation cache (size: 683)
+[2024-08-21 23:19:35] Found predicate _types_10#join_rhs#antijoin_rhs#1@f84c916k in the relation cache (size: 23)
+[2024-08-21 23:19:35] Found predicate _types_10#join_rhs#antijoin_rhs@99b222sv in the relation cache (size: 683)
+[2024-08-21 23:19:35] Completed evaluation of a recursive layer containing 1 different predicates (took 0ms). Predicates evaluated:
+Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb (took 0ms) (size: 3857)
+
+Evaluated recursive predicate Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb in 0ms on iteration 1 (delta size: 3174).
+Evaluated relational algebra for predicate Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb on iteration 1 running pipeline base:
+                {1} r1 = SCAN types OUTPUT In.0
+                {1}    | AND NOT _types_10#join_rhs#antijoin_rhs(FIRST 1)
+                {1}    | AND NOT _types_10#join_rhs#antijoin_rhs#1(FIRST 1)
+                {2}    | SCAN OUTPUT In.0, In.0
+                return r1
+
+Evaluated recursive predicate Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb in 0ms on iteration 2 (delta size: 683).
+Evaluated relational algebra for predicate Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb on iteration 2 running pipeline standard:
+                {2} r1 = JOIN `Types::Type.getUnderlyingType/0#dispred#e61d6b4a#prev_delta` WITH underlying_type_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | AND NOT `Types::Type.getUnderlyingType/0#dispred#e61d6b4a#prev`(FIRST 2)
+                return r1
+
+Pipeline base for Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb was evaluated in 1 iterations totaling 0ms (delta sizes total: 3174).
+Pipeline standard for Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb was evaluated in 1 iterations totaling 0ms (delta sizes total: 683).
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::StructLit#db88fded@7cc19dfu in 0ms (size: 3).
+Evaluated relational algebra for predicate Expr::StructLit#db88fded@7cc19dfu:
+                {3} r1 = JOIN `_Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared` WITH `Types::Type.getUnderlyingType/0#dispred#e61d6b4a` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 29
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.2, Lhs.0
+                return r1
+
+[2024-08-21 23:19:35] Found predicate project#Expr::StructLit#db88fded@0104d81u by cachaca (size: 3)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::ArrayOrSliceLit#f00107b4@4db12c5s in 0ms (size: 0).
+Evaluated relational algebra for predicate Expr::ArrayOrSliceLit#f00107b4@4db12c5s:
+                {3} r1 = JOIN `_Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared` WITH `Types::Type.getUnderlyingType/0#dispred#e61d6b4a` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 27
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.2, Lhs.0
+            
+                {3} r2 = JOIN `_Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared` WITH `Types::Type.getUnderlyingType/0#dispred#e61d6b4a` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 28
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.2, Lhs.0
+            
+                {2} r3 = r1 UNION r2
+                return r3
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Expr::MapLit#5b6b0c4e@3cb362d9 in 0ms (size: 0).
+Evaluated relational algebra for predicate Expr::MapLit#5b6b0c4e@3cb362d9:
+                {3} r1 = JOIN `_Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared` WITH `Types::Type.getUnderlyingType/0#dispred#e61d6b4a` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 34
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.2, Lhs.0
+                return r1
+
+[2024-08-21 23:19:35] Found predicate Expr::CompositeLit_not_Expr::ArrayLit_Expr::MapLit_Expr::SliceLit_Expr::StructLit#92d6e822@e7e5cbk1 by cachaca (size: 0)
+[2024-08-21 23:19:35] Found predicate Expr::Expr.toString/0#dispred#dc2488b6@65b676k9 by cachaca (size: 95)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate AST::AstNode.toString/0#dispred#0cb26a30@b75e7d4i in 0ms (size: 145).
+Evaluated relational algebra for predicate AST::AstNode.toString/0#dispred#0cb26a30@b75e7d4i:
+                {2} r1 = SCAN AST::AstNode_not_Stmt::Assignment_Decls::BadDecl_Stmt::BadStmt_Stmt::BlockStmt_Stmt::BreakStmt_Stmt::CaseClause_Stmt::CommClause_Comments::Comment_Comments::CommentGroup_Decls::ConstDecl_Stmt::ContinueStmt_Stmt::DecStmt_Stmt::DeclStmt_Stmt::DeferStmt_Decls::EmbeddingSpec_Stmt::EmptyStmt_Expr::Expr_Stmt::ExprStmt_Stmt::ExpressionSwitchStmt_Files::ExtractedOrExternalFile_Stmt::FallthroughStmt_Decls::FieldDecl_Stmt::ForStmt_Decls::FuncDecl_Expr::FuncLit_Expr::FuncTypeExpr_GoMod::GoModExpr_Stmt::GoStmt_Stmt::GotoStmt_Stmt::IfStmt_Decls::ImportDecl_Decls::ImportSpec_Stmt::IncStmt_Expr::InterfaceTypeExpr_Stmt::LabeledStmt_Decls::MethodSpec_Decls::ParameterDecl_Stmt::RangeStmt_Decls::ReceiverDecl_Decls::ResultVariableDecl_Stmt::ReturnStmt_Stmt::SelectStmt_Stmt::SendStmt_Expr::StructTypeExpr_Decls::TypeDecl_Decls::TypeParamDecl_Decls::TypeSpec_Stmt::TypeSwitchStmt_Decls::ValueSpec_Decls::VarDecl#bd337792 OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "AST node"
+            
+                {2} r2 = SCAN GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "go.mod line"
+            
+                {2} r3 = SCAN Expr::StructTypeExpr#133b930b OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "struct type"
+            
+                {2} r4 = SCAN Expr::FuncTypeExpr#aa926b75 OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "function type"
+            
+                {2} r5 = SCAN Expr::InterfaceTypeExpr#acb8dfc0 OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "interface type"
+            
+                {4} r6 = SCAN `Stmt::Assignment.getOperator/0#dispred#5955ddc2` OUTPUT In.0, _, In.1, _
+                {2}    | REWRITE WITH Tmp.1 := "... ", Tmp.3 := " ...", Out.1 := (Tmp.1 ++ In.2 ++ Tmp.3) KEEPING 2
+            
+                {2} r7 = SCAN Expr::FuncLit#fdf196ce OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "function literal"
+            
+                {2} r8 = SCAN GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "go.mod expression"
+            
+                {2} r9 = SCAN Decls::FieldDecl#c3078bef OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "field declaration"
+            
+                {1} r10 = CONSTANT(unique int)[3]
+            
+                {2} r11 = JOIN r10 WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "go.mod ("
+            
+                {1} r12 = CONSTANT(unique int)[4]
+            
+                {2} r13 = JOIN r12 WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "go.mod )"
+            
+                {2} r14 = SCAN comments OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "comment"
+            
+                {2} r15 = SCAN Decls::MethodSpec#fa46175b OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "method declaration"
+            
+                {2} r16 = SCAN Decls::ReceiverDecl#512cc764 OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "receiver declaration"
+            
+                {2} r17 = SCAN Decls::EmbeddingSpec#637dfc5e OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "interface embedding"
+            
+                {1} r18 = CONSTANT(unique int)[17]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "case clause"
+            
+                {1} r19 = CONSTANT(unique int)[20]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "comm clause"
+            
+                {1} r20 = CONSTANT(unique int)[8]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "go statement"
+            
+                {1} r21 = CONSTANT(unique int)[16]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "if statement"
+            
+                {2} r22 = SCAN Decls::ParameterDecl#95dc5c04 OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "parameter declaration"
+            
+                {1} r23 = CONSTANT(unique int)[0]
+            
+                {2} r24 = JOIN r23 WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "bad statement"
+            
+                {1} r25 = CONSTANT(unique int)[22]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "for statement"
+            
+                {1} r26 = CONSTANT(unique int)[5]
+            
+                {2} r27 = JOIN r26 WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "send statement"
+            
+                {1} r28 = CONSTANT(unique int)[13]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "goto statement"
+            
+                {2} r29 = JOIN r23 WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "bad declaration"
+            
+                {1} r30 = CONSTANT(unique int)[2]
+            
+                {2} r31 = JOIN r30 WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "empty statement"
+            
+                {1} r32 = CONSTANT(unique int)[9]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "defer statement"
+            
+                {1} r33 = CONSTANT(unique int)[11]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "break statement"
+            
+                {1} r34 = CONSTANT(unique int)[15]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "block statement"
+            
+                {1} r35 = CONSTANT(unique int)[23]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "range statement"
+            
+                {2} r36 = SCAN @typespec OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "type declaration specifier"
+            
+                {2} r37 = JOIN r23 WITH specs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "import specifier"
+            
+                {2} r38 = JOIN r10 WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "type declaration"
+            
+                {1} r39 = CONSTANT(unique int)[10]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "return statement"
+            
+                {1} r40 = CONSTANT(unique int)[21]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "select statement"
+            
+                {2} r41 = JOIN r30 WITH modexprs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "go.mod line block"
+            
+                {2} r42 = JOIN r10 WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "labeled statement"
+            
+                {1} r43 = CONSTANT(unique int)[1]
+            
+                {2} r44 = JOIN r43 WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "import declaration"
+            
+                {1} r45 = CONSTANT(unique int)[12]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "continue statement"
+            
+                {2} r46 = SCAN Decls::ResultVariableDecl#ae16ad9c OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "result variable declaration"
+            
+                {1} r47 = CONSTANT(unique int)[6]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "increment statement"
+            
+                {1} r48 = CONSTANT(unique int)[7]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "decrement statement"
+            
+                {2} r49 = SCAN comment_groups OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "comment group"
+            
+                {2} r50 = JOIN r30 WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "constant declaration"
+            
+                {2} r51 = JOIN r12 WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "expression statement"
+            
+                {2} r52 = JOIN r12 WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "variable declaration"
+            
+                {2} r53 = JOIN r26 WITH decls_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "function declaration"
+            
+                {2} r54 = CONSTANT(int, string)[0,"go"]
+                {2}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2, _
+                {2}    | REWRITE WITH Out.1 := "go.mod go line"
+            
+                {2} r55 = JOIN r43 WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "declaration statement"
+            
+                {1} r56 = CONSTANT(unique int)[14]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "fallthrough statement"
+            
+                {1} r57 = CONSTANT(unique int)[19]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "type-switch statement"
+            
+                {2} r58 = JOIN r43 WITH specs_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "value declaration specifier"
+            
+                {1} r59 = CONSTANT(unique int)[18]
+                {2}    | JOIN WITH stmts_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _
+                {2}    | REWRITE WITH Out.1 := "expression-switch statement"
+            
+                {2} r60 = CONSTANT(int, string)[0,"module"]
+                {2}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2, _
+                {2}    | REWRITE WITH Out.1 := "go.mod module line"
+            
+                {2} r61 = CONSTANT(int, string)[0,"exclude"]
+                {2}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2, _
+                {2}    | REWRITE WITH Out.1 := "go.mod exclude line"
+            
+                {2} r62 = CONSTANT(int, string)[0,"replace"]
+                {2}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2, _
+                {2}    | REWRITE WITH Out.1 := "go.mod replace line"
+            
+                {2} r63 = CONSTANT(int, string)[0,"require"]
+                {2}    | JOIN WITH `GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs` ON FIRST 2 OUTPUT Rhs.2, _
+                {2}    | REWRITE WITH Out.1 := "go.mod require line"
+            
+                {2} r64 = SCAN typeparamdecls OUTPUT In.0, _
+                {2}    | REWRITE WITH Out.1 := "type parameter declaration"
+            
+                {2} r65 = `Expr::Expr.toString/0#dispred#dc2488b6` UNION files UNION r1 UNION r2 UNION r3 UNION r4 UNION r5 UNION r6 UNION r7 UNION r8 UNION r9 UNION r11 UNION r13 UNION r14 UNION r15 UNION r16 UNION r17 UNION r18 UNION r19 UNION r20 UNION r21 UNION r22 UNION r24 UNION r25 UNION r27 UNION r28 UNION r29 UNION r31 UNION r32 UNION r33 UNION r34 UNION r35 UNION r36 UNION r37 UNION r38 UNION r39 UNION r40 UNION r41 UNION r42 UNION r44 UNION r45 UNION r46 UNION r47 UNION r48 UNION r49 UNION r50 UNION r51 UNION r52 UNION r53 UNION r54 UNION r55 UNION r56 UNION r57 UNION r58 UNION r59 UNION r60 UNION r61 UNION r62 UNION r63 UNION r64
+                return r65
+
+[2024-08-21 23:19:35] Found predicate objects@35a7bbjt in the relation cache (size: 13412)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate all_field::StructField.direct_pp/0#dispred#47adab9f@58b954sg in 0ms (size: 6).
+Evaluated relational algebra for predicate all_field::StructField.direct_pp/0#dispred#47adab9f@58b954sg:
+                {2} r1 = JOIN `Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs` WITH `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa` ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+                {2}    | JOIN WITH objects ON FIRST 1 OUTPUT Lhs.1, Rhs.2
+                {3}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 29
+                {2}    | JOIN WITH types ON FIRST 2 OUTPUT Lhs.0, Lhs.2
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {3}    | JOIN WITH all_field::StructField#2f54dcd2_10#join_rhs ON FIRST 1 OUTPUT Rhs.1, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 1
+                {3}    | JOIN WITH `AST::AstNode.getChild/1#dispred#d41ad3bf#bff` ON FIRST 2 OUTPUT Rhs.2, Lhs.2, Lhs.0
+                {4}    | JOIN WITH `AST::AstNode.toString/0#dispred#0cb26a30` ON FIRST 1 OUTPUT Lhs.2, _, Lhs.1, Rhs.1
+                {2}    | REWRITE WITH Tmp.1 := ".", Out.1 := (In.2 ++ Tmp.1 ++ In.3) KEEPING 2
+                return r1
+
+[2024-08-21 23:19:35] Found predicate objecttypes@53c50dlk in the relation cache (size: 13371)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate AST::AstNode.getChild/1#dispred#d41ad3bf#bff_102#join_rhs@d24a684p in 0ms (size: 12).
+Evaluated relational algebra for predicate AST::AstNode.getChild/1#dispred#d41ad3bf#bff_102#join_rhs@d24a684p:
+                {3} r1 = SCAN `AST::AstNode.getChild/1#dispred#d41ad3bf#bff` OUTPUT In.1, In.0, In.2
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Decls::FieldBase.getType/0#dispred#6ab87e7f@52be2172 in 0ms (size: 9).
+Evaluated relational algebra for predicate Decls::FieldBase.getType/0#dispred#6ab87e7f@52be2172:
+                {2} r1 = SCAN `Decls::FieldBase.getTypeExpr/0#dispred#3baac12a` OUTPUT In.1, In.0
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Decls::FieldBase.getType/0#dispred#6ab87e7f_10#join_rhs@b578545n in 0ms (size: 9).
+Evaluated relational algebra for predicate Decls::FieldBase.getType/0#dispred#6ab87e7f_10#join_rhs@b578545n:
+                {2} r1 = SCAN `Decls::FieldBase.getType/0#dispred#6ab87e7f` OUTPUT In.1, In.0
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa_10#join_rhs@b64d153a in 0ms (size: 2).
+Evaluated relational algebra for predicate Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa_10#join_rhs@b64d153a:
+                {2} r1 = SCAN `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa` OUTPUT In.1, In.0
+                return r1
+
+[2024-08-21 23:19:35] Completed evaluation of a recursive layer containing 1 different predicates (took 0ms). Predicates evaluated:
+all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai (took 0ms) (size: 8)
+
+Evaluated recursive predicate all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai in 0ms on iteration 1 (delta size: 6).
+Evaluated relational algebra for predicate all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai on iteration 1 running pipeline base:
+                {1} r1 = CONSTANT(unique int)[1]
+                {2}    | JOIN WITH `AST::AstNode.getChild/1#dispred#d41ad3bf#bff_102#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Rhs.2
+                {2}    | JOIN WITH all_field::StructField#2f54dcd2 ON FIRST 1 OUTPUT Lhs.1, Lhs.0
+                {2}    | JOIN WITH `AST::AstNode.toString/0#dispred#0cb26a30` ON FIRST 1 OUTPUT Lhs.1, Rhs.1
+                return r1
+
+Evaluated recursive predicate all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai in 0ms on iteration 2 (delta size: 2).
+Evaluated relational algebra for predicate all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai on iteration 2 running pipeline standard:
+                {2} r1 = JOIN `all_field::StructField.pp_ign_root/0#2f2b6bb5#prev_delta` WITH fields ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH Expr::StructTypeExpr#133b930b ON FIRST 1 OUTPUT Lhs.0, Lhs.1
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH objecttypes ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Decls::FieldBase.getType/0#dispred#6ab87e7f_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {3}    | JOIN WITH all_field::StructField#2f54dcd2 ON FIRST 1 OUTPUT Lhs.0, _, Lhs.1
+                {3}    | REWRITE WITH Out.1 := 1
+                {3}    | JOIN WITH `AST::AstNode.getChild/1#dispred#d41ad3bf#bff` ON FIRST 2 OUTPUT Rhs.2, Lhs.2, Lhs.0
+                {4}    | JOIN WITH `AST::AstNode.toString/0#dispred#0cb26a30` ON FIRST 1 OUTPUT Lhs.2, _, Rhs.1, Lhs.1
+                {2}    | REWRITE WITH Tmp.1 := ".", Out.1 := (In.2 ++ Tmp.1 ++ In.3) KEEPING 2
+                {2}    | AND NOT `all_field::StructField.pp_ign_root/0#2f2b6bb5#prev`(FIRST 2)
+                return r1
+
+Pipeline base for all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai was evaluated in 1 iterations totaling 0ms (delta sizes total: 6).
+Pipeline standard for all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai was evaluated in 1 iterations totaling 0ms (delta sizes total: 2).
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate all_field::StructField.pp/0#dispred#30bcd7f4@58ae31kr in 0ms (size: 8).
+Evaluated relational algebra for predicate all_field::StructField.pp/0#dispred#30bcd7f4@58ae31kr:
+                {2} r1 = JOIN fields_10#join_rhs WITH Expr::StructTypeExpr#133b930b ON FIRST 1 OUTPUT Lhs.0, Lhs.1
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Decls::TypeSpec.getTypeExpr/0#dispred#7cc041aa_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH objecttypes ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {2}    | JOIN WITH `Decls::FieldBase.getType/0#dispred#6ab87e7f_10#join_rhs` ON FIRST 1 OUTPUT Rhs.1, Lhs.1
+                {3}    | JOIN WITH `all_field::StructField.direct_pp/0#dispred#47adab9f` ON FIRST 1 OUTPUT Lhs.1, Lhs.0, Rhs.1
+                {4}    | JOIN WITH `all_field::StructField.pp_ign_root/0#2f2b6bb5` ON FIRST 1 OUTPUT Lhs.1, _, Lhs.2, Rhs.1
+                {2}    | REWRITE WITH Tmp.1 := ".", Out.1 := (In.2 ++ Tmp.1 ++ In.3) KEEPING 2
+            
+                {2} r2 = `all_field::StructField.direct_pp/0#dispred#47adab9f` UNION r1
+                return r2
+
+[2024-08-21 23:19:35] Found predicate Locations::Locatable.hasLocationInfo/5#dispred#3a271a34@ba0043ds in the relation cache (size: 151)
+[2024-08-21 23:19:35] Evaluated non-recursive predicate project#AST::AstNode.toString/0#dispred#0cb26a30@df6b26cq in 0ms (size: 145).
+Evaluated relational algebra for predicate project#AST::AstNode.toString/0#dispred#0cb26a30@df6b26cq:
+                {1} r1 = SCAN `AST::AstNode.toString/0#dispred#0cb26a30` OUTPUT In.0
+                {1}    | STREAM DEDUP
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k in 0ms (size: 151).
+Evaluated relational algebra for predicate Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k:
+                {1} r1 = SCAN `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34` OUTPUT In.0
+                {1}    | STREAM DEDUP
+                return r1
+
+[2024-08-21 23:19:35] Evaluated non-recursive predicate #select#query@60c2c9c8 in 0ms (size: 8).
+Evaluated relational algebra for predicate #select#query@60c2c9c8:
+                {7} r1 = JOIN `all_field::StructField.pp/0#dispred#30bcd7f4` WITH `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34` ON FIRST 1 OUTPUT Lhs.0, Lhs.1, Rhs.1, Rhs.2, Rhs.3, Rhs.4, Rhs.5
+            
+                {2} r2 = `all_field::StructField.pp/0#dispred#30bcd7f4` AND NOT `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs`(FIRST 1)
+                {7}    | SCAN OUTPUT In.0, In.1, _, _, _, _, _
+                {7}    | REWRITE WITH Out.2 := "", Out.3 := 0, Out.4 := 0, Out.5 := 0, Out.6 := 0
+            
+                {7} r3 = r1 UNION r2
+                {8}    | JOIN WITH `AST::AstNode.toString/0#dispred#0cb26a30` ON FIRST 1 OUTPUT Lhs.0, Rhs.1, Lhs.2, Lhs.3, Lhs.4, Lhs.5, Lhs.6, Lhs.1
+            
+                {2} r4 = `all_field::StructField.pp/0#dispred#30bcd7f4` AND NOT `Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs`(FIRST 1)
+                {7}    | SCAN OUTPUT In.0, In.1, _, _, _, _, _
+                {7}    | REWRITE WITH Out.2 := "", Out.3 := 0, Out.4 := 0, Out.5 := 0, Out.6 := 0
+            
+                {7} r5 = r1 UNION r4
+                {7}    | AND NOT `project#AST::AstNode.toString/0#dispred#0cb26a30`(FIRST 1)
+                {8}    | SCAN OUTPUT In.0, _, In.2, In.3, In.4, In.5, In.6, In.1
+                {8}    | REWRITE WITH Out.1 := "(no string representation)"
+            
+                {8} r6 = r3 UNION r5
+                return r6
+
+[2024-08-21 23:19:35] Completed evaluation of query all_field.ql.
+Most expensive predicates for stage 2 of completed query all_field.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         0ms |       |            | Expr::TypeSetLiteralExpr#3bcfc417@9275d15b
+         0ms |     4 | 0ms @ 1    | Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb
+         0ms |       |            | Expr::UnaryExpr#3d621e5f@eb575f2r
+         0ms |       |            | GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b@72157f8q
+         0ms |       |            | GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b@c02708sa
+         0ms |     1 | 0ms @ 1    | Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs@2d07e0il
+         0ms |       |            | Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs@9fd0b01o
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2@efc8ecbl
+         0ms |       |            | GoMod::GoModLine.getRawToken/1#dispred#85e36918@fbe0fbv1
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs@cf0b8c6q
+         0ms |       |            | Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1@9d73977l
+         0ms |       |            | all_field::StructField#2f54dcd2@f087f55d
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs@7f284c8i
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#1@1ffe5494
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4@be0b1djq
+         0ms |       |            | m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf@fcf0657c
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#1@65eb42la
+         0ms |       |            | _Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared@a39fe1n5
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c@7b7ed195
+         0ms |     2 | 0ms @ 1    | Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#2@91a170u0
+         0ms |       |            | Stmt::Assignment.getOperator/0#dispred#5955ddc2@67ba2cai
+         0ms |       |            | _Expr::isTypeExprBottomUp/1#0930a8e1#b_exprs_10#join_rhs_exprs_230#join_rhs#antijoin_rhs@493a72v7
+         0ms |       |            | m#Expr::Name#9002049d#bf@cd5615ir
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3@daad62r4
+         0ms |       |            | m#Expr::TypeName#ddac9018#bf@1afe50qq
+         0ms |       |            | project#all_field::StructField#2f54dcd2@896b4c28
+         0ms |       |            | m#Expr::Expr.getType/0#dispred#c339c87f#bf@617f145f
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#3@132c96m4
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#2@65f0d49h
+         0ms |       |            | all_field::StructField#2f54dcd2_10#join_rhs@89fa388v
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs#1@13248dn0
+         0ms |       |            | modexprs_10#join_rhs@aa8f95j5
+         0ms |       |            | modtokens_120#join_rhs@2459649f
+         0ms |       |            | modexprs_120#join_rhs@0d28dc10
+         0ms |       |            | project#AST::AstNode.toString/0#dispred#0cb26a30@df6b26cq
+         0ms |       |            | modtokens_102#join_rhs@28d8f1oj
+         0ms |       |            | m#Expr::TypeExpr#28cffc9d#b@60fdafnm
+         0ms |       |            | _GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs@664956dn
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs@69b5f2nt
+         0ms |       |            | all_field::StructField.pp/0#dispred#30bcd7f4@58ae31kr
+         0ms |       |            | modexprs_0#antijoin_rhs@10fe12h4
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#3@c99734t2
+         0ms |     2 | 0ms @ 1    | all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs@87ffdbth
+         0ms |       |            | all_field::StructField.direct_pp/0#dispred#47adab9f@58b954sg
+
+Most expensive predicates for completed query all_field.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         0ms |       |            | Expr::TypeSetLiteralExpr#3bcfc417@9275d15b
+         0ms |     4 | 0ms @ 1    | Expr::isTypeExprTopDown/1#0306c5bb#b@c64e3zrb
+         0ms |       |            | Expr::UnaryExpr#3d621e5f@eb575f2r
+         0ms |       |            | GoMod::GoModLine_not_GoMod::GoModExcludeLine_GoMod::GoModGoLine_GoMod::GoModModuleLine_GoMod::GoModReplaceLine_GoMod::GoModRequireLine#e662906b@72157f8q
+         0ms |       |            | GoMod::GoModExpr_not_GoMod::GoModLParen_GoMod::GoModLine_GoMod::GoModLineBlock_GoMod::GoModRParen#e9a3ce8b@c02708sa
+         0ms |     1 | 0ms @ 1    | Expr::isTypeExprBottomUp/1#0930a8e1#b@3134abs4
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs@2d07e0il
+         0ms |       |            | Scopes::DeclaredType.getSpec/0#dispred#2a88491c_10#join_rhs@9fd0b01o
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#2@efc8ecbl
+         0ms |       |            | GoMod::GoModLine.getRawToken/1#dispred#85e36918@fbe0fbv1
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs@cf0b8c6q
+         0ms |       |            | Locations::Locatable.hasLocationInfo/5#dispred#3a271a34_0#antijoin_rhs@7afab82k
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#1@9d73977l
+         0ms |       |            | all_field::StructField#2f54dcd2@f087f55d
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs@7f284c8i
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#1@1ffe5494
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#4@be0b1djq
+         0ms |       |            | m#Expr::Ident.refersTo/1#dispred#253d9cdc#bf@fcf0657c
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#1@65eb42la
+         0ms |       |            | _Expr::CompositeLit#f7622b9a_Expr::Expr.getType/0#dispred#c339c87f#bf#shared@a39fe1n5
+         0ms |       |            | GoMod::GoModLine.getToken/1#dispred#4447bb8c@7b7ed195
+         0ms |     2 | 0ms @ 1    | Types::Type.getUnderlyingType/0#dispred#e61d6b4a@85402adb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#2@91a170u0
+         0ms |       |            | Stmt::Assignment.getOperator/0#dispred#5955ddc2@67ba2cai
+         0ms |       |            | _Expr::isTypeExprBottomUp/1#0930a8e1#b_exprs_10#join_rhs_exprs_230#join_rhs#antijoin_rhs@493a72v7
+         0ms |       |            | m#Expr::Name#9002049d#bf@cd5615ir
+         0ms |       |            | _GoMod::GoModLine.getToken/1#dispred#4447bb8c_120#join_rhs#antijoin_rhs#3@daad62r4
+         0ms |       |            | m#Expr::TypeName#ddac9018#bf@1afe50qq
+         0ms |       |            | project#all_field::StructField#2f54dcd2@896b4c28
+         0ms |       |            | m#Expr::Expr.getType/0#dispred#c339c87f#bf@617f145f
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#3@132c96m4
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprTopDown/1#0306c5bb#b@e1200cn8
+         0ms |       |            | _decls_10#join_rhs#antijoin_rhs#2@65f0d49h
+         0ms |       |            | all_field::StructField#2f54dcd2_10#join_rhs@89fa388v
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs#1@13248dn0
+         0ms |       |            | modexprs_10#join_rhs@aa8f95j5
+         0ms |       |            | modtokens_120#join_rhs@2459649f
+         0ms |       |            | modexprs_120#join_rhs@0d28dc10
+         0ms |       |            | project#AST::AstNode.toString/0#dispred#0cb26a30@df6b26cq
+         0ms |       |            | modtokens_102#join_rhs@28d8f1oj
+         0ms |       |            | m#Expr::TypeExpr#28cffc9d#b@60fdafnm
+         0ms |       |            | _GoMod::GoModLine.getRawToken/1#dispred#85e36918_modexprs#antijoin_rhs@664956dn
+         0ms |       |            | _specs_10#join_rhs#antijoin_rhs@69b5f2nt
+         0ms |       |            | all_field::StructField.pp/0#dispred#30bcd7f4@58ae31kr
+         0ms |       |            | modexprs_0#antijoin_rhs@10fe12h4
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs#3@c99734t2
+         0ms |     2 | 0ms @ 1    | all_field::StructField.pp_ign_root/0#2f2b6bb5@1a1c1eai
+         0ms |     2 | 0ms @ 1    | m#Expr::isTypeExprBottomUp/1#0930a8e1#b@4ef382mb
+         0ms |       |            | _modexprs_10#join_rhs#antijoin_rhs@87ffdbth
+         0ms |       |            | all_field::StructField.direct_pp/0#dispred#47adab9f@58b954sg
+
+[2024-08-21 23:19:35] Total evaluation times for this run:
+        * Wall-clock duration of evaluation run: 0.0 seconds
+        * Total time spent evaluating predicates: 0.0 seconds

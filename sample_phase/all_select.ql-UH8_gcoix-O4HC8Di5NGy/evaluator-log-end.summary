@@ -1,0 +1,30 @@
+Completed evaluation of query all_select.ql.
+Most expensive predicates for stage 2 of completed query all_select.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         7ms |       |            | Types::Type.toString/0#dispred#0c13b6df@51b9eb6t
+         4ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared@3e5f870a
+         4ms |     3 | 3ms @ 2    | all_select::getBaseType/1#be4a6347#fb@ad903fnj
+         1ms |       |            | project#Types::Type.toString/0#dispred#0c13b6df@16e51b27
+         0ms |       |            | #select@6c2ff0he
+         0ms |       |            | #select#query@aa871e3i
+         0ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs@87302fqv
+         0ms |       |            | _@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs@288d17u2
+         0ms |       |            | _Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared@ba6ac33m
+
+Most expensive predicates for completed query all_select.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         7ms |       |            | Types::Type.toString/0#dispred#0c13b6df@51b9eb6t
+         4ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_10#join_rhs_Types::Type.toString/0#dispred#0c13b6df_all_se__#shared@3e5f870a
+         4ms |     3 | 3ms @ 2    | all_select::getBaseType/1#be4a6347#fb@ad903fnj
+         1ms |       |            | project#Types::Type.toString/0#dispred#0c13b6df@16e51b27
+         0ms |       |            | #select@6c2ff0he
+         0ms |       |            | #select#query@aa871e3i
+         0ms |       |            | _Expr::Expr.getType/0#dispred#c339c87f#bf_Expr::SelectorExpr.getBase/0#dispred#4750d166__Expr::Selec__#antijoin_rhs@87302fqv
+         0ms |       |            | _@functionobject_Expr::Ident.getName/0#dispred#79c7231c_Expr::SelectorExpr.getBase/0#dispred#4750d16__#antijoin_rhs@288d17u2
+         0ms |       |            | _Expr::SelectorExpr.getBase/0#dispred#4750d166_10#join_rhs__@functionobject_Expr::Ident.getName/0#di__#shared@ba6ac33m
+
+[2024-08-22 00:23:23] Total evaluation times for this run:
+        * Wall-clock duration of evaluation run: 0.0 seconds
+        * Total time spent evaluating predicates: 0.0 seconds

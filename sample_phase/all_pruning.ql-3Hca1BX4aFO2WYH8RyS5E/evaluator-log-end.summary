@@ -1,0 +1,122 @@
+Completed evaluation of query all_pruning.ql.
+Most expensive predicates for stage 2 of completed query all_pruning.ql:
+        time | predicate
+        -----|----------
+         1ms | objects_120#join_rhs@18f8ed8b
+
+Most expensive predicates for stage 5 of completed query all_pruning.ql:
+        time | predicate
+        -----|----------
+         1ms | objects_120#join_rhs@18f8ed8b
+
+Most expensive predicates for stage 8 of completed query all_pruning.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         8ms |       |            | boundedFastTC:DataFlowUtil::getAccessPathPredecessor/1#a9487cea:DataFlowUtil::getADirectlyWrittenNode/0#4aa172db@e6a533pe
+         3ms |       |            | FlowSummaryImpl::Private::SummaryComponent.getMadRepresentation/0#dispred#6ed11cb9@de292fhd
+         2ms |       |            | _m#DataFlowUtil::Node.getType/0#dispred#e0f50159#fb_objecttypes_10#join_rhs#shared@504b17o6
+         2ms |     4 | 2ms @ 2    | Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@245e1x4h
+         2ms |       |            | DataFlowUtil::Node.toString/0#dispred#60268bca@dd6ca488
+         2ms |       |            | all_pruning::K8sCallMethod#d250ecfe@d77ec1v2
+         2ms |       |            | FlowSummaryImpl::Input::encodeContent/2#cf511534@8738841p
+         1ms |       |            | objects_120#join_rhs@18f8ed8b
+         1ms |       |            | Scopes::Function.getResultType/1#dispred#ccda48d6#ffb@65b090v4
+         1ms |       |            | __m#DataFlowUtil::Node.getType/0#dispred#e0f50159#fb_objecttypes_10#join_rhs#shared_objecttypes_type__#antijoin_rhs@ddaf0897
+         1ms |       |            | FlowSummaryImpl::Private::External::interpretComponent/1#f55a3aaf@58bb48ru
+         0ms |       |            | Types::Type.toString/0#dispred#0c13b6df@6d8b93mo
+         0ms |       |            | _DataFlowUtil::CallNode#317d8f42_Expr::CallExpr.getArgument/1#dispred#4340cf50_Expr::Expr.getType/0#__#antijoin_rhs@fa24dbft
+         0ms |       |            | _DataFlowUtil::CallNode#317d8f42_DataFlowUtil::CallNode.getSyntacticArgument/1#dispred#e6932a94_Expr__#antijoin_rhs@ff81a372
+         0ms |       |            | _DataFlowUtil::CallNode#317d8f42__DataFlowUtil::CallNode#317d8f42_Expr::CallExpr.getArgument/1#dispr__#shared@32c6129k
+         0ms |       |            | _Expr::CallExpr.getCalleeType/0#dispred#525f797b_10#join_rhs_variadic#shared@c0485194
+         0ms |       |            | _Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::CallNode#317d8f42__DataFlowUtil::CallN__#shared@34ce2fe1
+         0ms |       |            | _DataFlowUtil::exprNode/1#a259e091__Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::Cal__#rank_range@e1a839r9
+         0ms |       |            | _DataFlowUtil::exprNode/1#a259e091__Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::Cal__#rank_term@08e161ui
+         0ms |       |            | _const_1_exprs_10#join_rhs#antijoin_rhs@9ab7b41k
+         0ms |       |            | _Expr::IndexExpr#45304cc6_Expr::SelectorExpr.getBase/0#dispred#4750d166_exprs_10#join_rhs_exprs_230#__#shared@87756d79
+         0ms |       |            | _Expr::SelectorExpr.getSelector/0#dispred#eddd43ba_IR::IR::EvalInstruction#ed21e2c3_10#join_rhs#shared@9a8a78es
+         0ms |       |            | all_pruning::K8sArgumentNode.pp/0#dispred#8c665d18@859443n5
+         0ms |       |            | __DataFlowUtil::exprNode/1#a259e091__Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::Ca__#join_rhs@08bd94jb
+         0ms |       |            | base_type_1#join_rhs@d20b0f0h
+         0ms |       |            | _Files::File#0e2ffa35_Scopes::LocalVariable#c708b57c_objectscopes_scopenodes_10#join_rhs#antijoin_rhs@3eb328ok
+         0ms |       |            | m#DataFlowUtil::Node.getType/0#dispred#e0f50159#fb@168d9989
+         0ms |       |            | _Expr::Name.getTarget/0#dispred#d20eef97_Scopes::ValueEntity#a8653a73#shared@c8f644jg
+         0ms |       |            | _num#DataFlowPrivate::MkReturnKind#a2dabbfa_num#FlowSummaryImpl::Private::TReturnSummaryComponent#9a__#shared@5ff4a2qu
+         0ms |       |            | all_pruning::K8sArgumentNode#28eb2f31@0025dckl
+         0ms |       |            | project#IR::IR::FieldReadInstruction#259609fd#4@cc71574k
+         0ms |       |            | _const_0_exprs_10#join_rhs#antijoin_rhs@ed9bbagu
+         0ms |       |            | _const_0_types_10#join_rhs#antijoin_rhs@665cd2mb
+         0ms |       |            | _Scopes::ValueEntity.getARead/0#dispred#c3bfa343#join_rhs@343dfa65
+         0ms |       |            | m#AST::AstNode.getAChild/0#dispred#4665fb48#bf@98a0867a
+         0ms |       |            | project#DataFlowPrivate::basicLocalFlowStep/2#a508c2c4@371d8ah6
+         0ms |       |            | project#all_pruning::StructAsK8sArg#ec8cc080@4832c91h
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373@e3ef7art
+         0ms |       |            | project##select#cpe#123@ba1fc3ig
+         0ms |       |            | project#DataFlowUtil::ArgumentNode#a5ce338c@9c37da1o
+         0ms |       |            | _const_1_specs_10#join_rhs#shared@4e6dd8bu
+         0ms |       |            | m#Types::Type.getMethod/1#dispred#929000f1#bff@21c797k5
+         0ms |       |            | all_pruning::StructAsK8sArg#ec8cc080@5c1fcf78
+         0ms |       |            | project#IR::IR::MethodReadInstruction#4d8d4e1e#2@9a9b0bq0
+         0ms |       |            | m#Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@4654bakt
+         0ms |       |            | project#DataFlowUtil::CallNode.getAnImplicitVarargsArgument/0#dispred#81b4eca7@4a2531v9
+         0ms |       |            | project#IR::IR::Instruction.writes/2#dispred#b1714860@601abavf
+         0ms |       |            | project#IR::IR::MethodReadInstruction#4d8d4e1e@6862500k
+         0ms |       |            | project#DataFlowUtil::Node.toString/0#dispred#60268bca@25abf6l9
+         0ms |       |            | project#DataFlowUtil::Node.hasLocationInfo/5#dispred#c7d73140#bfffff@c7fcbeq1
+
+Most expensive predicates for completed query all_pruning.ql:
+        time | evals | max @ iter | predicate
+        -----|-------|------------|----------
+         8ms |       |            | boundedFastTC:DataFlowUtil::getAccessPathPredecessor/1#a9487cea:DataFlowUtil::getADirectlyWrittenNode/0#4aa172db@e6a533pe
+         3ms |       |            | FlowSummaryImpl::Private::SummaryComponent.getMadRepresentation/0#dispred#6ed11cb9@de292fhd
+         2ms |       |            | _m#DataFlowUtil::Node.getType/0#dispred#e0f50159#fb_objecttypes_10#join_rhs#shared@504b17o6
+         2ms |     4 | 2ms @ 2    | Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@245e1x4h
+         2ms |       |            | DataFlowUtil::Node.toString/0#dispred#60268bca@dd6ca488
+         2ms |       |            | all_pruning::K8sCallMethod#d250ecfe@d77ec1v2
+         2ms |       |            | FlowSummaryImpl::Input::encodeContent/2#cf511534@8738841p
+         1ms |       |            | objects_120#join_rhs@18f8ed8b
+         1ms |       |            | Scopes::Function.getResultType/1#dispred#ccda48d6#ffb@65b090v4
+         1ms |       |            | __m#DataFlowUtil::Node.getType/0#dispred#e0f50159#fb_objecttypes_10#join_rhs#shared_objecttypes_type__#antijoin_rhs@ddaf0897
+         1ms |       |            | FlowSummaryImpl::Private::External::interpretComponent/1#f55a3aaf@58bb48ru
+         0ms |       |            | Types::Type.toString/0#dispred#0c13b6df@6d8b93mo
+         0ms |       |            | _DataFlowUtil::CallNode#317d8f42_Expr::CallExpr.getArgument/1#dispred#4340cf50_Expr::Expr.getType/0#__#antijoin_rhs@fa24dbft
+         0ms |       |            | _DataFlowUtil::CallNode#317d8f42_DataFlowUtil::CallNode.getSyntacticArgument/1#dispred#e6932a94_Expr__#antijoin_rhs@ff81a372
+         0ms |       |            | _DataFlowUtil::CallNode#317d8f42__DataFlowUtil::CallNode#317d8f42_Expr::CallExpr.getArgument/1#dispr__#shared@32c6129k
+         0ms |       |            | _Expr::CallExpr.getCalleeType/0#dispred#525f797b_10#join_rhs_variadic#shared@c0485194
+         0ms |       |            | _Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::CallNode#317d8f42__DataFlowUtil::CallN__#shared@34ce2fe1
+         0ms |       |            | _DataFlowUtil::exprNode/1#a259e091__Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::Cal__#rank_range@e1a839r9
+         0ms |       |            | _DataFlowUtil::exprNode/1#a259e091__Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::Cal__#rank_term@08e161ui
+         0ms |       |            | _const_1_exprs_10#join_rhs#antijoin_rhs@9ab7b41k
+         0ms |       |            | _Expr::IndexExpr#45304cc6_Expr::SelectorExpr.getBase/0#dispred#4750d166_exprs_10#join_rhs_exprs_230#__#shared@87756d79
+         0ms |       |            | _Expr::SelectorExpr.getSelector/0#dispred#eddd43ba_IR::IR::EvalInstruction#ed21e2c3_10#join_rhs#shared@9a8a78es
+         0ms |       |            | all_pruning::K8sArgumentNode.pp/0#dispred#8c665d18@859443n5
+         0ms |       |            | __DataFlowUtil::exprNode/1#a259e091__Expr::CallExpr.getArgument/1#dispred#4340cf50__DataFlowUtil::Ca__#join_rhs@08bd94jb
+         0ms |       |            | base_type_1#join_rhs@d20b0f0h
+         0ms |       |            | _Files::File#0e2ffa35_Scopes::LocalVariable#c708b57c_objectscopes_scopenodes_10#join_rhs#antijoin_rhs@3eb328ok
+         0ms |       |            | m#DataFlowUtil::Node.getType/0#dispred#e0f50159#fb@168d9989
+         0ms |       |            | _Expr::Name.getTarget/0#dispred#d20eef97_Scopes::ValueEntity#a8653a73#shared@c8f644jg
+         0ms |       |            | _num#DataFlowPrivate::MkReturnKind#a2dabbfa_num#FlowSummaryImpl::Private::TReturnSummaryComponent#9a__#shared@5ff4a2qu
+         0ms |       |            | all_pruning::K8sArgumentNode#28eb2f31@0025dckl
+         0ms |       |            | project#IR::IR::FieldReadInstruction#259609fd#4@cc71574k
+         0ms |       |            | _const_0_exprs_10#join_rhs#antijoin_rhs@ed9bbagu
+         0ms |       |            | _const_0_types_10#join_rhs#antijoin_rhs@665cd2mb
+         0ms |       |            | _Scopes::ValueEntity.getARead/0#dispred#c3bfa343#join_rhs@343dfa65
+         0ms |       |            | m#AST::AstNode.getAChild/0#dispred#4665fb48#bf@98a0867a
+         0ms |       |            | project#DataFlowPrivate::basicLocalFlowStep/2#a508c2c4@371d8ah6
+         0ms |       |            | project#all_pruning::StructAsK8sArg#ec8cc080@4832c91h
+         0ms |       |            | project#Types::StructType.hasOwnField/4#dispred#bdab6373@e3ef7art
+         0ms |       |            | project##select#cpe#123@ba1fc3ig
+         0ms |       |            | project#DataFlowUtil::ArgumentNode#a5ce338c@9c37da1o
+         0ms |       |            | _const_1_specs_10#join_rhs#shared@4e6dd8bu
+         0ms |       |            | m#Types::Type.getMethod/1#dispred#929000f1#bff@21c797k5
+         0ms |       |            | all_pruning::StructAsK8sArg#ec8cc080@5c1fcf78
+         0ms |       |            | project#IR::IR::MethodReadInstruction#4d8d4e1e#2@9a9b0bq0
+         0ms |       |            | m#Scopes::Entity.getQualifiedName/0#dispred#c4a44adb#bf@4654bakt
+         0ms |       |            | project#DataFlowUtil::CallNode.getAnImplicitVarargsArgument/0#dispred#81b4eca7@4a2531v9
+         0ms |       |            | project#IR::IR::Instruction.writes/2#dispred#b1714860@601abavf
+         0ms |       |            | project#IR::IR::MethodReadInstruction#4d8d4e1e@6862500k
+         0ms |       |            | project#DataFlowUtil::Node.toString/0#dispred#60268bca@25abf6l9
+         0ms |       |            | project#DataFlowUtil::Node.hasLocationInfo/5#dispred#c7d73140#bfffff@c7fcbeq1
+
+[2024-08-21 23:19:47] Total evaluation times for this run:
+        * Wall-clock duration of evaluation run: 0.1 seconds
+        * Total time spent evaluating predicates: 0.0 seconds
