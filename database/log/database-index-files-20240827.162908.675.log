@@ -1,0 +1,11 @@
+[2024-08-27 16:29:08] This is codeql database index-files --working-dir=. --include-extension=.htm --include-extension=.html --include-extension=.xhtm --include-extension=.xhtml --include-extension=.vue --size-limit 10m --language html -- C:\Users\Twisl\Desktop\unimp-checker\database
+[2024-08-27 16:29:08] Log file was started late.
+[2024-08-27 16:29:08] Using index-files script D:\codeql\html\tools\index-files.cmd.
+[2024-08-27 16:29:08] [PROGRESS] database index-files> Scanning for files in C:\Users\Twisl\Desktop\unimp-checker\simple_case...
+[2024-08-27 16:29:08] Calling plumbing command: codeql resolve files --include-extension=.htm --include-extension=.html --include-extension=.xhtm --include-extension=.xhtml --include-extension=.vue --size-limit=10m C:\Users\Twisl\Desktop\unimp-checker\simple_case --format=json
+[2024-08-27 16:29:08] [PROGRESS] resolve files> Scanning C:\Users\Twisl\Desktop\unimp-checker\simple_case...
+[2024-08-27 16:29:08] [PROGRESS] resolve files> Scanning C:\Users\Twisl\Desktop\unimp-checker\simple_case\lib...
+[2024-08-27 16:29:08] Plumbing command codeql resolve files completed:
+                      [ ]
+[2024-08-27 16:29:08] [DETAILS] database index-files> Found 0 files.
+[2024-08-27 16:29:08] Terminating normally.

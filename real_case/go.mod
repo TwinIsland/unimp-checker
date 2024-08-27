@@ -2,7 +2,19 @@ module github.com/pravega/zookeeper-operator
 
 go 1.16
 
-require github.com/pkg/errors v0.9.1
+require (
+	github.com/ghodss/yaml v1.0.0
+	github.com/go-logr/logr v1.4.2
+	github.com/onsi/ginkgo v1.16.5
+	github.com/onsi/gomega v1.34.1
+	github.com/pkg/errors v0.9.1
+	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414
+	github.com/sirupsen/logrus v1.9.3
+	k8s.io/api v0.31.0
+	k8s.io/apimachinery v0.31.0
+	k8s.io/client-go v0.31.0
+	sigs.k8s.io/controller-runtime v0.19.0
+)
 
 replace (
 	github.com/go-logr/zapr => github.com/go-logr/zapr v0.4.0

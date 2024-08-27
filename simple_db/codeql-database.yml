@@ -1,0 +1,10 @@
+---
+sourceLocationPrefix: C:\Users\Twisl\Desktop\unimp-checker\simple_case
+baselineLinesOfCode: 40
+unicodeNewlines: false
+columnKind: utf8
+primaryLanguage: go
+creationMetadata:
+  cliVersion: 2.18.2
+  creationTime: 2024-08-25T18:15:18.864636100Z
+finalised: true

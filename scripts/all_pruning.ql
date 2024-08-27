@@ -13,7 +13,7 @@ import go
 
 // import DataFlow::PathGraph
 class K8sCallMethod extends Function {
-  K8sCallMethod() { this.getQualifiedName().indexOf("lib") >= 0 } // change to k8s.io in production env
+  K8sCallMethod() { this.getQualifiedName().indexOf("k8s") >= 0 } // change to k8s.io in production env
 
   string describe() { this.getName() = result }
 }
