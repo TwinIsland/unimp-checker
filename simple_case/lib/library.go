@@ -17,6 +17,10 @@ type MyType2 struct {
 	Level    int
 }
 
+type D1 struct {
+	a int
+}
+
 func Foo(c *MyType1) {
 	c.SubtypePtr.Category = "hello"
 }
@@ -26,6 +30,13 @@ func (c *MyType1) Init() {
 	c.SubtypePtr = &MyType2{
 		Level: 12,
 	}
+}
+
+func (in *D1) DeepCopyInto(out *MyType2) {
+	if in.a != 0 {
+		fmt.Println("yes")
+	}
+	in.a = out.Level
 }
 
 func MyFunc(m MyType2) {

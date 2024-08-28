@@ -3,7 +3,6 @@ from collections import defaultdict
 import subprocess
 import os
 import argparse
-import hashlib
 
 OUTPUT_ALL_FIELD = r"./out/all_field_?.sarif"
 OUTPUT_ALL_DECLARE = r"./out/all_declare_?.sarif"
@@ -58,9 +57,9 @@ def collect():
         f"codeql database analyze ./database ./scripts/all_declare.ql --format=sarifv2.1.0 "
         f"--output={OUTPUT_ALL_DECLARE.replace('?', hash_string(args.src))}",
         f"codeql database analyze ./database ./scripts/all_pruning.ql --format=sarifv2.1.0 "
-        f"--output={OUTPUT_ALL_SELECT.replace('?', hash_string(args.src))}",
+        f"--output={OUTPUT_ALL_PRUNING.replace('?', hash_string(args.src))}",
         f"codeql database analyze ./database ./scripts/all_select.ql --format=sarifv2.1.0 "
-        f"--output={OUTPUT_ALL_PRUNING.replace('?', hash_string(args.src))}"
+        f"--output={OUTPUT_ALL_SELECT.replace('?', hash_string(args.src))}"
     ]
 
     for command in commands:
@@ -104,10 +103,12 @@ if __name__ == "__main__":
           f"declared fields #: {len(declared_fields)}\n"
           f"remaining fields #: {len(remaining_fields)}\n"
           f"all fields #: {len(all_fields)}")
+    # print("=" * 27)
+    # for field in sorted(all_fields):
+    #     print(field)
     print("=" * 27)
     print(" " * 4 + "not accessed fields" + " " * 4)
     print("=" * 27)
-
     for field in sorted(remaining_fields):
         print(field)
     print("=" * 27)
