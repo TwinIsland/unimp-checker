@@ -86,5 +86,10 @@ class StructFieldNode extends DataFlow::Node {
 
 // from StructFieldNode all
 // select all, all.complete_pp()
+
 from StructFieldNode all
 select all, all.complete_pp()
+
+
+// from StructLit all
+// select all

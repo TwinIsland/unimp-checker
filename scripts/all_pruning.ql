@@ -42,9 +42,9 @@ string getSelectorExprPath(SelectorExpr cur) {
  */
 class K8sArgumentNode extends DataFlow::Node {
   K8sArgumentNode() {
-    exists(DataFlow::CallExpr all |
-      all.getTarget().toString() = any(K8sCallMethod a).describe() and
-      all.getAnArgument() = this.asExpr()
+    exists(DataFlow::CallNode all |
+      all = any(K8sCallMethod a).getACall() and
+      all.getAnArgument() = this
     )
   }
 
@@ -53,7 +53,8 @@ class K8sArgumentNode extends DataFlow::Node {
 
 class StructAsK8sArg extends K8sArgumentNode {
   StructAsK8sArg() {
-    this.getType() instanceof SliceType
+    this.asExpr() instanceof SelectorExpr and
+    not this.asExpr().(SelectorExpr).getBase().getType() instanceof InvalidType
     or
     exists(DeclaredType dall |
       exists(StructTypeExpr sall | sall.getType() = dall.getSpec().getTypeExpr().getType() |
@@ -69,10 +70,9 @@ class StructAsK8sArg extends K8sArgumentNode {
         getBaseType(this.asExpr().(SelectorExpr).getBase().getType()).toString() + "." +
           getSelectorExprPath(this.asExpr())
     else
-    // if target instanceof StarExpr
-    // then result = getBaseExpr(target).getType().(PointerType).getBaseType().(SliceType).getElementType().toString()
-    
-    // else
+      // if target instanceof StarExpr
+      // then result = getBaseExpr(target).getType().(PointerType).getBaseType().(SliceType).getElementType().toString()
+      // else
       exists(DeclaredType dall |
         exists(StructTypeExpr sall | sall.getType() = dall.getSpec().getTypeExpr().getType() |
           dall.getType() = getBaseType(this.getType()) and result = dall.getType().toString()
